@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { galleryImages } from '../data/gallery';
+
+const jsonLd = galleryImages.map((img) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ImageObject',
+  contentUrl: `https://www.garylucy.co.uk/gallery/${img.file}`,
+  name: img.alt,
+  caption: img.caption ?? img.alt,
+}));
+---
+<Layout
+  title="Gary Lucy — Gallery"
+  description="Casting photography and press imagery for Gary Lucy."
+  path="/gallery"
+  jsonLd={jsonLd}
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem;">
+    <p class="eyebrow">Gallery</p>
+    <h1>Gallery</h1>
+    {galleryImages.length === 0 ? (
+      <div class="card" style="max-width:640px;">
+        <p><strong>No images yet.</strong></p>
+        <p>Upload casting photos to the <code>images/</code> intake folder (see the deployment doc) and they're auto-graded to the site palette, renamed, given alt text, and added here automatically.</p>
+      </div>
+    ) : (
+      <div class="grid-3">
+        {galleryImages.map((img) => (
+          <figure style="margin:0;">
+            <img
+              src={`/gallery/${img.file}`}
+              srcset={img.srcset}
+              sizes="(max-width: 800px) 100vw, 33vw"
+              alt={img.alt}
+              loading="lazy"
+              style="width:100%; display:block;"
+            />
+            {img.caption && <figcaption style="font-size:0.8rem; color:var(--fg-muted); margin-top:0.5rem;">{img.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    )}
+  </section>
+</Layout>

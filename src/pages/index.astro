@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MagazineHero from '../components/MagazineHero.astro';
+import { roles } from '../data/credits';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    dateCreated: '2026-09-20',
+    mainEntity: { '@id': 'https://www.garylucy.co.uk/#person' },
+  },
+];
+---
+<Layout
+  title="Gary Lucy — Official Site | British Screen &amp; Stage Actor"
+  description="Official site of Gary Lucy: nearly three decades on British screen and stage, from Hollyoaks and Footballers' Wives to The Good Ship Murder."
+  path="/"
+  jsonLd={jsonLd}
+>
+  <MagazineHero
+    imageFull="/hero/gl-standing-bw-web.jpg"
+    imageClose="/hero/gl-closeup-bw-web.jpg"
+    altFull="Gary Lucy, full-length black and white editorial portrait"
+    altClose="Gary Lucy, close-up black and white editorial portrait"
+  />
+
+  <section class="container" style="padding: 5rem 1.5rem;">
+    <p class="eyebrow">Currently</p>
+    <h2>The Good Ship Murder</h2>
+    <p style="max-width: 60ch;">Gary joined Channel 5's hit Mediterranean murder-mystery series as Jason Agnew for its third series — his latest primetime screen credit.</p>
+    <a href="/screen/the-good-ship-murder" class="accent">Read more &rarr;</a>
+  </section>
+
+  <section class="container" style="padding-bottom: 5rem;">
+    <p class="eyebrow">Selected credits</p>
+    <ul class="role-list">
+      {roles.map((role) => (
+        <li>
+          <div>
+            <strong>{role.character}</strong> — <a href={`/screen/${role.slug}`}>{role.show}</a>
+          </div>
+          <span class="years">{role.years}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>

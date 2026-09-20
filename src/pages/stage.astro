@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { stageCredits } from '../data/credits';
+---
+<Layout
+  title="Gary Lucy — Stage Credits"
+  description="Gary Lucy's theatre work, including leading the UK tour of The Full Monty as Gaz."
+  path="/stage"
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem;">
+    <p class="eyebrow">Theatre</p>
+    <h1>Stage credits</h1>
+    <ul class="role-list" style="margin-top:2rem;">
+      {stageCredits.map((c) => (
+        <li>
+          <div>
+            <strong>{c.role}</strong> — {c.title} ({c.venue})
+            <p style="max-width:60ch;">{c.summary}</p>
+          </div>
+          <span class="years">{c.years}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>

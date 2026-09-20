@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pressItems } from '../data/press';
+---
+<Layout
+  title="Gary Lucy — Press &amp; Interviews"
+  description="Press coverage and interviews with Gary Lucy."
+  path="/press"
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem;">
+    <p class="eyebrow">Press</p>
+    <h1>Press &amp; interviews</h1>
+    <ul class="role-list" style="margin-top:2rem;">
+      {pressItems.map((item) => (
+        <li>
+          <div>
+            <a href={item.url} target="_blank" rel="noopener"><strong>{item.title}</strong></a>
+            <div style="font-size:0.85rem; color:var(--fg-muted);">{item.outlet}{item.date ? ` · ${item.date}` : ' · date TBC'}</div>
+          </div>
+          <span class="years">{item.kind}</span>
+        </li>
+      ))}
+    </ul>
+    <p style="margin-top:2rem; font-size:0.85rem; color:var(--fg-muted);">More coverage added as it's confirmed — this list is curated for professional relevance, not comprehensiveness.</p>
+  </section>
+</Layout>

@@ -1,0 +1,219 @@
+/* ============================================================
+   PALETTE SYSTEM
+   Three options, all built around black-and-white film photography
+   with one accent colour. "amber" is locked as the default — change
+   data-theme on <html> in Layout.astro to preview the others, or
+   delete the two you don't want once Gary picks.
+   ============================================================ */
+:root,
+[data-theme='amber'] {
+  --bg: #0b0b0c;
+  --bg-raised: #141416;
+  --fg: #f2ede4;
+  --fg-muted: #b8b2a6;
+  --accent: #c9a24b;
+  --accent-contrast: #0b0b0c;
+  --hairline: rgba(242, 237, 228, 0.14);
+}
+
+[data-theme='crimson'] {
+  --bg: #141414;
+  --bg-raised: #1d1d1d;
+  --fg: #ede9e2;
+  --fg-muted: #a79f92;
+  --accent: #a32638;
+  --accent-contrast: #ede9e2;
+  --hairline: rgba(237, 233, 226, 0.14);
+}
+
+[data-theme='denim'] {
+  --bg: #101014;
+  --bg-raised: #17171c;
+  --fg: #eee6d6;
+  --fg-muted: #9d9689;
+  --accent: #4a6fa5;
+  --accent-contrast: #eee6d6;
+  --hairline: rgba(238, 230, 214, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Neue Haas Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Freight Display Pro', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+
+p { line-height: 1.6; color: var(--fg-muted); }
+
+a { color: var(--fg); text-decoration: none; }
+a.accent { color: var(--accent); }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hairline {
+  border-top: 1px solid var(--hairline);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  border: 1px solid var(--accent);
+  color: var(--fg);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Film grain overlay — fixed, decorative, ignored by assistive tech */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom: 1px solid var(--hairline);
+}
+nav.site-nav .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+nav.site-nav .logo {
+  font-family: 'Freight Display Pro', Georgia, serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+nav.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+nav.site-nav a:hover { color: var(--accent); }
+
+footer.site-footer {
+  border-top: 1px solid var(--hairline);
+  padding: 3rem 0;
+  margin-top: 6rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+@media (max-width: 800px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+.card {
+  border: 1px solid var(--hairline);
+  background: var(--bg-raised);
+  padding: 2rem;
+}
+
+.role-list { list-style: none; margin: 0; padding: 0; }
+.role-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.role-list .years { color: var(--fg-muted); font-size: 0.85rem; white-space: nowrap; }
+
+#hero-3d {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero .hero-copy {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 1.5rem 5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(11,11,12,0.1) 0%, rgba(11,11,12,0.85) 85%);
+}

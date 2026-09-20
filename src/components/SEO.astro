@@ -1,0 +1,49 @@
+---
+import { profile } from '../data/credits';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // e.g. "/" or "/roles/hollyoaks"
+  jsonLd?: object[];
+  ogImage?: string;
+}
+
+const { title, description, path, jsonLd = [], ogImage = '/og/default.jpg' } = Astro.props;
+const canonical = new URL(path, Astro.site).toString();
+const ogUrl = new URL(ogImage, Astro.site).toString();
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://www.garylucy.co.uk/#person',
+  name: profile.name,
+  alternateName: profile.fullName,
+  birthDate: profile.born,
+  birthPlace: profile.birthPlace,
+  jobTitle: 'Actor',
+  description: profile.bioShort,
+  url: 'https://www.garylucy.co.uk/',
+  sameAs: profile.sameAs,
+};
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content="Gary Lucy — Official" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogUrl} />
+
+<script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+{jsonLd.map((entry) => (
+  <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+))}

@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// [VERIFY / INPUT NEEDED]: replace with Gary's actual showreel video ID once supplied.
+const VIMEO_ID = ''; // e.g. '123456789'
+const YOUTUBE_ID = ''; // e.g. 'dQw4w9WgXcQ'
+
+const jsonLd = VIMEO_ID || YOUTUBE_ID
+  ? [{
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: 'Gary Lucy — Showreel',
+      description: "Gary Lucy's acting showreel.",
+      uploadDate: '2026-09-20',
+      thumbnailUrl: 'https://www.garylucy.co.uk/og/showreel.jpg',
+      embedUrl: YOUTUBE_ID
+        ? `https://www.youtube.com/embed/${YOUTUBE_ID}`
+        : `https://player.vimeo.com/video/${VIMEO_ID}`,
+    }]
+  : [];
+---
+<Layout
+  title="Gary Lucy — Showreel"
+  description="Watch Gary Lucy's acting showreel."
+  path="/showreel"
+  jsonLd={jsonLd}
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem;">
+    <p class="eyebrow">Reel</p>
+    <h1>Showreel</h1>
+    {YOUTUBE_ID || VIMEO_ID ? (
+      <div style="aspect-ratio:16/9; max-width:900px;">
+        <iframe
+          width="100%"
+          height="100%"
+          src={YOUTUBE_ID ? `https://www.youtube.com/embed/${YOUTUBE_ID}` : `https://player.vimeo.com/video/${VIMEO_ID}`}
+          title="Gary Lucy Showreel"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    ) : (
+      <div class="card" style="max-width:640px;">
+        <p><strong>Showreel not yet uploaded.</strong></p>
+        <p>Send the YouTube or Vimeo link (or the raw file) and it drops straight into this page with full VideoObject schema — no other changes needed.</p>
+      </div>
+    )}
+  </section>
+</Layout>

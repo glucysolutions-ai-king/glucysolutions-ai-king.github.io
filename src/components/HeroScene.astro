@@ -1,0 +1,89 @@
+---
+// Progressive-enhancement 3D hero: a depth-parallax "film-strip / projector light"
+// scene built with Three.js. All copy lives in plain HTML behind it (see hero.astro
+// slot usage), so search engines and no-JS browsers get the full content regardless.
+---
+<div id="hero-3d" aria-hidden="true"></div>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isSmallScreen = window.innerWidth < 700;
+
+  if (!prefersReducedMotion && !isSmallScreen) {
+    import('three').then((THREE) => {
+      const container = document.getElementById('hero-3d');
+      if (!container) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+      );
+      camera.position.set(0, 0, 8);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      container.appendChild(renderer.domElement);
+
+      // Film-strip: a grid of thin vertical planes drifting past a projector-light cone.
+      const stripGroup = new THREE.Group();
+      const stripGeo = new THREE.PlaneGeometry(0.6, 4);
+      const stripMat = new THREE.MeshBasicMaterial({
+        color: 0xc9a24b,
+        transparent: true,
+        opacity: 0.06,
+        side: THREE.DoubleSide,
+      });
+      for (let i = 0; i < 24; i++) {
+        const strip = new THREE.Mesh(stripGeo, stripMat);
+        strip.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10 - 4);
+        strip.rotation.z = Math.random() * Math.PI;
+        stripGroup.add(strip);
+      }
+      scene.add(stripGroup);
+
+      const light = new THREE.SpotLight(0xf2ede4, 3, 30, Math.PI / 6, 0.4, 1);
+      light.position.set(0, 6, 6);
+      light.target.position.set(0, -2, 0);
+      scene.add(light, light.target);
+
+      const clock = new THREE.Clock();
+      let mouseX = 0;
+      let mouseY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      window.addEventListener('scroll', () => {
+        const t = Math.min(window.scrollY / window.innerHeight, 1);
+        camera.position.z = 8 - t * 3;
+        camera.position.y = t * 1.5;
+      });
+
+      function resize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+      window.addEventListener('resize', resize);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+        stripGroup.rotation.y = t * 0.02 + mouseX * 0.15;
+        stripGroup.rotation.x = mouseY * 0.08;
+        camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.02;
+        renderer.render(scene, camera);
+      }
+      animate();
+    }).catch(() => {
+      // Three.js failed to load (offline, blocked CDN, etc.) — the static
+      // gradient background in CSS already covers this case.
+    });
+  }
+</script>

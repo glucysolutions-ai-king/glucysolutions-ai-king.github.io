@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { roles } from '../../data/credits';
+---
+<Layout
+  title="Gary Lucy — Screen Credits"
+  description="Gary Lucy's television credits: Hollyoaks, Footballers' Wives, The Bill, EastEnders and The Good Ship Murder."
+  path="/screen"
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem;">
+    <p class="eyebrow">Filmography</p>
+    <h1>Screen credits</h1>
+    <div class="grid-3" style="margin-top:2rem;">
+      {roles.map((role) => (
+        <a href={`/screen/${role.slug}`} class="card" style="display:block;">
+          <p class="eyebrow">{role.network} · {role.years}</p>
+          <h3>{role.show}</h3>
+          <p>{role.character}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

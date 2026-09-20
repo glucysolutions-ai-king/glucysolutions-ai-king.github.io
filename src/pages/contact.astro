@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Contact Gary Lucy"
+  description="Professional contact and enquiries for Gary Lucy."
+  path="/contact"
+>
+  <section class="container" style="padding: 6rem 1.5rem 4rem; max-width:640px;">
+    <p class="eyebrow">Contact</p>
+    <h1>Contact</h1>
+    <p>
+      Representation is currently under review — this page intentionally does not list
+      an agent while that's decided. Casting, production and press enquiries can be sent
+      directly using the form below.
+    </p>
+
+    <!--
+      [INPUT NEEDED]: this posts to Formspree's free tier, which needs a one-time
+      sign-up at formspree.io to get a real form ID. Swap YOUR_FORM_ID below, or
+      replace the whole form with a mailto: link once representation is settled.
+      Either way, no paid hosting is required.
+    -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:grid; gap:1rem; margin-top:2rem;">
+      <label>
+        Name
+        <input type="text" name="name" required style="width:100%; padding:0.6rem; background:var(--bg-raised); border:1px solid var(--hairline); color:var(--fg);" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required style="width:100%; padding:0.6rem; background:var(--bg-raised); border:1px solid var(--hairline); color:var(--fg);" />
+      </label>
+      <label>
+        Enquiry type
+        <select name="type" style="width:100%; padding:0.6rem; background:var(--bg-raised); border:1px solid var(--hairline); color:var(--fg);">
+          <option>Casting / production</option>
+          <option>Press / interview</option>
+          <option>Brand / commercial</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required style="width:100%; padding:0.6rem; background:var(--bg-raised); border:1px solid var(--hairline); color:var(--fg);"></textarea>
+      </label>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+</Layout>
