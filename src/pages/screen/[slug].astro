@@ -17,6 +17,7 @@ const heroFor: Record<string, string> = {
   'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
   eastenders: '/portraits/gl-seated2-web.jpg',
   'the-good-ship-murder': '/portraits/gl-walking2-web.jpg',
+  'the-chelsea-detective': '/hero/gl-sitting-bw-web.jpg',
 };
 const hero = heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg';
 
@@ -41,7 +42,7 @@ const jsonLd = [
 <Layout title={role.seoTitle} description={role.seoDescription} path={`/screen/${role.slug}`} jsonLd={jsonLd}>
   <article class="rs-page">
     <header class="rs-hero rs-hero-sm">
-      <img src={hero} alt={role.show} class="rs-hero-img" />
+      <img src={hero} alt={`Gary Lucy as ${role.character} in ${role.show}`} class="rs-hero-img" />
       <div class="rs-hero-scrim"></div>
       <div class="rs-hero-content">
         <p class="rs-kicker">{role.network} &middot; {role.years} &middot; {role.type}</p>

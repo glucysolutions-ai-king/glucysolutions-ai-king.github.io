@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
 >
   <article class="rs-page">
     <header class="rs-hero rs-hero-sm">
-      <img src="/portraits/gl-studio2-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <img src="/portraits/gl-studio2-web.jpg" alt="Gary Lucy, British actor, studio portrait" class="rs-hero-img" />
       <div class="rs-hero-scrim"></div>
       <div class="rs-hero-content">
         <p class="rs-kicker">Contact</p>
@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
     </header>
 
     <div class="rs-body">
-      <p class="rs-lede">Representation and direct contact for casting, production, press and personal enquiries.</p>
+      <p class="rs-lede">Representation for casting, production and press enquiries.</p>
 
       <ul class="rs-rows">
         <li>
@@ -37,54 +37,7 @@ import Layout from '../layouts/Layout.astro';
             </p>
           </div>
         </li>
-        <li>
-          <div>
-            <span class="rs-row-name">Personal / General</span>
-            <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">
-              Gary Lucy
-            </p>
-          </div>
-          <span class="rs-row-meta"><a href="mailto:glucy.solutions@gmail.com" class="accent">glucy.solutions@gmail.com</a></span>
-        </li>
-        <li>
-          <div>
-            <span class="rs-row-name">Instagram</span>
-          </div>
-          <span class="rs-row-meta"><a href="https://www.instagram.com/gary.lucy" target="_blank" rel="noopener" class="accent">@gary.lucy</a></span>
-        </li>
       </ul>
-
-      <hr class="rs-divider" />
-
-      <h2 class="rs-section-title">Send a Message</h2>
-      <!--
-        [INPUT NEEDED]: this posts to Formspree's free tier, which needs a one-time
-        sign-up at formspree.io to get a real form ID. Swap YOUR_FORM_ID below.
-      -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rs-form">
-        <label>
-          Name
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          Enquiry type
-          <select name="type">
-            <option>Casting / production</option>
-            <option>Press / interview</option>
-            <option>Brand / commercial</option>
-            <option>Other</option>
-          </select>
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button type="submit" class="rs-btn">Send</button>
-      </form>
     </div>
   </article>
 </Layout>

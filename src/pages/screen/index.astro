@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import FlipHero from '../../components/FlipHero.astro';
-import { roles } from '../../data/credits';
+import { roles, otherCredits } from '../../data/credits';
 
 const heroFor: Record<string, string> = {
   hollyoaks: '/portraits/gl-standing2-web.jpg',
@@ -9,11 +9,12 @@ const heroFor: Record<string, string> = {
   'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
   eastenders: '/portraits/gl-seated2-web.jpg',
   'the-good-ship-murder': '/portraits/gl-walking2-web.jpg',
+  'the-chelsea-detective': '/hero/gl-sitting-bw-web.jpg',
 };
 ---
 <Layout
   title="Gary Lucy — Screen Credits"
-  description="Gary Lucy's television credits: Hollyoaks, Footballers' Wives, The Bill, EastEnders and The Good Ship Murder."
+  description="Gary Lucy's television credits: Hollyoaks, Footballers' Wives, The Bill, EastEnders, The Good Ship Murder and The Chelsea Detective."
   path="/screen"
 >
   <article class="rs-page">
@@ -21,11 +22,11 @@ const heroFor: Record<string, string> = {
       id="screen"
       imageFront="/portraits/gl-walking2-web.jpg"
       imageBack="/gallery/gary-lucy-jacket-1600.jpg"
-      altFront="Gary Lucy"
-      altBack="Gary Lucy on set"
+      altFront="Gary Lucy, British actor, on location"
+      altBack="Gary Lucy, close portrait"
       kicker="Filmography"
       headline="Screen Credits"
-      dek="Five shows, five decades of British television &mdash; from teenage soap villain to primetime lead."
+      dek="Six shows, three decades of British television &mdash; from teenage soap villain to primetime lead."
       backKicker="On Screen"
       backHeadline="Every Era,<br />One Career"
     />
@@ -34,7 +35,7 @@ const heroFor: Record<string, string> = {
       <div class="rs-cards">
         {roles.map((role) => (
           <a href={`/screen/${role.slug}`} class="rs-card">
-            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={role.show} />
+            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={`Gary Lucy as ${role.character} in ${role.show}`} />
             <div class="rs-card-scrim"></div>
             <div class="rs-card-label">
               <span class="rs-card-eyebrow">{role.network} &middot; {role.years}</span>
@@ -43,6 +44,20 @@ const heroFor: Record<string, string> = {
           </a>
         ))}
       </div>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">Other Screen Credits</h2>
+      <ul class="rs-rows">
+        {otherCredits.map((c) => (
+          <li>
+            <div>
+              <span class="rs-row-name">{c.title}</span>
+              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">{c.role}</p>
+            </div>
+            <span class="rs-row-meta">{c.network} &middot; {c.years}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </article>
 </Layout>

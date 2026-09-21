@@ -88,6 +88,20 @@ export const roles: Role[] = [
     seoDescription:
       'Gary Lucy plays Jason Agnew in Channel 5’s The Good Ship Murder, series 3 (2026).',
   },
+  {
+    slug: 'the-chelsea-detective',
+    character: 'Mike Curtis',
+    show: 'The Chelsea Detective',
+    years: '2026',
+    network: 'Channel 4',
+    type: 'Crime Drama',
+    summary:
+      'Lucy joined the fourth series of Channel 4’s The Chelsea Detective as Mike Curtis, his latest screen role.',
+    verified: true,
+    seoTitle: 'Gary Lucy in The Chelsea Detective — Mike Curtis',
+    seoDescription:
+      'Gary Lucy plays Mike Curtis in Channel 4’s The Chelsea Detective, series 4 (2026).',
+  },
 ];
 
 export interface StageCredit {
@@ -141,6 +155,41 @@ export const otherCredits: OtherCredit[] = [
     network: 'Sky One',
     verified: true,
   },
+  {
+    title: "She's Gone",
+    role: 'Michael Sands',
+    years: '2004',
+    network: 'Film',
+    verified: true,
+  },
+  {
+    title: 'Whatever It Takes',
+    role: 'Matthew Cassady',
+    years: '2009',
+    network: 'ITV',
+    verified: true,
+  },
+  {
+    title: 'Missing',
+    role: 'Ben Lloyd',
+    years: '2010',
+    network: 'ITV',
+    verified: true,
+  },
+  {
+    title: 'Casualty',
+    role: 'Valentine Kildare',
+    years: '2014',
+    network: 'BBC One',
+    verified: true,
+  },
+  {
+    title: 'The Dumping Ground',
+    role: 'Billy McLaine',
+    years: '2018',
+    network: 'CBBC',
+    verified: true,
+  },
 ];
 
 export interface Award {
@@ -189,7 +238,7 @@ export const profile = {
   yearsActive: '1996–present',
   headline: 'British screen and stage actor',
   bioShort:
-    'Gary Lucy is a British actor with nearly three decades of screen and stage credits, known for major returning roles in Hollyoaks, Footballers’ Wives, The Bill and EastEnders, and currently appearing in Channel 5’s The Good Ship Murder.',
+    'Gary Lucy is a British actor with nearly three decades of screen and stage credits, known for major returning roles in Hollyoaks, Footballers’ Wives, The Bill and EastEnders, and now appearing in Channel 5’s The Good Ship Murder and Channel 4’s The Chelsea Detective.',
   sameAs: [
     'https://en.wikipedia.org/wiki/Gary_Lucy',
     'https://www.imdb.com/name/nm0524804/',
