@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 import { stageCredits } from '../data/credits';
 ---
 <Layout
@@ -8,15 +9,18 @@ import { stageCredits } from '../data/credits';
   path="/stage"
 >
   <article class="rs-page">
-    <header class="rs-hero rs-hero-sm">
-      <img src="/portraits/gl-studio2-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">Theatre</p>
-        <h1 class="rs-headline">Stage Credits</h1>
-        <p class="rs-dek">From soap sets to the UK tour boards &mdash; the first act of a second career.</p>
-      </div>
-    </header>
+    <FlipHero
+      id="stage"
+      imageFront="/portraits/gl-studio2-web.jpg"
+      imageBack="/gallery/gary-lucy-sitting-1600.jpg"
+      altFront="Gary Lucy"
+      altBack="Gary Lucy, studio portrait"
+      kicker="Theatre"
+      headline="Stage Credits"
+      dek="From soap sets to the UK tour boards &mdash; the first act of a second career."
+      backKicker="Live"
+      backHeadline="Eight Shows<br />A Week"
+    />
 
     <div class="rs-body">
       <p class="rs-lede">

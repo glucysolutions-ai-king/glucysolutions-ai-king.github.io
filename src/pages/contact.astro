@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout
   title="Contact Gary Lucy"
-  description="Professional contact and enquiries for Gary Lucy."
+  description="Representation and press contact for actor Gary Lucy."
   path="/contact"
 >
   <article class="rs-page">
@@ -17,17 +17,49 @@ import Layout from '../layouts/Layout.astro';
     </header>
 
     <div class="rs-body">
-      <p class="rs-lede">
-        Representation is currently under review &mdash; this page intentionally does not list
-        an agent while that's decided. Casting, production and press enquiries can be sent
-        directly using the form below.
-      </p>
+      <p class="rs-lede">Representation and direct contact for casting, production, press and personal enquiries.</p>
 
+      <ul class="rs-rows">
+        <li>
+          <div>
+            <span class="rs-row-name">Acting Enquiries</span>
+            <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">
+              Lee Morgan &mdash; Lee Morgan Management
+            </p>
+          </div>
+          <span class="rs-row-meta"><a href="mailto:lee@leemorgan.biz" class="accent">lee@leemorgan.biz</a></span>
+        </li>
+        <li>
+          <div>
+            <span class="rs-row-name">Management &amp; Press Enquiries</span>
+            <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">
+              Claire Powell &mdash; CAN Associates
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="rs-row-name">Personal / General</span>
+            <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">
+              Gary Lucy
+            </p>
+          </div>
+          <span class="rs-row-meta"><a href="mailto:glucy.solutions@gmail.com" class="accent">glucy.solutions@gmail.com</a></span>
+        </li>
+        <li>
+          <div>
+            <span class="rs-row-name">Instagram</span>
+          </div>
+          <span class="rs-row-meta"><a href="https://www.instagram.com/gary.lucy" target="_blank" rel="noopener" class="accent">@gary.lucy</a></span>
+        </li>
+      </ul>
+
+      <hr class="rs-divider" />
+
+      <h2 class="rs-section-title">Send a Message</h2>
       <!--
         [INPUT NEEDED]: this posts to Formspree's free tier, which needs a one-time
-        sign-up at formspree.io to get a real form ID. Swap YOUR_FORM_ID below, or
-        replace the whole form with a mailto: link once representation is settled.
-        Either way, no paid hosting is required.
+        sign-up at formspree.io to get a real form ID. Swap YOUR_FORM_ID below.
       -->
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rs-form">
         <label>

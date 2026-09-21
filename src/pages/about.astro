@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 import { profile, awards } from '../data/credits';
 ---
 <Layout
@@ -8,19 +9,18 @@ import { profile, awards } from '../data/credits';
   path="/about"
 >
   <article class="rs-page">
-    <header class="rs-hero">
-      <img src="/hero/gl-standing-bw-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">Biography</p>
-        <h1 class="rs-headline">Gary Lucy Is Still Writing<br />His Own Third Act</h1>
-        <p class="rs-dek">
-          Three decades after Hollyoaks made him a household name, the actor talks
-          soap villains, stage fright, and why The Good Ship Murder feels like a
-          second wind.
-        </p>
-      </div>
-    </header>
+    <FlipHero
+      id="about"
+      imageFront="/hero/gl-standing-bw-web.jpg"
+      imageBack="/hero/gl-closeup-bw-web.jpg"
+      altFront="Gary Lucy"
+      altBack="Gary Lucy, close portrait"
+      kicker="Biography"
+      headline="Gary Lucy Is Still Writing<br />His Own Third Act"
+      dek="Three decades after Hollyoaks made him a household name, the actor talks soap villains, stage fright, and why The Good Ship Murder feels like a second wind."
+      backKicker="The Full Story"
+      backHeadline="Read On &raquo;"
+    />
 
     <div class="rs-body">
       <div class="rs-byline">
