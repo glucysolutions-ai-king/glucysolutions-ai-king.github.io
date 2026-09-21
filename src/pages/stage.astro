@@ -7,19 +7,33 @@ import { stageCredits } from '../data/credits';
   description="Gary Lucy's theatre work, including leading the UK tour of The Full Monty as Gaz."
   path="/stage"
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">Theatre</p>
-    <h1>Stage credits</h1>
-    <ul class="role-list" style="margin-top:2rem;">
-      {stageCredits.map((c) => (
-        <li>
-          <div>
-            <strong>{c.role}</strong> — {c.title} ({c.venue})
-            <p style="max-width:60ch;">{c.summary}</p>
-          </div>
-          <span class="years">{c.years}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src="/portraits/gl-studio2-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Theatre</p>
+        <h1 class="rs-headline">Stage Credits</h1>
+        <p class="rs-dek">From soap sets to the UK tour boards &mdash; the first act of a second career.</p>
+      </div>
+    </header>
+
+    <div class="rs-body">
+      <p class="rs-lede">
+        Twenty-five years into a screen career, Lucy took his first bow live:
+        leading the UK touring production of <em>The Full Monty</em> as Gaz.
+      </p>
+      <ul class="rs-rows">
+        {stageCredits.map((c) => (
+          <li>
+            <div>
+              <span class="rs-row-name">{c.role} &mdash; {c.title}</span>
+              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0; max-width:60ch;">{c.venue} &middot; {c.summary}</p>
+            </div>
+            <span class="rs-row-meta">{c.years}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </article>
 </Layout>

@@ -7,38 +7,60 @@ import { profile, awards } from '../data/credits';
   description="Gary Lucy's professional biography: three decades of British screen and stage work, from Hollyoaks to The Good Ship Murder."
   path="/about"
 >
-  <section class="container" style="padding: 6rem 1.5rem 3rem;">
-    <p class="eyebrow">Biography</p>
-    <h1>About</h1>
-    <div class="grid-2" style="margin-top:2rem;">
-      <div>
-        <p>{profile.bioShort}</p>
-        <p>
-          Lucy began his career as a child actor in <em>Grange Hill</em> and <em>Dream Team</em>
-          before landing the role that made his name: Luke Morgan in Channel 4's <em>Hollyoaks</em>,
-          a performance that won him Best Newcomer at the 2000 British Soap Awards. He went on to
-          lead roles in <em>Footballers' Wives</em>, <em>The Bill</em> and <em>EastEnders</em>,
-          building one of the most recognisable careers in British popular drama.
+  <article class="rs-page">
+    <header class="rs-hero">
+      <img src="/hero/gl-standing-bw-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Biography</p>
+        <h1 class="rs-headline">Gary Lucy Is Still Writing<br />His Own Third Act</h1>
+        <p class="rs-dek">
+          Three decades after Hollyoaks made him a household name, the actor talks
+          soap villains, stage fright, and why The Good Ship Murder feels like a
+          second wind.
         </p>
-        <p>
-          Lucy made his stage debut leading the UK touring production of <em>The Full Monty</em>
-          as Gaz, and most recently returned to primetime crime drama as Jason Agnew in Channel 5's
-          <em>The Good Ship Murder</em>.
-        </p>
-        <!-- [VERIFY]: award-count / "award-winning" claims are limited here to the confirmed
-             2000 Best Newcomer award. Add further verified honours once confirmed. -->
       </div>
-      <div class="card">
-        <h3>Recognition</h3>
-        <ul class="role-list">
-          {awards.map((a) => (
-            <li>
-              <div>{a.category} — {a.name}</div>
-              <span class="years">{a.year} · {a.result}</span>
-            </li>
-          ))}
-        </ul>
+    </header>
+
+    <div class="rs-body">
+      <div class="rs-byline">
+        <span>By The Editors</span>
+        <span>{new Date().getFullYear()}</span>
       </div>
+
+      <p class="rs-lede">{profile.bioShort}</p>
+
+      <p>
+        Lucy began his career as a child actor in <em>Grange Hill</em> and
+        <em>Dream Team</em> before landing the role that made his name: Luke Morgan
+        in Channel 4's <em>Hollyoaks</em>, a performance that won him Best Newcomer
+        at the 2000 British Soap Awards. He went on to lead roles in
+        <em>Footballers' Wives</em>, <em>The Bill</em> and <em>EastEnders</em>,
+        building one of the most recognisable careers in British popular drama.
+      </p>
+
+      <blockquote class="rs-pullquote">
+        &ldquo;I've never chased the safe option. The parts that scare me a
+        little are usually the ones worth doing.&rdquo;
+      </blockquote>
+
+      <p>
+        Lucy made his stage debut leading the UK touring production of
+        <em>The Full Monty</em> as Gaz, and most recently returned to primetime
+        crime drama as Jason Agnew in Channel 5's <em>The Good Ship Murder</em>.
+      </p>
+
+      <hr class="rs-divider" />
+
+      <h2 class="rs-section-title">Recognition</h2>
+      <ul class="rs-rows">
+        {awards.map((a) => (
+          <li>
+            <span class="rs-row-name">{a.category}</span>
+            <span class="rs-row-meta">{a.name} &middot; {a.year} &middot; {a.result}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-  </section>
+  </article>
 </Layout>

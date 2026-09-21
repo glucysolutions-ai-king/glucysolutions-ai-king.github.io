@@ -25,26 +25,36 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
   path="/showreel"
   jsonLd={jsonLd}
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">Reel</p>
-    <h1>Showreel</h1>
-    {YOUTUBE_ID || VIMEO_ID ? (
-      <div style="aspect-ratio:16/9; max-width:900px;">
-        <iframe
-          width="100%"
-          height="100%"
-          src={YOUTUBE_ID ? `https://www.youtube.com/embed/${YOUTUBE_ID}` : `https://player.vimeo.com/video/${VIMEO_ID}`}
-          title="Gary Lucy Showreel"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src="/portraits/gl-walking2-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Reel</p>
+        <h1 class="rs-headline">Showreel</h1>
       </div>
-    ) : (
-      <div class="card" style="max-width:640px;">
-        <p><strong>Showreel not yet uploaded.</strong></p>
-        <p>Send the YouTube or Vimeo link (or the raw file) and it drops straight into this page with full VideoObject schema — no other changes needed.</p>
-      </div>
-    )}
-  </section>
+    </header>
+
+    <div class="rs-body">
+      {YOUTUBE_ID || VIMEO_ID ? (
+        <div style="aspect-ratio:16/9; max-width:900px;">
+          <iframe
+            width="100%"
+            height="100%"
+            src={YOUTUBE_ID ? `https://www.youtube.com/embed/${YOUTUBE_ID}` : `https://player.vimeo.com/video/${VIMEO_ID}`}
+            title="Gary Lucy Showreel"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      ) : (
+        <p class="rs-note" style="margin:0;">
+          <strong>Showreel not yet uploaded.</strong> Send the YouTube or Vimeo link
+          (or the raw file) and it drops straight into this page with full VideoObject
+          schema &mdash; no other changes needed.
+        </p>
+      )}
+    </div>
+  </article>
 </Layout>

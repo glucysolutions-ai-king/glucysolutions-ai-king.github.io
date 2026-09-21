@@ -29,4 +29,20 @@ export const galleryImages: GalleryImage[] = [
     srcset: '/gallery/gary-lucy-fuselage-960.jpg 960w, /gallery/gary-lucy-fuselage-1600.jpg 1600w',
     alt: 'Gary Lucy, editorial portrait, aircraft fuselage backdrop',
   },
+  {
+    file: 'gl-standing2-web.jpg',
+    alt: 'Gary Lucy, full-length editorial portrait, standing',
+  },
+  {
+    file: 'gl-walking2-web.jpg',
+    alt: 'Gary Lucy, editorial portrait, walking toward camera',
+  },
+  {
+    file: 'gl-seated2-web.jpg',
+    alt: 'Gary Lucy, editorial portrait, seated',
+  },
+  {
+    file: 'gl-studio2-web.jpg',
+    alt: 'Gary Lucy, studio portrait',
+  },
 ];

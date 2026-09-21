@@ -7,20 +7,26 @@ import { pressItems } from '../data/press';
   description="Press coverage and interviews with Gary Lucy."
   path="/press"
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">Press</p>
-    <h1>Press &amp; interviews</h1>
-    <ul class="role-list" style="margin-top:2rem;">
-      {pressItems.map((item) => (
-        <li>
-          <div>
-            <a href={item.url} target="_blank" rel="noopener"><strong>{item.title}</strong></a>
-            <div style="font-size:0.85rem; color:var(--fg-muted);">{item.outlet}{item.date ? ` · ${item.date}` : ' · date TBC'}</div>
-          </div>
-          <span class="years">{item.kind}</span>
-        </li>
-      ))}
-    </ul>
-    <p style="margin-top:2rem; font-size:0.85rem; color:var(--fg-muted);">More coverage added as it's confirmed — this list is curated for professional relevance, not comprehensiveness.</p>
-  </section>
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src="/gallery/gary-lucy-jacket-1600.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Press</p>
+        <h1 class="rs-headline">Press &amp; Interviews</h1>
+      </div>
+    </header>
+
+    <div class="rs-body">
+      <ul class="rs-rows">
+        {pressItems.map((item) => (
+          <li>
+            <span class="rs-row-name"><a href={item.url} target="_blank" rel="noopener">{item.title}</a></span>
+            <span class="rs-row-meta">{item.outlet}{item.date ? ` · ${item.date}` : ' · date TBC'} &middot; {item.kind}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="rs-note">More coverage added as it's confirmed &mdash; this list is curated for professional relevance, not comprehensiveness.</p>
+    </div>
+  </article>
 </Layout>

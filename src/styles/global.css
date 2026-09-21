@@ -231,3 +231,307 @@ footer.site-footer {
   z-index: 1;
   background: linear-gradient(180deg, rgba(11,11,12,0.1) 0%, rgba(11,11,12,0.85) 85%);
 }
+
+/* ============================================================
+   ROLLING STONE EDITORIAL SYSTEM
+   Shared across every page: full-bleed graded hero, red kicker,
+   heavy serif headline, single-column body, pull-quotes, red rules.
+   Applied by giving <body> or a top-level wrapper class="rs-page".
+   ============================================================ */
+.rs-page {
+  --rs-red: #a32638;
+  --rs-red-dim: #7d1c2c;
+  --rs-ink: #131110;
+  --rs-paper: #f6f3ec;
+  --rs-rule: #d8d2c4;
+  --rs-meta: #726a5c;
+  background: var(--rs-paper);
+  color: var(--rs-ink);
+}
+.rs-page p { color: #262220; }
+.rs-page a.accent { color: var(--rs-red); }
+
+.rs-hero {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 480px;
+  max-height: 900px;
+  overflow: hidden;
+  background: #000;
+}
+.rs-hero.rs-hero-sm { height: 56vh; min-height: 380px; max-height: 620px; }
+.rs-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  filter: grayscale(1) contrast(1.14) brightness(0.99);
+}
+.rs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.02) 20%, rgba(0,0,0,.35) 62%, rgba(0,0,0,.97) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,0) 30%);
+}
+.rs-hero-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8rem clamp(1.25rem, 5vw, 4rem) clamp(2rem, 5vw, 3.5rem);
+  max-width: 980px;
+  background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.58) 30%, rgba(0,0,0,.88) 62%, rgba(0,0,0,.95) 100%);
+}
+.rs-hero-sm .rs-hero-content { padding-top: 5rem; }
+.rs-kicker {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: clamp(0.66rem, 1.1vw, 0.8rem);
+  color: var(--rs-red);
+  margin: 0 0 0.65em;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 0 16px rgba(0,0,0,.75);
+}
+.rs-headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  line-height: 0.97;
+  letter-spacing: -0.01em;
+  color: #fbfaf7;
+  margin: 0 0 0.42em;
+  text-wrap: balance;
+  text-shadow: 0 2px 20px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.5);
+}
+.rs-hero-sm .rs-headline { font-size: clamp(1.9rem, 5vw, 3.4rem); }
+.rs-dek {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(0.98rem, 1.6vw, 1.25rem);
+  color: #f1efe9;
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.42;
+  text-shadow: 0 1px 14px rgba(0,0,0,.75), 0 1px 2px rgba(0,0,0,.6);
+}
+
+.rs-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 1.5rem) clamp(4rem, 8vw, 6rem);
+}
+.rs-body.rs-body-wide { max-width: 1080px; }
+.rs-byline {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--rs-meta);
+  border-bottom: 3px solid var(--rs-ink);
+  padding-bottom: 0.75em;
+  margin-bottom: 1.8em;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.rs-lede {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.55;
+  font-weight: 700;
+  margin: 0 0 1.4em;
+}
+.rs-page .rs-body p, .rs-page p.rs-copy {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #262220;
+  margin: 0 0 1.3em;
+}
+.rs-body em { font-style: italic; }
+.rs-pullquote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.28;
+  color: var(--rs-red);
+  border-top: 2px solid var(--rs-red);
+  border-bottom: 2px solid var(--rs-red);
+  padding: 0.9em 0;
+  margin: 2em 0;
+}
+.rs-divider { height: 4px; background: var(--rs-ink); margin: 2.6em 0 1.75em; border: 0; }
+.rs-section-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 1.05rem;
+  margin: 0 0 1em;
+}
+.rs-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--rs-red);
+}
+
+/* list rows (awards, press, credits) */
+.rs-rows { list-style: none; padding: 0; margin: 0 0 3em; }
+.rs-rows li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9em 0;
+  border-bottom: 1px solid var(--rs-rule);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.rs-row-name { font-weight: 700; }
+.rs-row-name a { text-decoration: none; }
+.rs-row-name a:hover { color: var(--rs-red); }
+.rs-row-meta { color: var(--rs-meta); font-size: 0.9rem; text-align: right; white-space: nowrap; }
+@media (max-width: 600px) {
+  .rs-rows li { flex-direction: column; gap: 0.25em; }
+  .rs-row-meta { text-align: left; }
+  .rs-byline { flex-direction: column; gap: 0.3em; }
+}
+
+/* card grid (screen credits, gallery) */
+.rs-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  background: var(--rs-rule);
+  margin: 0 0 1rem;
+}
+.rs-cards > * { flex: 1 1 300px; }
+@media (max-width: 560px) { .rs-cards > * { flex: 1 1 100%; } }
+@media (max-width: 560px) { .rs-cards { grid-template-columns: 1fr; } }
+.rs-card {
+  display: block;
+  position: relative;
+  background: var(--rs-ink);
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  text-decoration: none;
+}
+.rs-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.rs-card:hover img { transform: scale(1.04); filter: grayscale(0.2) contrast(1.1); }
+.rs-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.88) 100%);
+}
+.rs-card-label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.1rem 1.2rem;
+  color: #fbfaf7;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.rs-card-label .rs-card-eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8a6ae;
+  margin-bottom: 0.35em;
+}
+.rs-card-label .rs-card-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.rs-gallery-figure {
+  margin: 0;
+  background: var(--rs-ink);
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.rs-gallery-figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.1);
+}
+.rs-gallery-caption {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  color: var(--rs-meta);
+  padding: 0.6rem 0.1rem 0;
+}
+
+.rs-note {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--rs-meta);
+  border-top: 1px solid var(--rs-rule);
+  padding-top: 1.4em;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.rs-note strong { color: var(--rs-ink); }
+
+/* form */
+.rs-form { display: grid; gap: 1.1rem; margin-top: 2rem; max-width: 520px; }
+.rs-form label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rs-meta);
+  display: block;
+}
+.rs-form input, .rs-form select, .rs-form textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem 0.8rem;
+  background: #fff;
+  border: 1px solid var(--rs-rule);
+  color: var(--rs-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+}
+.rs-form input:focus, .rs-form select:focus, .rs-form textarea:focus {
+  outline: 2px solid var(--rs-red);
+  outline-offset: 1px;
+}
+.rs-btn {
+  display: inline-block;
+  justify-self: start;
+  padding: 0.85rem 2rem;
+  background: var(--rs-red);
+  color: #fbfaf7;
+  border: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.rs-btn:hover { background: var(--rs-red-dim); }

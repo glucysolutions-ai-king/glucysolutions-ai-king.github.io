@@ -16,30 +16,37 @@ const jsonLd = galleryImages.map((img) => ({
   path="/gallery"
   jsonLd={jsonLd}
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">Gallery</p>
-    <h1>Gallery</h1>
-    {galleryImages.length === 0 ? (
-      <div class="card" style="max-width:640px;">
-        <p><strong>No images yet.</strong></p>
-        <p>Upload casting photos to the <code>images/</code> intake folder (see the deployment doc) and they're auto-graded to the site palette, renamed, given alt text, and added here automatically.</p>
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src="/gallery/gary-lucy-sitting-1600.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Gallery</p>
+        <h1 class="rs-headline">Gallery</h1>
       </div>
-    ) : (
-      <div class="grid-3">
-        {galleryImages.map((img) => (
-          <figure style="margin:0;">
-            <img
-              src={`/gallery/${img.file}`}
-              srcset={img.srcset}
-              sizes="(max-width: 800px) 100vw, 33vw"
-              alt={img.alt}
-              loading="lazy"
-              style="width:100%; display:block;"
-            />
-            {img.caption && <figcaption style="font-size:0.8rem; color:var(--fg-muted); margin-top:0.5rem;">{img.caption}</figcaption>}
-          </figure>
-        ))}
-      </div>
-    )}
-  </section>
+    </header>
+
+    <div class="rs-body rs-body-wide">
+      {galleryImages.length === 0 ? (
+        <p class="rs-note" style="margin:0;">
+          <strong>No images yet.</strong> Upload casting photos and they're added here automatically.
+        </p>
+      ) : (
+        <div class="rs-cards" style="aspect-ratio:auto;">
+          {galleryImages.map((img) => (
+            <figure class="rs-gallery-figure">
+              <img
+                src={`/gallery/${img.file}`}
+                srcset={img.srcset}
+                sizes="(max-width: 800px) 100vw, 33vw"
+                alt={img.alt}
+                loading="lazy"
+              />
+              {img.caption && <figcaption class="rs-gallery-caption">{img.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
 </Layout>

@@ -11,6 +11,15 @@ export function getStaticPaths() {
 
 const { role } = Astro.props;
 
+const heroFor: Record<string, string> = {
+  hollyoaks: '/portraits/gl-standing2-web.jpg',
+  'footballers-wives': '/gallery/gary-lucy-jacket-1600.jpg',
+  'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
+  eastenders: '/portraits/gl-seated2-web.jpg',
+  'the-good-ship-murder': '/portraits/gl-walking2-web.jpg',
+};
+const hero = heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg';
+
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -30,11 +39,20 @@ const jsonLd = [
 ];
 ---
 <Layout title={role.seoTitle} description={role.seoDescription} path={`/screen/${role.slug}`} jsonLd={jsonLd}>
-  <section class="container" style="padding: 6rem 1.5rem 4rem; max-width: 760px;">
-    <p class="eyebrow">{role.network} · {role.years} · {role.type}</p>
-    <h1>{role.show}</h1>
-    <p style="font-size:1.1rem;">Gary Lucy as <strong>{role.character}</strong></p>
-    <p>{role.summary}</p>
-    <a href="/screen" class="accent">&larr; All screen credits</a>
-  </section>
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src={hero} alt={role.show} class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">{role.network} &middot; {role.years} &middot; {role.type}</p>
+        <h1 class="rs-headline">{role.show}</h1>
+        <p class="rs-dek">Gary Lucy as {role.character}</p>
+      </div>
+    </header>
+
+    <div class="rs-body">
+      <p class="rs-lede">{role.summary}</p>
+      <a href="/screen" class="rs-eyebrow">&larr; All screen credits</a>
+    </div>
+  </article>
 </Layout>

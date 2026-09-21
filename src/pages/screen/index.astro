@@ -1,23 +1,44 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { roles } from '../../data/credits';
+
+const heroFor: Record<string, string> = {
+  hollyoaks: '/portraits/gl-standing2-web.jpg',
+  'footballers-wives': '/gallery/gary-lucy-jacket-1600.jpg',
+  'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
+  eastenders: '/portraits/gl-seated2-web.jpg',
+  'the-good-ship-murder': '/portraits/gl-walking2-web.jpg',
+};
 ---
 <Layout
   title="Gary Lucy — Screen Credits"
   description="Gary Lucy's television credits: Hollyoaks, Footballers' Wives, The Bill, EastEnders and The Good Ship Murder."
   path="/screen"
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">Filmography</p>
-    <h1>Screen credits</h1>
-    <div class="grid-3" style="margin-top:2rem;">
-      {roles.map((role) => (
-        <a href={`/screen/${role.slug}`} class="card" style="display:block;">
-          <p class="eyebrow">{role.network} · {role.years}</p>
-          <h3>{role.show}</h3>
-          <p>{role.character}</p>
-        </a>
-      ))}
+  <article class="rs-page">
+    <header class="rs-hero rs-hero-sm">
+      <img src="/portraits/gl-walking2-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Filmography</p>
+        <h1 class="rs-headline">Screen Credits</h1>
+        <p class="rs-dek">Five shows, five decades of British television &mdash; from teenage soap villain to primetime lead.</p>
+      </div>
+    </header>
+
+    <div class="rs-body rs-body-wide">
+      <div class="rs-cards">
+        {roles.map((role) => (
+          <a href={`/screen/${role.slug}`} class="rs-card">
+            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={role.show} />
+            <div class="rs-card-scrim"></div>
+            <div class="rs-card-label">
+              <span class="rs-card-eyebrow">{role.network} &middot; {role.years}</span>
+              <span class="rs-card-title">{role.show}</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
-  </section>
+  </article>
 </Layout>
