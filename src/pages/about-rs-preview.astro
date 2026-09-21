@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile, awards } from '../data/credits';
+---
+<Layout
+  title="About Gary Lucy | Biography — Preview"
+  description="Preview: Rolling Stone-style layout for the About page."
+  path="/about-rs-preview"
+>
+  <article class="rs-page" data-theme="crimson">
+    <header class="rs-hero">
+      <img src="/hero/gl-standing-bw-web.jpg" alt="Gary Lucy" class="rs-hero-img" />
+      <div class="rs-hero-scrim"></div>
+      <div class="rs-hero-content">
+        <p class="rs-kicker">Rolling Stone Style — Preview</p>
+        <h1 class="rs-headline">Gary Lucy Is Still Writing<br />His Own Third Act</h1>
+        <p class="rs-dek">
+          Three decades after Hollyoaks made him a household name, the actor talks
+          soap villains, stage fright, and why The Good Ship Murder feels like a
+          second wind.
+        </p>
+      </div>
+    </header>
+
+    <div class="rs-body">
+      <div class="rs-byline">By The Editors &middot; {new Date().getFullYear()}</div>
+
+      <p class="rs-lede">{profile.bioShort}</p>
+
+      <p>
+        Lucy began his career as a child actor in <em>Grange Hill</em> and
+        <em>Dream Team</em> before landing the role that made his name: Luke Morgan
+        in Channel 4's <em>Hollyoaks</em>, a performance that won him Best Newcomer
+        at the 2000 British Soap Awards. He went on to lead roles in
+        <em>Footballers' Wives</em>, <em>The Bill</em> and <em>EastEnders</em>,
+        building one of the most recognisable careers in British popular drama.
+      </p>
+
+      <blockquote class="rs-pullquote">
+        &ldquo;I've never chased the safe option. The parts that scare me a
+        little are usually the ones worth doing.&rdquo;
+      </blockquote>
+
+      <p>
+        Lucy made his stage debut leading the UK touring production of
+        <em>The Full Monty</em> as Gaz, and most recently returned to primetime
+        crime drama as Jason Agnew in Channel 5's <em>The Good Ship Murder</em>.
+      </p>
+
+      <div class="rs-divider"></div>
+
+      <h2 class="rs-section-title">Recognition</h2>
+      <ul class="rs-awards">
+        {awards.map((a) => (
+          <li>
+            <span class="rs-award-name">{a.category}</span>
+            <span class="rs-award-meta">{a.name} &middot; {a.year} &middot; {a.result}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .rs-page {
+    --rs-red: #a32638;
+    --rs-ink: #111;
+    --rs-paper: #f7f5f0;
+    background: var(--rs-paper);
+    color: var(--rs-ink);
+  }
+
+  .rs-hero {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 560px;
+    overflow: hidden;
+    background: #000;
+  }
+  .rs-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 15%;
+    filter: grayscale(1) contrast(1.12);
+  }
+  .rs-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.05) 40%, rgba(0,0,0,.85) 100%);
+  }
+  .rs-hero-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 clamp(1.25rem, 5vw, 4rem) clamp(2rem, 5vw, 3.5rem);
+    max-width: 980px;
+  }
+  .rs-kicker {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+    color: var(--rs-red);
+    margin: 0 0 0.6em;
+  }
+  .rs-headline {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin: 0 0 0.4em;
+    text-wrap: balance;
+  }
+  .rs-dek {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+    color: #eee;
+    max-width: 640px;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .rs-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem clamp(4rem, 8vw, 6rem);
+  }
+  .rs-byline {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    color: #777;
+    border-bottom: 3px solid var(--rs-ink);
+    padding-bottom: 0.75em;
+    margin-bottom: 1.75em;
+  }
+  .rs-lede {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.55;
+    font-weight: 600;
+  }
+  .rs-body p {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #222;
+  }
+  .rs-body em {
+    font-style: italic;
+  }
+  .rs-pullquote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    line-height: 1.3;
+    color: var(--rs-red);
+    border-top: 2px solid var(--rs-red);
+    border-bottom: 2px solid var(--rs-red);
+    padding: 0.9em 0;
+    margin: 2em 0;
+  }
+  .rs-divider {
+    height: 4px;
+    background: var(--rs-ink);
+    margin: 2.5em 0 1.75em;
+  }
+  .rs-section-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 1.1rem;
+    margin: 0 0 1em;
+  }
+  .rs-awards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .rs-awards li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85em 0;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .rs-award-name {
+    font-weight: 700;
+  }
+  .rs-award-meta {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .rs-awards li { flex-direction: column; gap: 0.2em; }
+    .rs-award-meta { text-align: left; }
+  }
+</style>

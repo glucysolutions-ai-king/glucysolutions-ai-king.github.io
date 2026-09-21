@@ -159,6 +159,20 @@ nav.site-nav ul {
 }
 nav.site-nav a:hover { color: var(--accent); }
 
+@media (max-width: 700px) {
+  nav.site-nav .inner {
+    padding: 0.85rem 1rem;
+  }
+  nav.site-nav ul {
+    gap: 1.1rem;
+    overflow-x: auto;
+    max-width: 62vw;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav.site-nav ul::-webkit-scrollbar { display: none; }
+}
+
 footer.site-footer {
   border-top: 1px solid var(--hairline);
   padding: 3rem 0;
