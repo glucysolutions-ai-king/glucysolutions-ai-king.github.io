@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import SEO from '../components/SEO.astro';
 import '../styles/global.css';
 
@@ -10,6 +11,29 @@ interface Props {
 }
 
 const { title, description, path, jsonLd = [] } = Astro.props;
+
+// Page-to-page navigation reads as turning pages of one magazine: the
+// outgoing page peels away top-right -> bottom-left (same diagonal as the
+// FlipHero/MagazineHero corner-flip mechanic) to reveal the incoming page
+// already underneath. Keyframes live in global.css; this object is Astro's
+// native transition:animate API, which generates its own scoped
+// ::view-transition-old(page)/::view-transition-new(page) rules instead of
+// us fighting the cascade with a hand-written global rule.
+const pageTurn = {
+  old: {
+    name: 'gl-page-peel',
+    duration: '700ms',
+    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    fillMode: 'both',
+  },
+  new: {
+    name: 'gl-page-settle',
+    duration: '700ms',
+    easing: 'ease',
+    fillMode: 'both',
+  },
+};
+const pagePeel = { forwards: pageTurn, backwards: pageTurn };
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -23,7 +47,7 @@ const navItems = [
 ];
 ---
 <!doctype html>
-<html lang="en-GB" data-theme="amber">
+<html lang="en-GB" data-theme="amber" transition:name="page" transition:animate={pagePeel}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,10 +55,11 @@ const navItems = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO title={title} description={description} path={path} jsonLd={jsonLd} />
+    <ViewTransitions />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
-    <nav class="site-nav">
+    <nav class="site-nav" transition:persist transition:name="site-nav">
       <div class="inner">
         <a href="/" class="logo">GARY LUCY</a>
         <ul>
@@ -47,7 +72,7 @@ const navItems = [
     <main>
       <slot />
     </main>
-    <footer class="site-footer">
+    <footer class="site-footer" transition:persist transition:name="site-footer">
       <div class="container">
         <p>&copy; {new Date().getFullYear()} Gary Lucy. Official site.</p>
       </div>

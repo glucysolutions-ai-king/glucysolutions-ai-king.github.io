@@ -535,3 +535,47 @@ footer.site-footer {
   transition: background 0.2s ease;
 }
 .rs-btn:hover { background: var(--rs-red-dim); }
+
+/* ---------------------------------------------------------------------
+ * Page-turn navigation transition
+ * Every internal navigation between pages uses the same top-right -to-
+ * bottom-left diagonal peel as the magazine cover-flip mechanic
+ * (MagazineHero / FlipHero peelPolygon), so moving between "articles"
+ * reads as turning pages of one magazine rather than a hard page break.
+ * The outgoing page sits on top and peels away along that diagonal to
+ * reveal the incoming page already in place underneath.
+ * ------------------------------------------------------------------- */
+/* Keyframes referenced by name from the `pagePeel` transition:animate
+ * object in Layout.astro. Astro compiles transition:animate into its own
+ * scoped ::view-transition-old(page)/::view-transition-new(page) rules
+ * (naming the animation, duration, easing, fill-mode) — defining the
+ * keyframes here is all plain CSS needs to do; letting Astro's own API
+ * generate the pseudo-element rule avoids the injected-style cascade
+ * fight that a hand-written ::view-transition-old(root) rule loses to. */
+@keyframes gl-page-peel {
+  0%   { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 100%); }
+  25%  { clip-path: polygon(0% 0%, 50% 0%, 100% 50%, 100% 100%, 0% 100%); }
+  50%  { clip-path: polygon(0% 0%, 0% 0%, 100% 100%, 100% 100%, 0% 100%); }
+  75%  { clip-path: polygon(0% 50%, 0% 100%, 50% 100%); }
+  100% { clip-path: polygon(0% 100%, 0% 100%, 0% 100%); }
+}
+@keyframes gl-page-settle {
+  from { opacity: 0.85; }
+  to   { opacity: 1; }
+}
+::view-transition-group(page) {
+  animation-duration: 700ms;
+}
+::view-transition-old(page) {
+  z-index: 2;
+  mix-blend-mode: normal;
+}
+::view-transition-new(page) {
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(page),
+  ::view-transition-new(page) {
+    animation: none !important;
+  }
+}
