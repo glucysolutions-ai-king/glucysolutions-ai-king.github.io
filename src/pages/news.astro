@@ -1,17 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 ---
 <Layout
   title="Gary Lucy — News"
   description="Latest professional news from Gary Lucy."
   path="/news"
 >
-  <section class="container" style="padding: 6rem 1.5rem 4rem;">
-    <p class="eyebrow">News</p>
-    <h1>News</h1>
-    <div class="card" style="max-width:640px;">
-      <p><strong>Latest:</strong> Gary Lucy joins the cast of Channel 5's <em>The Good Ship Murder</em>, series 3, as Jason Agnew.</p>
+  <article class="rs-page">
+    <FlipHero
+      id="news"
+      imageFront="/hero/gl-sitting-bw-web.jpg"
+      imageBack="/gallery/gary-lucy-fuselage-1600.jpg"
+      altFront="Gary Lucy, British actor"
+      altBack="Gary Lucy on location"
+      kicker="News"
+      headline="Latest News"
+      dek="Updates on Gary's current and upcoming work."
+      backKicker="Breaking"
+      backHeadline="Stay Tuned"
+    />
+
+    <div class="rs-body">
+      <ul class="rs-rows">
+        <li>
+          <div>
+            <span class="rs-row-name">The Good Ship Murder, Series 3</span>
+            <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">
+              Gary Lucy joins the cast of Channel 5's <em>The Good Ship Murder</em> as Jason Agnew.
+            </p>
+          </div>
+          <span class="rs-row-meta">Channel 5</span>
+        </li>
+      </ul>
+      <p class="rs-note">Further updates posted here as they're confirmed.</p>
     </div>
-    <p style="margin-top:2rem; font-size:0.85rem; color:var(--fg-muted);">Further updates posted here as they're confirmed.</p>
-  </section>
+  </article>
 </Layout>

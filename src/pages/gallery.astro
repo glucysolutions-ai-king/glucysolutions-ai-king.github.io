@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 import { galleryImages } from '../data/gallery';
 
 const jsonLd = galleryImages.map((img) => ({
@@ -17,14 +18,18 @@ const jsonLd = galleryImages.map((img) => ({
   jsonLd={jsonLd}
 >
   <article class="rs-page">
-    <header class="rs-hero rs-hero-sm">
-      <img src="/gallery/gary-lucy-sitting-1600.jpg" alt="Gary Lucy, British actor, black and white editorial portrait" class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">Gallery</p>
-        <h1 class="rs-headline">Gallery</h1>
-      </div>
-    </header>
+    <FlipHero
+      id="gallery"
+      imageFront="/gallery/gary-lucy-sitting-1600.jpg"
+      imageBack="/gallery/gary-lucy-wing-1600.jpg"
+      altFront="Gary Lucy, British actor, black and white editorial portrait"
+      altBack="Gary Lucy on location"
+      kicker="Gallery"
+      headline="Gallery"
+      dek="Casting photography and press imagery."
+      backKicker="On Set"
+      backHeadline="Every Angle"
+    />
 
     <div class="rs-body rs-body-wide">
       {galleryImages.length === 0 ? (

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import FlipHero from '../../components/FlipHero.astro';
 import { roles } from '../../data/credits';
 
 export function getStaticPaths() {
@@ -41,15 +42,18 @@ const jsonLd = [
 ---
 <Layout title={role.seoTitle} description={role.seoDescription} path={`/screen/${role.slug}`} jsonLd={jsonLd}>
   <article class="rs-page">
-    <header class="rs-hero rs-hero-sm">
-      <img src={hero} alt={`Gary Lucy as ${role.character} in ${role.show}`} class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">{role.network} &middot; {role.years} &middot; {role.type}</p>
-        <h1 class="rs-headline">{role.show}</h1>
-        <p class="rs-dek">Gary Lucy as {role.character}</p>
-      </div>
-    </header>
+    <FlipHero
+      id={role.slug}
+      imageFront={hero}
+      imageBack="/hero/gl-jacket-bw-web.jpg"
+      altFront={`Gary Lucy as ${role.character} in ${role.show}`}
+      altBack="Gary Lucy, black and white studio portrait"
+      kicker={`${role.network} · ${role.years} · ${role.type}`}
+      headline={role.show}
+      dek={`Gary Lucy as ${role.character}`}
+      backKicker="Character"
+      backHeadline={role.character}
+    />
 
     <div class="rs-body">
       <p class="rs-lede">{role.summary}</p>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 import { pressItems } from '../data/press';
 ---
 <Layout
@@ -8,14 +9,18 @@ import { pressItems } from '../data/press';
   path="/press"
 >
   <article class="rs-page">
-    <header class="rs-hero rs-hero-sm">
-      <img src="/gallery/gary-lucy-jacket-1600.jpg" alt="Gary Lucy, British actor, editorial portrait" class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">Press</p>
-        <h1 class="rs-headline">Press &amp; Interviews</h1>
-      </div>
-    </header>
+    <FlipHero
+      id="press"
+      imageFront="/gallery/gary-lucy-jacket-1600.jpg"
+      imageBack="/hero/gl-fuselage-color.jpg"
+      altFront="Gary Lucy, British actor, editorial portrait"
+      altBack="Gary Lucy on location"
+      kicker="Press"
+      headline="Press &amp; Interviews"
+      dek="Coverage and interviews, curated for professional relevance."
+      backKicker="In The Press"
+      backHeadline="Read On &raquo;"
+    />
 
     <div class="rs-body">
       <ul class="rs-rows">

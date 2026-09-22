@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
 ---
 <Layout
   title="Contact Gary Lucy"
@@ -7,18 +8,20 @@ import Layout from '../layouts/Layout.astro';
   path="/contact"
 >
   <article class="rs-page">
-    <header class="rs-hero rs-hero-sm">
-      <img src="/portraits/gl-studio2-web.jpg" alt="Gary Lucy, British actor, studio portrait" class="rs-hero-img" />
-      <div class="rs-hero-scrim"></div>
-      <div class="rs-hero-content">
-        <p class="rs-kicker">Contact</p>
-        <h1 class="rs-headline">Get In Touch</h1>
-      </div>
-    </header>
+    <FlipHero
+      id="contact"
+      imageFront="/portraits/gl-studio2-web.jpg"
+      imageBack="/hero/gl-jacket-bw-web.jpg"
+      altFront="Gary Lucy, British actor, studio portrait"
+      altBack="Gary Lucy, black and white studio portrait"
+      kicker="Contact"
+      headline="Get In Touch"
+      dek="Representation for casting, production and press enquiries."
+      backKicker="Direct Line"
+      backHeadline="Agent &amp;<br />Manager"
+    />
 
     <div class="rs-body">
-      <p class="rs-lede">Representation for casting, production and press enquiries.</p>
-
       <ul class="rs-rows">
         <li>
           <div>
