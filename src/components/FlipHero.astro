@@ -163,14 +163,15 @@ const {
   }
 
   .fh-tag {
-    position: absolute; z-index: 11; top: 1.4rem; transform: rotate(-3deg); pointer-events: none;
+    position: absolute; z-index: 11; top: 1.4rem; transform: rotate(-3deg); pointer-events: auto; cursor: pointer;
     display: inline-block; background: var(--rust); color: var(--paper); font-style: italic; font-weight: 700;
     font-family: Georgia, serif; font-size: clamp(.62rem,1.4vw,.78rem); letter-spacing: .02em;
     padding: .35em .7em; white-space: nowrap; text-shadow: .03em .03em 0 var(--ink); opacity: .96;
     clip-path: polygon(0 14%,5% 0,95% 8%,100% 22%,96% 80%,100% 96%,4% 100%,0 84%);
   }
+  .fh-tag:hover { filter: brightness(1.12); }
   .fh-tag-fwd { right: clamp(50px,13vw,84px); }
-  .fh-tag-back { left: clamp(50px,13vw,84px); transform: rotate(3deg); cursor: pointer; pointer-events: auto; display: none; }
+  .fh-tag-back { left: clamp(50px,13vw,84px); transform: rotate(3deg); display: none; }
   .flip-hero.fh-flipped .fh-tag-fwd { display: none; }
   .flip-hero.fh-flipped .fh-tag-back { display: inline-block; }
 </style>
@@ -213,6 +214,7 @@ const {
     }
     document.getElementById(id + '-cornerTr')?.addEventListener('click', () => flip(true));
     document.getElementById(id + '-cornerTl')?.addEventListener('click', () => flip(false));
+    document.getElementById(id + '-tagFwd')?.addEventListener('click', () => flip(true));
     document.getElementById(id + '-tagBack')?.addEventListener('click', () => flip(false));
 
     let startX = null;

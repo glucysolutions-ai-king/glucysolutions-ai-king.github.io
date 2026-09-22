@@ -199,11 +199,12 @@ const right = coverlines.filter((c) => c.side === 'right');
   .book.at-back .back-corner-tl{display:block}
   .book.at-back .corner-tr{display:none}
 
-  .flip-tag{position:absolute;z-index:11;top:calc(var(--vh) * 1.6);right:clamp(58px,16vw,102px);transform:rotate(-3deg);pointer-events:none;
+  .flip-tag{position:absolute;z-index:11;top:calc(var(--vh) * 1.6);right:clamp(58px,16vw,102px);transform:rotate(-3deg);pointer-events:auto;cursor:pointer;
     display:inline-block;background:var(--rust);color:var(--paper);font-style:italic;font-weight:700;
     font-size:clamp(.55rem,1.55vw,.78rem);letter-spacing:.03em;padding:.3em .65em;white-space:nowrap;
     clip-path:polygon(0 14%,5% 0,95% 8%,100% 22%,96% 80%,100% 96%,4% 100%,0 84%);
     text-shadow:.03em .03em 0 var(--ink);opacity:.96}
+  .flip-tag:hover{filter:brightness(1.12)}
   .book.at-back .flip-tag{display:none}
   .flip-tag-back{position:absolute;z-index:21;top:calc(var(--vh) * 1.6);left:clamp(58px,16vw,102px);transform:rotate(3deg);cursor:pointer;pointer-events:auto;
     display:none;background:var(--rust);color:var(--paper);font-style:italic;font-weight:700;
@@ -287,6 +288,7 @@ const right = coverlines.filter((c) => c.side === 'right');
     updateAtBack();
   }
   document.getElementById('flipTagBack')?.addEventListener('click', () => flip(frontIsFlipped));
+  document.getElementById('flipTag')?.addEventListener('click', () => flip(!frontIsFlipped));
   document.getElementById('cornerTr')?.addEventListener('click', () => flip(!frontIsFlipped));
   document.getElementById('cornerTl')?.addEventListener('click', () => flip(frontIsFlipped));
   document.getElementById('arrowLeft')?.addEventListener('click', () => flip(false));
