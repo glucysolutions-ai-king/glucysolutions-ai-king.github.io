@@ -59,8 +59,8 @@ const {
     </div>
   </div>
 
-  <div class="fh-tag fh-tag-fwd" id={`${id}-tagFwd`}>Turn the page &raquo;</div>
-  <div class="fh-tag fh-tag-back" id={`${id}-tagBack`}>&laquo; Back to cover</div>
+  <div class="fh-tag fh-tag-fwd" id={`${id}-tagFwd`}><span class="fh-tag-label">Turn the page &raquo;</span></div>
+  <div class="fh-tag fh-tag-back" id={`${id}-tagBack`}><span class="fh-tag-label">&laquo; Back to cover</span></div>
   <div class="fh-corner fh-corner-tr" id={`${id}-cornerTr`} title="Turn the page"><div class="fh-fold"></div></div>
   <div class="fh-corner fh-corner-tl" id={`${id}-cornerTl`} title="Back to cover"><div class="fh-fold"></div></div>
 </section>
@@ -163,15 +163,35 @@ const {
   }
 
   .fh-tag {
-    position: absolute; z-index: 11; top: 1.4rem; transform: rotate(-3deg); pointer-events: auto; cursor: pointer;
-    display: inline-block; background: var(--rust); color: var(--paper); font-style: italic; font-weight: 700;
+    /* The hit area is this plain, UNROTATED, unclipped rectangle. The
+       rotated jagged "sticker" look lives entirely on descendants —
+       ::before (the rust background shape) and .fh-tag-label (the text) —
+       both pointer-events:none and purely decorative. Rotating the outer
+       clickable element itself (an earlier version of this fix did that)
+       leaves small dead corners inside its own bounding box but outside
+       the rotated shape, so real clicks near those corners silently miss —
+       a subtler recurrence of the exact bug this comment used to describe.
+       Keeping the hit box axis-aligned removes that dead zone completely:
+       every pixel in the rectangle is really clickable. */
+    position: absolute; z-index: 11; top: 1.4rem; pointer-events: auto; cursor: pointer;
+    display: inline-block; padding: .5em .85em;
+  }
+  .fh-tag-label {
+    position: relative; display: block; transform: rotate(-3deg); pointer-events: none;
+    color: var(--paper); font-style: italic; font-weight: 700;
     font-family: Georgia, serif; font-size: clamp(.62rem,1.4vw,.78rem); letter-spacing: .02em;
-    padding: .35em .7em; white-space: nowrap; text-shadow: .03em .03em 0 var(--ink); opacity: .96;
+    white-space: nowrap; text-shadow: .03em .03em 0 var(--ink);
+  }
+  .fh-tag::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; background: var(--rust); opacity: .96; pointer-events: none;
+    transform: rotate(-3deg);
     clip-path: polygon(0 14%,5% 0,95% 8%,100% 22%,96% 80%,100% 96%,4% 100%,0 84%);
   }
-  .fh-tag:hover { filter: brightness(1.12); }
+  .fh-tag:hover::before { filter: brightness(1.12); }
   .fh-tag-fwd { right: clamp(50px,13vw,84px); }
-  .fh-tag-back { left: clamp(50px,13vw,84px); transform: rotate(3deg); display: none; }
+  .fh-tag-back { left: clamp(50px,13vw,84px); display: none; }
+  .fh-tag-back .fh-tag-label { transform: rotate(3deg); }
+  .fh-tag-back::before { transform: rotate(3deg); }
   .flip-hero.fh-flipped .fh-tag-fwd { display: none; }
   .flip-hero.fh-flipped .fh-tag-back { display: inline-block; }
 </style>
