@@ -9,7 +9,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, path, jsonLd = [], ogImage = '/og/default.jpg' } = Astro.props;
+const { title, description, path, jsonLd = [], ogImage = '/hero/gl-standing-bw-web.jpg' } = Astro.props;
 const canonical = new URL(path, Astro.site).toString();
 const ogUrl = new URL(ogImage, Astro.site).toString();
 
@@ -25,6 +25,16 @@ const personLd = {
   description: profile.bioShort,
   url: 'https://www.garylucy.co.uk/',
   sameAs: profile.sameAs,
+};
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://www.garylucy.co.uk/#website',
+  name: 'Gary Lucy — Official Site',
+  url: 'https://www.garylucy.co.uk/',
+  about: { '@id': 'https://www.garylucy.co.uk/#person' },
+  publisher: { '@id': 'https://www.garylucy.co.uk/#person' },
 };
 ---
 <title>{title}</title>
@@ -44,6 +54,7 @@ const personLd = {
 <meta name="twitter:image" content={ogUrl} />
 
 <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
 {jsonLd.map((entry) => (
   <script type="application/ld+json" set:html={JSON.stringify(entry)} />
 ))}

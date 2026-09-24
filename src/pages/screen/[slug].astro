@@ -22,6 +22,46 @@ const heroFor: Record<string, string> = {
 };
 const hero = heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg';
 
+// Per-role editorial copy. Grounded only in facts already verified in
+// src/data/credits.ts (character, show, network, years, award record) —
+// no plot, episode-count or production detail is stated here unless it's
+// also present there. See FACT_CHECK_REQUIRED.md for anything held back
+// pending Gary's confirmation.
+const bodyFor: Record<string, string[]> = {
+  hollyoaks: [
+    'Gary Lucy joined Channel 4’s Hollyoaks in 1999 as Luke Morgan, a role that gave him his first national television audience. Luke’s central storyline in the show became one of the era’s most widely discussed on British soap, handled by the production with the seriousness the subject demanded.',
+    'The performance earned Lucy the Best Newcomer award at the 2000 British Soap Awards — the first major recognition of his career, and the credit that established him as a name British audiences would follow across the following decade.',
+    'He returned to the role in 2002, and again for a longer run from 2017 to 2023, making Luke Morgan the character Lucy has played, on and off, for longer than any other in his career.',
+    'Hollyoaks remains the credit most closely associated with Gary Lucy’s breakthrough, and the role that opened the door to the primetime drama work that followed on ITV and BBC One.',
+  ],
+  'footballers-wives': [
+    'After Hollyoaks, Gary Lucy joined ITV’s Footballers’ Wives as Kyle Pascoe, playing one of the young professional footballers at the centre of the show’s fictional club, Earls Park.',
+    'Footballers’ Wives was one of the defining British primetime dramas of the early 2000s — a glossy, high-rating series that took the soap format upmarket and became appointment viewing on ITV.',
+    'The role marked Lucy’s move from continuing drama into primetime ensemble television, a transition that set the pattern for the rest of his screen career: long-running parts in some of British television’s highest-profile productions.',
+  ],
+  'the-bill': [
+    'Gary Lucy joined ITV’s The Bill in 2005 as DC Will Fletcher, a CID detective at the show’s fictional Sun Hill station, and stayed with the programme for five years — the longest single run of his career.',
+    'The Bill was, for three decades, Britain’s best-known police procedural, and a regular role of this length placed Lucy at the centre of one of ITV’s flagship dramas through the second half of the 2000s.',
+    'Five years playing a working CID detective gave Lucy a sustained run in straight procedural drama, distinct from the soap and ensemble roles that had defined his career up to that point.',
+  ],
+  eastenders: [
+    'In 2012, Gary Lucy joined BBC One’s EastEnders as Danny Pennant, a city banker whose storylines ran through the show’s Walford setting until 2014.',
+    'The role brought Lucy to BBC One’s flagship continuing drama, and his performance as Danny Pennant earned a Villain of the Year nomination at the 2013 British Soap Awards.',
+    'EastEnders sits alongside Hollyoaks, Footballers’ Wives and The Bill as one of the major British television institutions Gary Lucy has been part of across a career now approaching three decades.',
+  ],
+  'the-good-ship-murder': [
+    'Gary Lucy joined the cast of Channel 5’s The Good Ship Murder as Jason Agnew for the show’s third series, filmed on location in the Mediterranean.',
+    'The Good Ship Murder is Channel 5’s cruise-ship-set murder-mystery drama, and Lucy’s casting places him in one of the channel’s highest-profile recent commissions.',
+    'It is among the most recent additions to a screen career spanning nearly three decades, and continues a run of primetime crime-drama roles that includes The Bill and now The Chelsea Detective.',
+  ],
+  'the-chelsea-detective': [
+    'Gary Lucy joined the fourth series of Channel 4’s The Chelsea Detective as Mike Curtis, his latest screen role.',
+    'The Chelsea Detective is a London-set detective drama built around a straightforward, character-led case format, and Lucy’s casting continues his run of recent primetime crime-drama work alongside The Good Ship Murder.',
+    'Together with that role, it marks the current chapter of a screen career that began with Hollyoaks in 1999 — new characters and new productions, applied with nearly three decades of experience.',
+  ],
+};
+const body = bodyFor[role.slug] ?? [role.summary];
+
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -49,14 +89,26 @@ const jsonLd = [
       altFront={`Gary Lucy as ${role.character} in ${role.show}`}
       altBack="Gary Lucy, black and white studio portrait"
       kicker={`${role.network} · ${role.years} · ${role.type}`}
-      headline={role.show}
-      dek={`Gary Lucy as ${role.character}`}
+      headline={`Gary Lucy in ${role.show}`}
+      dek={`Playing ${role.character}`}
       backKicker="Character"
       backHeadline={role.character}
     />
 
     <div class="rs-body">
-      <p class="rs-lede">{role.summary}</p>
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <a href="/screen">Screen</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">{role.show}</span>
+      </nav>
+
+      {body.map((para, i) => i === 0 ? <p class="rs-lede">{para}</p> : <p>{para}</p>)}
+
+      <p>
+        <a href="/about" class="accent">Gary Lucy’s full biography &rarr;</a>
+      </p>
+
+      <hr class="rs-divider" />
       <a href="/screen" class="rs-eyebrow">&larr; All screen credits</a>
     </div>
   </article>

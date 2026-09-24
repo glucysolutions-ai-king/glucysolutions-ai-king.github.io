@@ -13,7 +13,7 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
       name: 'Gary Lucy — Showreel',
       description: "Gary Lucy's acting showreel.",
       uploadDate: '2026-09-20',
-      thumbnailUrl: 'https://www.garylucy.co.uk/og/showreel.jpg',
+      thumbnailUrl: 'https://www.garylucy.co.uk/hero/gl-standing-bw-web.jpg', // TODO: swap for a real showreel thumbnail once the video is embedded
       embedUrl: YOUTUBE_ID
         ? `https://www.youtube.com/embed/${YOUTUBE_ID}`
         : `https://player.vimeo.com/video/${VIMEO_ID}`,
@@ -54,9 +54,9 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
         </div>
       ) : (
         <p class="rs-note" style="margin:0;">
-          <strong>Showreel not yet uploaded.</strong> Send the YouTube or Vimeo link
-          (or the raw file) and it drops straight into this page with full VideoObject
-          schema &mdash; no other changes needed.
+          A new professional showreel is in production. In the meantime, see Gary's
+          <a href="/screen" class="accent">television credits</a> and
+          <a href="/stage" class="accent">stage work</a>.
         </p>
       )}
     </div>

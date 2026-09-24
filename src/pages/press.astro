@@ -27,7 +27,7 @@ import { pressItems } from '../data/press';
         {pressItems.map((item) => (
           <li>
             <span class="rs-row-name"><a href={item.url} target="_blank" rel="noopener">{item.title}</a></span>
-            <span class="rs-row-meta">{item.outlet}{item.date ? ` · ${item.date}` : ' · date TBC'} &middot; {item.kind}</span>
+            <span class="rs-row-meta">{item.outlet}{item.date ? ` · ${item.date}` : ''} &middot; {item.kind}</span>
           </li>
         ))}
       </ul>

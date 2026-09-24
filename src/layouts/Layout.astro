@@ -73,8 +73,19 @@ const navItems = [
       <slot />
     </main>
     <footer class="site-footer" transition:persist transition:name="site-footer">
-      <div class="container">
-        <p>&copy; {new Date().getFullYear()} Gary Lucy. Official site.</p>
+      <div class="container footer-grid">
+        <div class="footer-about">
+          <p class="footer-tagline">Official website of British actor Gary Lucy.</p>
+          <p>&copy; {new Date().getFullYear()} Gary Lucy. All rights reserved.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            {navItems.map((item) => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+            <li><a href="/news">News</a></li>
+          </ul>
+        </nav>
       </div>
     </footer>
   </body>
