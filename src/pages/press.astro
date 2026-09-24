@@ -23,6 +23,11 @@ import { pressItems } from '../data/press';
     />
 
     <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Press</span>
+      </nav>
+
       <ul class="rs-rows">
         {pressItems.map((item) => (
           <li>

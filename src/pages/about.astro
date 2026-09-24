@@ -13,7 +13,7 @@ import { profile, awards } from '../data/credits';
       id="about"
       imageFront="/hero/gl-standing-bw-web.jpg"
       imageBack="/hero/gl-closeup-bw-web.jpg"
-      altFront="Gary Lucy"
+      altFront="Gary Lucy, British actor, standing portrait"
       altBack="Gary Lucy, close portrait"
       kicker="Biography"
       headline="Gary Lucy Is Still Writing<br />His Own Third Act"
@@ -23,6 +23,11 @@ import { profile, awards } from '../data/credits';
     />
 
     <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">About</span>
+      </nav>
+
       <div class="rs-byline">
         <span>By The Editors</span>
         <span>{new Date().getFullYear()}</span>
@@ -45,9 +50,10 @@ import { profile, awards } from '../data/credits';
       </blockquote>
 
       <p>
-        Lucy made his stage debut leading the UK touring production of
-        <em>The Full Monty</em> as Gaz, and most recently returned to primetime
-        crime drama as Jason Agnew in Channel 5's <em>The Good Ship Murder</em>.
+        On stage, Lucy headlined the award-winning, number one UK touring
+        production of <em>The Full Monty</em> as Gaz, and most recently returned
+        to primetime crime drama as Jason Agnew in Channel 5's
+        <em>The Good Ship Murder</em>.
       </p>
 
       <hr class="rs-divider" />

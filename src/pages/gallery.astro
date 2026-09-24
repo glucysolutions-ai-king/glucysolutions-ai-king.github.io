@@ -32,6 +32,11 @@ const jsonLd = galleryImages.map((img) => ({
     />
 
     <div class="rs-body rs-body-wide">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Gallery</span>
+      </nav>
+
       {galleryImages.length === 0 ? (
         <p class="rs-note" style="margin:0;">
           <strong>No images yet.</strong> Upload casting photos and they're added here automatically.

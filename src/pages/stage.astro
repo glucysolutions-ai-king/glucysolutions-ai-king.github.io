@@ -5,7 +5,7 @@ import { stageCredits } from '../data/credits';
 ---
 <Layout
   title="Gary Lucy — Stage Credits"
-  description="Gary Lucy's theatre work, including leading the UK tour of The Full Monty as Gaz."
+  description="Gary Lucy's theatre work, including headlining the award-winning, number one UK touring production of The Full Monty as Gaz."
   path="/stage"
 >
   <article class="rs-page">
@@ -13,7 +13,7 @@ import { stageCredits } from '../data/credits';
       id="stage"
       imageFront="/portraits/gl-studio2-web.jpg"
       imageBack="/gallery/gary-lucy-sitting-1600.jpg"
-      altFront="Gary Lucy"
+      altFront="Gary Lucy, studio portrait for his stage work"
       altBack="Gary Lucy, studio portrait"
       kicker="Theatre"
       headline="Stage Credits"
@@ -23,9 +23,15 @@ import { stageCredits } from '../data/credits';
     />
 
     <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Stage</span>
+      </nav>
+
       <p class="rs-lede">
-        Twenty-five years into a screen career, Lucy took his first bow live:
-        leading the UK touring production of <em>The Full Monty</em> as Gaz.
+        Alongside his screen work, Lucy took to the boards headlining the
+        award-winning, number one UK touring production of <em>The Full Monty</em>
+        as Gaz &mdash; a run that toured the country over several years.
       </p>
       <ul class="rs-rows">
         {stageCredits.map((c) => (

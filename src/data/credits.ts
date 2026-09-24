@@ -117,10 +117,10 @@ export const stageCredits: StageCredit[] = [
   {
     title: 'The Full Monty',
     role: 'Gaz',
-    years: '2023–2024',
+    years: 'National Tour',
     venue: 'UK Tour',
     summary:
-      'Lucy led the UK touring stage production of The Full Monty as Gaz, his first major theatre role, alongside Andrew Dunn, Louis Emerick, Rupert Hill, Martin Miller and Bobby Schofield.',
+      'Lucy headlined the award-winning, number one UK touring production of The Full Monty as Gaz, a production that ran across the country over several years, alongside Andrew Dunn, Louis Emerick, Rupert Hill, Martin Miller and Bobby Schofield.',
     verified: true,
   },
 ];

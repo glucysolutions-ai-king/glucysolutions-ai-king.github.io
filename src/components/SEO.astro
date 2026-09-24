@@ -36,6 +36,33 @@ const websiteLd = {
   about: { '@id': 'https://www.garylucy.co.uk/#person' },
   publisher: { '@id': 'https://www.garylucy.co.uk/#person' },
 };
+
+// Auto-generate a simple Home > Page breadcrumb for any top-level page that
+// doesn't already supply its own (e.g. screen/[slug].astro supplies a
+// three-level Home > Screen > Role breadcrumb itself — never generate a
+// second, conflicting one for those).
+const hasOwnBreadcrumb = jsonLd.some((e: any) => e['@type'] === 'BreadcrumbList');
+const pageLabels: Record<string, string> = {
+  '/about': 'About',
+  '/screen': 'Screen',
+  '/stage': 'Stage',
+  '/showreel': 'Showreel',
+  '/gallery': 'Gallery',
+  '/press': 'Press',
+  '/contact': 'Contact',
+  '/news': 'News',
+};
+const autoBreadcrumbLd =
+  !hasOwnBreadcrumb && pageLabels[path]
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.garylucy.co.uk/' },
+          { '@type': 'ListItem', position: 2, name: pageLabels[path], item: canonical },
+        ],
+      }
+    : null;
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -55,6 +82,7 @@ const websiteLd = {
 
 <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+{autoBreadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(autoBreadcrumbLd)} />}
 {jsonLd.map((entry) => (
   <script type="application/ld+json" set:html={JSON.stringify(entry)} />
 ))}

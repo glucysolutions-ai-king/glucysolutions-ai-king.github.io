@@ -139,7 +139,11 @@ const {
     background: linear-gradient(135deg, transparent 74%, rgba(0,0,0,.28) 88%, rgba(0,0,0,.5) 100%);
   }
 
-  .fh-corner { position: absolute; z-index: 11; width: clamp(56px,14vw,90px); height: clamp(56px,14vw,90px); cursor: pointer; background: transparent; }
+  .fh-corner {
+    position: absolute; z-index: 11; width: clamp(64px,16vw,90px); height: clamp(64px,16vw,90px);
+    cursor: pointer; background: rgba(0,0,0,0.01);
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  }
   .fh-corner-tr { top: 0; right: 0; }
   .fh-corner-tl { top: 0; left: 0; display: none; }
   .flip-hero.fh-flipped .fh-corner-tl { display: block; }
@@ -175,6 +179,7 @@ const {
        every pixel in the rectangle is really clickable. */
     position: absolute; z-index: 11; top: 1.4rem; pointer-events: auto; cursor: pointer;
     display: inline-block; padding: .5em .85em;
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
   .fh-tag-label {
     position: relative; display: block; transform: rotate(-3deg); pointer-events: none;

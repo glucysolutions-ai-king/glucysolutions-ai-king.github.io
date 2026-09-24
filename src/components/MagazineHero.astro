@@ -59,7 +59,7 @@ const right = coverlines.filter((c) => c.side === 'right');
         <div class="vignette"></div>
         <div class="masthead">
           <span class="kicker">The Official Site</span>
-          <h1>GARY LUCY</h1>
+          <h2>GARY LUCY</h2>
           <div class="issue">The Collector's Issue</div>
         </div>
         <div class="cl-left">
@@ -137,7 +137,7 @@ const right = coverlines.filter((c) => c.side === 'right');
 
   .masthead{position:absolute;top:0;left:0;right:0;z-index:8;text-align:center;padding-top:calc(var(--vh) * 1)}
   .masthead .kicker{font-size:clamp(.5rem,1vw,.68rem);letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.85}
-  .masthead h1{margin:-.05em 0 0;font-weight:900;letter-spacing:.01em;
+  .masthead h1, .masthead h2{margin:-.05em 0 0;font-weight:900;letter-spacing:.01em;
     font-size:clamp(2.5rem,12.5vw,7rem);color:var(--rust);
     text-shadow:clamp(2px,.4vw,4px) clamp(2px,.4vw,4px) 0 var(--ink)}
   .issue{position:relative;display:inline-block;z-index:8;margin-top:.4em;transform:rotate(-2deg);
@@ -181,7 +181,7 @@ const right = coverlines.filter((c) => c.side === 'right');
   .page::after{content:'';position:absolute;inset:0;z-index:20;pointer-events:none;
     background:linear-gradient(135deg, transparent 74%, rgba(0,0,0,.28) 88%, rgba(0,0,0,.5) 100%)}
 
-  .corner-tr{position:absolute;z-index:11;top:0;right:0;width:clamp(64px,17vw,110px);height:clamp(64px,17vw,110px);cursor:pointer;background:transparent}
+  .corner-tr{position:absolute;z-index:11;top:0;right:0;width:clamp(64px,17vw,110px);height:clamp(64px,17vw,110px);cursor:pointer;background:rgba(0,0,0,0.01);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   @media (min-width:900px){ .corner-tr,.back-corner-tl{width:56px;height:56px} }
   .corner-tr .fold{position:absolute;inset:0;pointer-events:none;transition:filter .2s;
     background:linear-gradient(225deg, var(--paper) 0%, var(--paper) 62%, transparent 63%);
@@ -192,7 +192,7 @@ const right = coverlines.filter((c) => c.side === 'right');
     border-style:solid;border-width:14px 14px 0 0;border-color:var(--rust) transparent transparent transparent}
 
   .back-corner-tl{position:absolute;z-index:11;top:0;left:0;width:clamp(58px,14vw,100px);height:clamp(58px,14vw,100px);cursor:pointer;
-    background:transparent;display:none}
+    background:rgba(0,0,0,0.01);touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:none}
   .back-corner-tl .fold{position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(135deg, rgba(20,14,8,.8) 0%, rgba(20,14,8,.8) 60%, transparent 61%);
     clip-path:polygon(0% 0%,0% 100%,8% 90%,4% 78%,14% 74%,10% 62%,20% 60%,17% 48%,28% 48%,25% 36%,36% 38%,34% 26%,45% 30%,44% 18%,55% 24%,55% 12%,65% 20%,68% 8%,80% 18%,84% 4%,100% 0%)}
@@ -210,7 +210,7 @@ const right = coverlines.filter((c) => c.side === 'right');
      removes that dead zone entirely: every pixel in the rectangle is
      really clickable. */
   .flip-tag{position:absolute;z-index:11;top:calc(var(--vh) * 1.6);right:clamp(58px,16vw,102px);pointer-events:auto;cursor:pointer;
-    display:inline-block;padding:.45em .8em}
+    display:inline-block;padding:.45em .8em;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   .flip-tag-label{position:relative;display:block;transform:rotate(-3deg);pointer-events:none;
     color:var(--paper);font-style:italic;font-weight:700;
     font-size:clamp(.55rem,1.55vw,.78rem);letter-spacing:.03em;white-space:nowrap;
@@ -220,7 +220,7 @@ const right = coverlines.filter((c) => c.side === 'right');
   .flip-tag:hover::before{filter:brightness(1.12)}
   .book.at-back .flip-tag{display:none}
   .flip-tag-back{position:absolute;z-index:21;top:calc(var(--vh) * 1.6);left:clamp(58px,16vw,102px);cursor:pointer;pointer-events:auto;
-    display:none;padding:.45em .8em}
+    display:none;padding:.45em .8em;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   .flip-tag-back .flip-tag-label{transform:rotate(3deg)}
   .flip-tag-back::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--rust);opacity:.96;pointer-events:none;
     transform:rotate(3deg);clip-path:polygon(0 14%,5% 0,95% 8%,100% 22%,96% 80%,100% 96%,4% 100%,0 84%)}

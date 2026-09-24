@@ -5,21 +5,21 @@ published as changed fact — the live site still shows only what was already
 marked `verified: true` in `src/data/credits.ts`. This list is for Gary to
 confirm or correct; it is not a list of things that were silently guessed.
 
+## Resolved this session
+
+1. **The Full Monty tour dates / "first stage role" framing.** Previously
+   flagged: `credits.ts` stated 2023–2024 and framed it as Gary's first
+   stage role, which a Wikipedia summary appeared to contradict (a possible
+   2014 credit). **Resolved by Gary directly (24 Sep 2026):** the site no
+   longer states specific years or claims it was his first stage role.
+   Copy across `credits.ts`, `stage.astro`, and `about.astro` now describes
+   it as the award-winning, number one UK touring production of The Full
+   Monty, running across the country over several years — per Gary's own
+   description, with no date or "first" claim to verify.
+
 ## Flagged this session (new)
 
-1. **The Full Monty tour dates.** `credits.ts` states 2023–2024 and frames it
-   as Gary's first stage role. A Wikipedia summary fetched during this pass
-   referenced a 2014 Full Monty stage credit at Theatre Royal, Newcastle,
-   which would contradict both the dates and the "first stage role" framing.
-   Wikipedia is not a primary source and this may be an error on their side
-   (or a conflation with a different actor/production) — but per the brief's
-   explicit instruction not to claim 2023–24 was Gary's first stage
-   appearance without verification, **this needs Gary's direct confirmation**
-   before the site says anything definitive about it being his first.
-   Nothing was changed — About and Stage pages still use the existing
-   verified copy.
-
-2. **The Chelsea Detective — series 4 casting.** Web search this session
+1. **The Chelsea Detective — series 4 casting.** Web search this session
    did not independently turn up a cast list or press confirmation naming
    Gary Lucy as Mike Curtis in series 4. The broadcaster claim (Channel 4 in
    the UK) checks out against Channel 4's own listings page, but the casting
@@ -28,7 +28,7 @@ confirm or correct; it is not a list of things that were silently guessed.
    IMDb/press check before this goes further (e.g. before adding episode
    numbers or air dates).
 
-3. **The Good Ship Murder — series 3 casting.** Same caveat as above: search
+2. **The Good Ship Murder — series 3 casting.** Same caveat as above: search
    results confirmed the show and its Mediterranean setting are real and
    current, but didn't independently re-surface a same-session confirmation
    of Gary Lucy's casting as Jason Agnew. Already `verified: true` from an

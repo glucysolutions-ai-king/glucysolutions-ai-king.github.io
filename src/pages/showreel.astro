@@ -31,7 +31,7 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
       id="showreel"
       imageFront="/portraits/gl-walking2-web.jpg"
       imageBack="/portraits/gl-seated2-web.jpg"
-      altFront="Gary Lucy"
+      altFront="Gary Lucy walking, portrait for his acting showreel"
       altBack="Gary Lucy, seated portrait"
       kicker="Reel"
       headline="Showreel"
@@ -40,6 +40,11 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
     />
 
     <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Showreel</span>
+      </nav>
+
       {YOUTUBE_ID || VIMEO_ID ? (
         <div style="aspect-ratio:16/9; max-width:900px;">
           <iframe

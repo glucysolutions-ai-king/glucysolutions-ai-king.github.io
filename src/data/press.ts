@@ -12,7 +12,7 @@ export interface PressItem {
 // or litigation coverage even if it ranks — it exists to counterweight it, not add to it.
 export const pressItems: PressItem[] = [
   {
-    title: 'Gary Lucy talks The Full Monty and stepping on stage for the first time',
+    title: 'Gary Lucy talks The Full Monty and life on the road with the UK tour',
     outlet: 'This Morning (ITV)',
     date: null, // [VERIFY] exact publish date before going live
     url: 'https://www.itv.com/thismorning/articles/gary-lucy-the-full-monty',

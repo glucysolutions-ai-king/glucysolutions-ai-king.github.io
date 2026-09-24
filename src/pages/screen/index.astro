@@ -32,6 +32,11 @@ const heroFor: Record<string, string> = {
     />
 
     <div class="rs-body rs-body-wide">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Screen</span>
+      </nav>
+
       <div class="rs-cards">
         {roles.map((role) => (
           <a href={`/screen/${role.slug}`} class="rs-card">
