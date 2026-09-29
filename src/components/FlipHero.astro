@@ -31,7 +31,7 @@ const {
 
 <section class={`flip-hero`} id={`${id}-book`} data-fh-id={id}>
   <div class="fh-face fh-back">
-    <img src={imageBack} alt={altBack} />
+    <img src={imageBack} alt={altBack} loading="lazy" />
     <div class="fh-halftone"></div>
     <div class="fh-aged"></div>
     <div class="fh-grain"></div>
@@ -45,7 +45,7 @@ const {
   <div class="fh-page" id={`${id}-page`}>
     <div class="fh-cover">
       <div class="fh-face fh-front">
-        <img src={imageFront} alt={altFront} />
+        <img src={imageFront} alt={altFront} fetchpriority="high" />
         <div class="fh-halftone"></div>
         <div class="fh-aged"></div>
         <div class="fh-grain"></div>

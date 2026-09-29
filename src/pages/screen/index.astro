@@ -40,7 +40,7 @@ const heroFor: Record<string, string> = {
       <div class="rs-cards">
         {roles.map((role) => (
           <a href={`/screen/${role.slug}`} class="rs-card">
-            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={`Gary Lucy as ${role.character} in ${role.show}`} />
+            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={`Gary Lucy as ${role.character} in ${role.show}`} loading="lazy" />
             <div class="rs-card-scrim"></div>
             <div class="rs-card-label">
               <span class="rs-card-eyebrow">{role.network} &middot; {role.years}</span>

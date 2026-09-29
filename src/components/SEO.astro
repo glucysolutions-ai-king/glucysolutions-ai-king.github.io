@@ -24,6 +24,7 @@ const personLd = {
   jobTitle: 'Actor',
   description: profile.bioShort,
   url: 'https://www.garylucy.co.uk/',
+  image: 'https://www.garylucy.co.uk/hero/gl-standing-bw-web.jpg',
   sameAs: profile.sameAs,
 };
 
@@ -63,12 +64,33 @@ const autoBreadcrumbLd =
         ],
       }
     : null;
+
+// A minimal WebPage entity per page, tying it into the WebSite + Person
+// entity graph. AboutPage is used for /about specifically (a more precise
+// subtype than the generic WebPage); every other page gets plain WebPage.
+// Skipped when the page already supplies its own *Page entity (e.g. the
+// homepage's ProfilePage in index.astro) to avoid two conflicting
+// page-level entities describing the same URL.
+const hasOwnPageEntity = jsonLd.some((e: any) => typeof e['@type'] === 'string' && e['@type'].endsWith('Page'));
+const webPageLd = !hasOwnPageEntity
+  ? {
+      '@context': 'https://schema.org',
+      '@type': path === '/about' ? 'AboutPage' : 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { '@id': 'https://www.garylucy.co.uk/#website' },
+      about: { '@id': 'https://www.garylucy.co.uk/#person' },
+      primaryImageOfPage: ogUrl,
+    }
+  : null;
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 
-<meta property="og:type" content="profile" />
+<meta property="og:type" content="website" />
 <meta property="og:site_name" content="Gary Lucy — Official" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -82,6 +104,7 @@ const autoBreadcrumbLd =
 
 <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+{webPageLd && <script type="application/ld+json" set:html={JSON.stringify(webPageLd)} />}
 {autoBreadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(autoBreadcrumbLd)} />}
 {jsonLd.map((entry) => (
   <script type="application/ld+json" set:html={JSON.stringify(entry)} />
