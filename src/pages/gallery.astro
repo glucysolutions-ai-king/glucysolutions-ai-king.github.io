@@ -2,11 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import FlipHero from '../components/FlipHero.astro';
 import { galleryImages } from '../data/gallery';
+import { absoluteUrl } from '../data/site';
 
 const jsonLd = galleryImages.map((img) => ({
   '@context': 'https://schema.org',
   '@type': 'ImageObject',
-  contentUrl: `https://www.garylucy.co.uk/gallery/${img.file}`,
+  contentUrl: absoluteUrl(`/gallery/${img.file}`),
+  url: absoluteUrl(`/gallery/${img.file}`),
+  width: img.width,
+  height: img.height,
   name: img.alt,
   caption: img.caption ?? img.alt,
 }));
@@ -50,6 +54,8 @@ const jsonLd = galleryImages.map((img) => ({
                 srcset={img.srcset}
                 sizes="(max-width: 800px) 100vw, 33vw"
                 alt={img.alt}
+                width={img.width}
+                height={img.height}
                 loading="lazy"
               />
               {img.caption && <figcaption class="rs-gallery-caption">{img.caption}</figcaption>}

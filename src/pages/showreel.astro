@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FlipHero from '../components/FlipHero.astro';
+import { absoluteUrl } from '../data/site';
 
 // [VERIFY / INPUT NEEDED]: replace with Gary's actual showreel video ID once supplied.
 const VIMEO_ID = ''; // e.g. '123456789'
@@ -13,7 +14,7 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
       name: 'Gary Lucy — Showreel',
       description: "Gary Lucy's acting showreel.",
       uploadDate: '2026-09-20',
-      thumbnailUrl: 'https://www.garylucy.co.uk/hero/gl-standing-bw-web.jpg', // TODO: swap for a real showreel thumbnail once the video is embedded
+      thumbnailUrl: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'), // TODO: swap for a real showreel thumbnail once the video is embedded
       embedUrl: YOUTUBE_ID
         ? `https://www.youtube.com/embed/${YOUTUBE_ID}`
         : `https://player.vimeo.com/video/${VIMEO_ID}`,
@@ -29,8 +30,8 @@ const jsonLd = VIMEO_ID || YOUTUBE_ID
   <article class="rs-page">
     <FlipHero
       id="showreel"
-      imageFront="/portraits/gl-walking2-web.jpg"
-      imageBack="/portraits/gl-seated2-web.jpg"
+      imageFront="/portraits/gary-lucy-actor-walking-portrait.jpg"
+      imageBack="/portraits/gary-lucy-actor-seated-portrait.jpg"
       altFront="Gary Lucy walking, portrait for his acting showreel"
       altBack="Gary Lucy, seated portrait"
       kicker="Reel"

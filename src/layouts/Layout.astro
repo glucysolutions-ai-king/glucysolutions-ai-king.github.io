@@ -8,9 +8,10 @@ interface Props {
   description: string;
   path: string;
   jsonLd?: object[];
+  ogImage?: string;
 }
 
-const { title, description, path, jsonLd = [] } = Astro.props;
+const { title, description, path, jsonLd = [], ogImage } = Astro.props;
 
 // Page-to-page navigation reads as turning pages of one magazine: the
 // outgoing page peels away top-right -> bottom-left (same diagonal as the
@@ -56,7 +57,7 @@ const navItems = [
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <SEO title={title} description={description} path={path} jsonLd={jsonLd} />
+    <SEO title={title} description={description} path={path} jsonLd={jsonLd} ogImage={ogImage} />
     <ViewTransitions />
   </head>
   <body>
@@ -86,6 +87,7 @@ const navItems = [
               <li><a href={item.href}>{item.label}</a></li>
             ))}
             <li><a href="/news">News</a></li>
+            <li><a href="https://www.instagram.com/gary.lucy/" target="_blank" rel="me noopener">Instagram</a></li>
           </ul>
         </nav>
       </div>
