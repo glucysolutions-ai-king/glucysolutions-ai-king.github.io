@@ -50,9 +50,9 @@ export const coverlines: Coverline[] = [
   },
   {
     side: 'right',
-    eyebrow: 'Print',
-    headline: 'Coverage',
-    dek: 'Interviews worth your time',
-    href: '/press',
+    eyebrow: 'Exclusive',
+    headline: 'The Next Chapter',
+    dek: "Gary's window into the future of entertainment — SOS Global AI, at the cutting edge",
+    href: '/news/sos-global-ai',
   },
 ];

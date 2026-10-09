@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FlipHero from '../../components/FlipHero.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    '@id': 'https://www.garylucy.co.uk/news/sos-global-ai#article',
+    headline: 'Gary Lucy Launches SOS Global AI',
+    description:
+      "UK actor and entrepreneur Gary Lucy has launched SOS Global AI, a UK-built company developing sector-specific AI systems for recruitment and television development.",
+    datePublished: '2026-10-10',
+    dateModified: '2026-10-10',
+    author: { '@id': 'https://www.garylucy.co.uk/#person' },
+    publisher: { '@id': 'https://www.garylucy.co.uk/#person' },
+    mainEntityOfPage: 'https://www.garylucy.co.uk/news/sos-global-ai',
+    image: 'https://www.garylucy.co.uk/hero/gl-sitting-bw-web.jpg',
+  },
+];
+---
+<Layout
+  title="Gary Lucy Launches SOS Global AI | News"
+  description="UK actor and entrepreneur Gary Lucy has launched SOS Global AI, a UK-built company developing sector-specific AI systems for recruitment and television development."
+  path="/news/sos-global-ai"
+  jsonLd={jsonLd}
+>
+  <article class="rs-page">
+    <FlipHero
+      id="sos-global-ai"
+      imageFront="/hero/gl-sitting-bw-web.jpg"
+      imageBack="/gallery/gary-lucy-fuselage-1600.jpg"
+      altFront="Gary Lucy, British actor and entrepreneur"
+      altBack="Gary Lucy on location"
+      kicker="Exclusive"
+      headline="Gary Lucy's Window Into<br />The Future Of Entertainment"
+      dek="SOS Global AI at the cutting edge: inside the actor-turned-entrepreneur's new company for recruitment and television development."
+      backKicker="The Launch"
+      backHeadline="Read On &raquo;"
+    />
+
+    <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <a href="/news">News</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">SOS Global AI</span>
+      </nav>
+
+      <div class="rs-byline">
+        <span>Gary Lucy Launches SOS Global AI</span>
+        <span>10 October 2026</span>
+      </div>
+
+      <p class="rs-lede">
+        Sector-specific AI systems for recruitment and television development, built on
+        early scrutiny, independent challenge and human sign-off &mdash; with a named
+        person accountable for every decision.
+      </p>
+
+      <p>
+        Gary Lucy, Founder and Commercial Lead of SOS Global AI, has launched the
+        company at <a href="https://sosglobalai.com" target="_blank" rel="noopener">sosglobalai.com</a>.
+        It builds sector-specific AI systems, run by teams of specialist AI agents
+        that each do one job thoroughly, with a named person holding final
+        accountability for the outcome.
+      </p>
+
+      <p>
+        The company starts with two divisions, Recruitment and Entertainment. A
+        third, Financial, is in development to the same standard. Gary leads all
+        three and stays directly involved in every enquiry, including NDA requests
+        and partnership conversations.
+      </p>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">Why SOS Global AI Exists</h2>
+
+      <p>
+        Lucy has spent 25 years as a professional actor, with credits including
+        <em>Hollyoaks</em>, <em>Footballers' Wives</em> and <em>The Bill</em>. In
+        parallel he has built and run businesses across property, retail, digital
+        marketing and television format development. The pattern he saw across
+        those industries was consistent: decisions get made on relationships,
+        confidence and urgency, and the hard questions come too late, if at all.
+        Is this candidate compliant today? Does this project have a buyer? Does
+        this rights position hold up?
+      </p>
+
+      <p>
+        SOS Global AI exists to move those questions to the front of the process.
+        Speed matters, but only once a decision has a sound basis.
+      </p>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">Entertainment: Find The Weakness Before The Buyer Does</h2>
+
+      <p>
+        SOS Global Entertainment is a development pipeline for television IP.
+        Projects move through seven stages covering concept and originality,
+        story architecture, market intelligence, platform strategy, production,
+        rights, and commercial readiness. Two hard gates stop a project until it
+        has named, real buyers and fully cleared rights.
+      </p>
+
+      <p>
+        The pipeline covers five content types: long-form drama, vertical drama,
+        formats, scripted reality and factual. Each is developed against its own
+        commercial requirements. A dedicated challenge function exists to find
+        the reason a project won't work, with the authority to send it back, so
+        the hardest questions are asked internally rather than in front of a
+        commissioner. The creative work stays human-led. The system exists to
+        stress-test it.
+      </p>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">Recruitment: Built Where Compliance Failure Costs Most</h2>
+
+      <p>
+        SOS Global Recruitment is built first for UK healthcare staffing.
+        Candidate sourcing works only from an agency's own consented records.
+        Compliance is checked at screening and verified again on placement day
+        against the current authoritative source, and a named human approves
+        every output before it reaches a client. The platform is structured to
+        extend into US and international markets without a rebuild.
+      </p>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">Responsibility And Governance By Design</h2>
+
+      <p>
+        Six public commitments apply across every SOS Global system: human
+        oversight at every tier, consented data only, compliance verified live,
+        structural independent challenge, client data isolation, and new
+        capabilities run in simulation until proven safe. The full position is
+        published at
+        <a href="https://sosglobalai.com/trust" target="_blank" rel="noopener">sosglobalai.com/trust</a>,
+        with detailed documentation available to qualified partners under NDA.
+      </p>
+
+      <blockquote class="rs-pullquote">
+        &ldquo;I started SOS Global AI because I got tired of watching good
+        projects die to bad process. In television and in recruitment, the
+        failure is the same: the hard question gets asked too late. We built
+        systems that ask it first, and a person you can name stays accountable
+        for the answer.&rdquo;
+        <footer>&mdash; Gary Lucy, Founder and Commercial Lead, SOS Global AI</footer>
+      </blockquote>
+
+      <blockquote class="rs-pullquote">
+        &ldquo;Responsibility isn't a page on our website. It's how the systems
+        are built. Human sign-off, consented data, live compliance checks and an
+        independent challenge function are in the architecture from day one,
+        not added when a client asks. I'm proud of that, and I'm proud of the
+        specialists behind it. A governed system you can inspect will always
+        beat a fast one you have to take on trust.&rdquo;
+        <footer>&mdash; Gary Lucy</footer>
+      </blockquote>
+
+      <blockquote class="rs-pullquote">
+        &ldquo;I built this to stay hands-on, not hand it off, but hands-on
+        doesn't mean hovering. Every specialist gets real ownership of their
+        function; I want people who do their best work when I get out of their
+        way, not people waiting to be managed. Leads at every level are there to
+        encourage, evaluate and push the standard up, never to control the work
+        underneath them. We chase real innovation hard, but integrity is what
+        earns trust.&rdquo;
+        <footer>&mdash; Gary Lucy, from sosglobalai.com/about</footer>
+      </blockquote>
+
+      <hr class="rs-divider" />
+      <h2 class="rs-section-title">About SOS Global AI</h2>
+
+      <p>
+        SOS Global AI is a UK-headquartered company building sector-specific AI
+        systems for recruitment, entertainment development and, in time,
+        financial intelligence. Each division is run as its own operation with
+        dedicated specialist functions and a named lead accountable for its
+        output. SOS Global AI Limited is registered in England and Wales,
+        Company No. 17412139.
+      </p>
+
+      <p class="rs-note">
+        Media and partnership enquiries:
+        <a href="https://sosglobalai.com/contact" target="_blank" rel="noopener">sosglobalai.com/contact</a>
+      </p>
+
+      <p>
+        <a href="https://sosglobalai.com" target="_blank" rel="noopener" class="accent">Visit sosglobalai.com &rarr;</a>
+      </p>
+    </div>
+  </article>
+</Layout>
