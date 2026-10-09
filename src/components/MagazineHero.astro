@@ -242,10 +242,31 @@ const right = coverlines.filter((c) => c.side === 'right');
 
 <script>
   function setVH(){
-    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+    // Guard against a transient 0 reading (some mobile browsers/webviews report
+    // innerHeight as 0 for a single frame during initial layout). Writing that
+    // into the inline style permanently collapses the hero to height:0, since
+    // an inline style always beats the CSS fallback below it. Falling back to
+    // documentElement.clientHeight or screen.height, and refusing to write a
+    // non-positive value, means a bad first reading self-corrects on the very
+    // next call instead of sticking forever.
+    const h = window.innerHeight || document.documentElement.clientHeight || window.screen.height || 0;
+    if (h > 0) {
+      document.documentElement.style.setProperty('--vh', (h * 0.01) + 'px');
+    }
   }
   setVH();
+  // orientationchange alone missed the case above (a bad reading taken before
+  // the browser had finished its own layout pass, with no rotation ever
+  // happening afterward to trigger a recompute). resize/load/pageshow give it
+  // several extra chances to self-correct; astro:page-load re-arms it after a
+  // View Transitions navigation, since this component's own <script> does not
+  // re-run on a client-side page swap.
+  window.addEventListener('resize', setVH);
   window.addEventListener('orientationchange', function(){ setTimeout(setVH, 300); });
+  window.addEventListener('load', setVH);
+  window.addEventListener('pageshow', setVH);
+  document.addEventListener('astro:page-load', setVH);
+  requestAnimationFrame(setVH);
 
   const pageEl = document.getElementById('page') as HTMLElement;
   function peelPolygon(t: number){
