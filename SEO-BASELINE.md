@@ -26,7 +26,7 @@ Run these once the site is live, before any further changes, so movement is meas
 - Unique title/meta per page, canonical tags, OG/Twitter cards
 - `sitemap-index.xml`, `robots.txt`, `llms.txt`
 - Static HTML content (all copy server-rendered; the 3D layer is decorative only)
-- Fast static hosting on Cloudflare's CDN (no server round-trip)
+- Fast static hosting on GitHub Pages' CDN (no server round-trip)
 
 ## 30-day plan
 

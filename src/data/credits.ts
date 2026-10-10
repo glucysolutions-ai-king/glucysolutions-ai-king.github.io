@@ -78,15 +78,15 @@ export const roles: Role[] = [
     slug: 'the-good-ship-murder',
     character: 'Jason Agnew',
     show: 'The Good Ship Murder',
-    years: '2026',
+    years: '2025',
     network: 'Channel 5',
     type: 'Crime Drama',
     summary:
-      'Lucy joined the cast of Channel 5’s hit cruise-ship murder-mystery series The Good Ship Murder as Jason Agnew in its third series, filmed on location in the Mediterranean.',
+      'Lucy joined the cast of Channel 5’s hit cruise-ship murder-mystery series The Good Ship Murder as Jason Agnew, in the series 3 Christmas Special — Alicante, filmed on location in the Mediterranean and first broadcast 27 December 2025.',
     verified: true,
     seoTitle: 'Gary Lucy in The Good Ship Murder — Jason Agnew',
     seoDescription:
-      'Gary Lucy plays Jason Agnew in Channel 5’s The Good Ship Murder, series 3 (2026).',
+      'Gary Lucy played Jason Agnew in Channel 5’s The Good Ship Murder, series 3 (2025).',
   },
   {
     slug: 'the-chelsea-detective',
@@ -96,7 +96,7 @@ export const roles: Role[] = [
     network: 'Acorn TV',
     type: 'Crime Drama',
     summary:
-      'Lucy joined the fourth series of Acorn TV’s The Chelsea Detective as Mike Curtis — his most recent screen role, and a significant step up in the scale of production he is working on. The series streams on Acorn TV, including via the Acorn TV Amazon Prime Video Channel, and is distributed across multiple territories internationally. It is created and executive produced by Peter Fincham — Controller of BBC One from 2005 to 2007, then Director of Television at ITV from 2008 to 2016 — through his production company Expectation.',
+      'Lucy joined the fourth series of Acorn TV’s The Chelsea Detective as Mike Curtis, appearing in the series opener, "Death on the Aether." The series streams on Acorn TV, including via the Acorn TV Amazon Prime Video Channel, and is distributed across multiple territories internationally. It is created and executive produced by Peter Fincham — Controller of BBC One from 2005 to 2007, then Director of Television at ITV from 2008 to 2016 — through his production company Expectation.',
     verified: true,
     seoTitle: 'Gary Lucy in The Chelsea Detective — Mike Curtis',
     seoDescription:
@@ -120,7 +120,7 @@ export const stageCredits: StageCredit[] = [
     years: 'National Tour',
     venue: 'UK Tour',
     summary:
-      'Lucy headlined the award-winning, number one UK touring production of The Full Monty as Gaz, a production that ran across the country over several years, alongside Andrew Dunn, Louis Emerick, Rupert Hill, Martin Miller and Bobby Schofield.',
+      'Lucy played Gaz in the UK touring production of The Full Monty, a production that ran across the country over several years, alongside Andrew Dunn, Louis Emerick, Rupert Hill, Martin Miller and Bobby Schofield.',
     verified: true,
   },
 ];
@@ -222,7 +222,7 @@ export const careerTimeline: TimelineEntry[] = [
   { character: 'Valentine Kildare', show: 'Casualty', years: '2014', network: 'BBC One', image: '/gallery/gl-studio2-web.jpg', verified: true },
   { slug: 'hollyoaks', character: 'Luke Morgan (returns)', show: 'Hollyoaks', years: '2017–2023', network: 'Channel 4', image: '/portraits/gl-standing2-web.jpg', verified: true },
   { character: 'Billy McLaine', show: 'The Dumping Ground', years: '2018', network: 'CBBC', image: '/hero/gl-fuselage-color.jpg', verified: true },
-  { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2026', network: 'Channel 5', image: '/portraits/gl-walking2-web.jpg', verified: true },
+  { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2025', network: 'Channel 5', image: '/portraits/gl-walking2-web.jpg', verified: true },
   { slug: 'the-chelsea-detective', character: 'Mike Curtis', show: 'The Chelsea Detective', years: '2026', network: 'Acorn TV', image: '/hero/gl-sitting-bw-web.jpg', verified: true },
 ];
 
@@ -278,8 +278,11 @@ export const profile = {
     'https://www.imdb.com/name/nm0524804/',
     'https://tv.apple.com/us/person/gary-lucy/umc.cpc.131woa7w1p6qwwphkf2oowrul',
     'https://www.instagram.com/gary.lucy/',
-    'https://sosglobalai.com',
     // Facebook handle still [VERIFY] — confirm current handle before publishing.
+    // sosglobalai.com deliberately NOT listed here: sameAs is for identity
+    // profiles of this same person, not a company they founded. The
+    // Person<->Organization link is carried correctly via the Organization's
+    // `founder` property on /news/sos-global-ai, plus the in-content links.
   ],
   verifiedNote:
     'Award status: "award-winning" is used site-wide on the strength of the confirmed 2000 British Soap Award for Best Newcomer.',

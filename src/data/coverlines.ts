@@ -1,8 +1,9 @@
 // "Coverlines" — the magazine-style headline links running down the sides of the
 // homepage hero, styled after classic Rolling Stone / editorial cover layouts.
-// TEXT BELOW IS PLACEHOLDER COPY, sized to roughly match real coverline length —
-// swap for final lines once the tone is signed off. None of it makes a factual
-// claim (award counts, dates etc.) precisely so it's safe to ship as holding text.
+// The left side leads with SOS Global AI by deliberate choice (entity/SEO
+// cross-linking with sosglobalai.com) — don't swap that lead placement without
+// checking with Gary first. The other entries avoid hard numeric/superlative
+// claims that would need re-verifying every time a credit is added.
 
 export interface Coverline {
   side: 'left' | 'right';
@@ -27,15 +28,15 @@ export const coverlines: Coverline[] = [
   {
     side: 'left',
     eyebrow: 'On Screen',
-    headline: 'Fifteen Credits',
+    headline: 'Three Decades',
     dek: 'Soap villain to primetime detective',
     href: '/screen',
   },
   {
     side: 'left',
     eyebrow: 'Live',
-    headline: '8 Shows/Wk',
-    dek: "The UK's number one touring show, night after night",
+    headline: 'The Full Monty',
+    dek: 'National tour as Gaz',
     href: '/stage',
   },
   {

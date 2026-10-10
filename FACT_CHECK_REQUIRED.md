@@ -11,29 +11,90 @@ confirm or correct; it is not a list of things that were silently guessed.
    flagged: `credits.ts` stated 2023–2024 and framed it as Gary's first
    stage role, which a Wikipedia summary appeared to contradict (a possible
    2014 credit). **Resolved by Gary directly (24 Sep 2026):** the site no
-   longer states specific years or claims it was his first stage role.
-   Copy across `credits.ts`, `stage.astro`, and `about.astro` now describes
-   it as the award-winning, number one UK touring production of The Full
-   Monty, running across the country over several years — per Gary's own
-   description, with no date or "first" claim to verify.
+   longer states specific years or claims it was his first stage role, nor
+   claims "award-winning, number one" status (unverified superlative,
+   removed). Copy across `credits.ts`, `stage.astro`, and `about.astro` now
+   describes it simply as the UK touring production of The Full Monty,
+   running across the country over several years.
 
-## Flagged this session (new)
+## Resolved 10 October 2026 — Codex pass, independently re-verified
 
-1. **The Chelsea Detective — series 4 casting.** Web search this session
-   did not independently turn up a cast list or press confirmation naming
-   Gary Lucy as Mike Curtis in series 4. The broadcaster claim (Channel 4 in
-   the UK) checks out against Channel 4's own listings page, but the casting
-   detail itself was already marked `verified: true` in the data file from
-   an earlier pass — it wasn't re-confirmed this session. Recommend a quick
-   IMDb/press check before this goes further (e.g. before adding episode
-   numbers or air dates).
+ChatGPT Codex proposed a round of fact and copy fixes to this site on a
+separate branch. Each claim below was independently checked against a live
+source before merging — Codex's own citations were not taken on trust.
 
-2. **The Good Ship Murder — series 3 casting.** Same caveat as above: search
-   results confirmed the show and its Mediterranean setting are real and
-   current, but didn't independently re-surface a same-session confirmation
-   of Gary Lucy's casting as Jason Agnew. Already `verified: true` from an
-   earlier pass; flagging for a fresh check rather than re-litigating it
-   blind.
+1. **The Good Ship Murder — series 3 is 2025, not 2026.** Confirmed via
+   IMDb (`pro.imdb.com/title/tt39219403`) and TV Guide UK: the episode
+   "Christmas Special — Alicante" first broadcast on Channel 5 on
+   **27 December 2025**. `years` corrected from 2026 to 2025 throughout
+   `credits.ts` and the timeline.
+
+2. **The Chelsea Detective — episode title added.** Series 4 opens with
+   "Death on the Aether" (confirmed via tellyvisions.org's episode recap
+   and pogdesign.co.uk's episode guide), now referenced in the summary
+   copy. **Character name is "Mike Curtis," not "Michael Curtis."** Codex
+   proposed the "Michael" spelling citing IMDb; the only source found this
+   session that actually names the character — tellyvisions.org's
+   dedicated recap of this episode — spells it "Mike" twice, matching the
+   name already on the site. Kept "Mike Curtis."
+
+3. **Unsupported promotional copy removed.** The homepage, about page and
+   screen pages no longer describe recent work as Gary's "biggest" or a
+   "step up," call The Full Monty the "number one" UK tour, or claim it was
+   "award-winning" — none of this was independently verifiable. The about
+   page's invented first-person pull quote ("I've never chased the safe
+   option...") has also been removed: it was never something Gary is on
+   record as saying, and attributing an invented quote to him is a real
+   liability, not just a tone issue.
+
+4. **Press coverage added.** Two new items added to `press.ts` and
+   independently confirmed live: TV Guide UK's Good Ship Murder series 3
+   cast piece, and SBS's season 3 explainer. A third, from Radio Times, was
+   added but left `verified: false` — the URL returned a bot block when
+   checked this session, so its content couldn't be independently
+   confirmed even though the URL pattern and date are plausible. Worth a
+   human click-through before fully trusting it.
+
+5. **Entity schema — SOS Global AI removed from Gary's `Person.sameAs`,
+   and from the Organization's `sameAs` back-reference.** `sameAs` is meant
+   for identity profiles of the *same* entity (a person's own social
+   profiles, Wikipedia, IMDb), not a related-but-distinct organization —
+   using it to link Gary to a company he founded was schema-non-standard
+   and risked confusing entity resolution rather than helping it. The
+   Person↔Organization relationship is still correctly carried by the
+   Organization's `founder` property (pointing at Gary's `@id`) plus the
+   actual in-content hyperlinks to sosglobalai.com, which is the
+   Google-recommended way to establish this link.
+
+6. **"Est. 1997" on the magazine-hero masthead**, was "Est. 1999." 1997 is
+   Gary's actual first screen credit (Grange Hill) per the site's own
+   career timeline; 1999 was when Hollyoaks started, not when his career
+   began. Corrected.
+
+7. **`SEO-BASELINE.md` said the site was hosted on "Cloudflare's CDN."**
+   It isn't — garylucy.co.uk is served from GitHub Pages. Stale doc text
+   fixed; no effect on the live site.
+
+### Codex changes NOT merged
+
+- **Site-wide trailing-slash / canonical URL change** (`trailingSlash:
+  'never'` → `'always'`, plus matching edits to `SEO.astro`, breadcrumbs,
+  and the `/about-rs-preview` redirect). Not adopted: the site's current
+  canonical/sitemap format was just audited this session and confirmed
+  clean, GitHub Pages doesn't redirect bare paths to slash-ending ones (so
+  this would create two live URL variants per page rather than fixing
+  anything), and there was no reported problem this was solving. If Gary
+  wants this revisited, it needs its own test pass, not a silent bundle
+  with content fixes.
+- **Coverline homepage priority.** Codex replaced the homepage's lead
+  "SOS Global AI" coverline with a Chelsea Detective one, reasoning the
+  actor site shouldn't lead with business news. That's a legitimate
+  opinion, but it undoes a coverline placement Gary's own earlier
+  instruction this session ("use the one site to the other... immediately,
+  aggressively") was specifically aimed at — not a fact-check matter, so
+  left as-is pending Gary's call. The other two left-side coverlines
+  ("Fifteen Credits," "8 Shows/Wk") were still updated, since those were
+  fragile/unverifiable numeric claims rather than a priority decision.
 
 ## Carried over from the existing data file (unchanged, still open)
 
