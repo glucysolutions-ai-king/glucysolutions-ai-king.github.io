@@ -1,20 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import FlipHero from '../../components/FlipHero.astro';
-import { roles, otherCredits } from '../../data/credits';
-
-const heroFor: Record<string, string> = {
-  hollyoaks: '/portraits/gl-standing2-web.jpg',
-  'footballers-wives': '/gallery/gary-lucy-jacket-1600.jpg',
-  'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
-  eastenders: '/portraits/gl-seated2-web.jpg',
-  'the-good-ship-murder': '/portraits/gl-walking2-web.jpg',
-  'the-chelsea-detective': '/hero/gl-sitting-bw-web.jpg',
-};
+import { careerTimeline } from '../../data/credits';
 ---
 <Layout
   title="Gary Lucy — Screen Credits"
-  description="Gary Lucy's television credits: Hollyoaks, Footballers' Wives, The Bill, EastEnders, The Good Ship Murder and The Chelsea Detective."
+  description="Gary Lucy's full television career: from Grange Hill and Dream Team through Hollyoaks, Footballers' Wives, The Bill and EastEnders to The Chelsea Detective and The Good Ship Murder."
   path="/screen"
 >
   <article class="rs-page">
@@ -26,7 +17,7 @@ const heroFor: Record<string, string> = {
       altBack="Gary Lucy, close portrait"
       kicker="Filmography"
       headline="Screen Credits"
-      dek="Six shows, three decades of British television &mdash; from teenage soap villain to primetime lead."
+      dek="Fifteen credits, three decades of British television &mdash; from teenage soap villain to primetime lead."
       backKicker="On Screen"
       backHeadline="Every Era,<br />One Career"
     />
@@ -38,31 +29,20 @@ const heroFor: Record<string, string> = {
       </nav>
 
       <div class="rs-cards">
-        {roles.map((role) => (
-          <a href={`/screen/${role.slug}`} class="rs-card">
-            <img src={heroFor[role.slug] ?? '/hero/gl-standing-bw-web.jpg'} alt={`Gary Lucy as ${role.character} in ${role.show}`} loading="lazy" />
-            <div class="rs-card-scrim"></div>
-            <div class="rs-card-label">
-              <span class="rs-card-eyebrow">{role.network} &middot; {role.years}</span>
-              <span class="rs-card-title">{role.show}</span>
-            </div>
-          </a>
-        ))}
+        {careerTimeline.map((entry) => {
+          const Tag = entry.slug ? 'a' : 'div';
+          return (
+            <Tag {...(entry.slug ? { href: `/screen/${entry.slug}` } : {})} class="rs-card">
+              <img src={entry.image} alt={`Gary Lucy as ${entry.character} in ${entry.show}`} loading="lazy" />
+              <div class="rs-card-scrim"></div>
+              <div class="rs-card-label">
+                <span class="rs-card-eyebrow">{entry.network} &middot; {entry.years}</span>
+                <span class="rs-card-title">{entry.show}</span>
+              </div>
+            </Tag>
+          );
+        })}
       </div>
-
-      <hr class="rs-divider" />
-      <h2 class="rs-section-title">Other Screen Credits</h2>
-      <ul class="rs-rows">
-        {otherCredits.map((c) => (
-          <li>
-            <div>
-              <span class="rs-row-name">{c.title}</span>
-              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">{c.role}</p>
-            </div>
-            <span class="rs-row-meta">{c.network} &middot; {c.years}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   </article>
 </Layout>

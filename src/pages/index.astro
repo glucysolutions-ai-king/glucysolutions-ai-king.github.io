@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MagazineHero from '../components/MagazineHero.astro';
-import { roles } from '../data/credits';
+import { careerTimeline } from '../data/credits';
 
 const jsonLd = [
   {
@@ -20,7 +20,7 @@ const jsonLd = [
 ---
 <Layout
   title="Gary Lucy — Official Site | British Screen &amp; Stage Actor"
-  description="Official site of Gary Lucy: nearly three decades on British screen and stage, from Hollyoaks and Footballers' Wives to The Good Ship Murder."
+  description="Official site of Gary Lucy: nearly three decades on British screen and stage, from Hollyoaks and Footballers' Wives to The Chelsea Detective."
   path="/"
   jsonLd={jsonLd}
 >
@@ -33,20 +33,21 @@ const jsonLd = [
 
   <section class="container" style="padding: 5rem 1.5rem;">
     <p class="eyebrow">Currently</p>
-    <h2>The Good Ship Murder</h2>
-    <p style="max-width: 60ch;">Gary joined Channel 5's hit Mediterranean murder-mystery series as Jason Agnew for its third series — his latest primetime screen credit.</p>
-    <a href="/screen/the-good-ship-murder" class="accent">Read more &rarr;</a>
+    <h2>The Chelsea Detective</h2>
+    <p style="max-width: 60ch;">Gary's most recent screen role: Mike Curtis in series 4 of The Chelsea Detective, streaming on Acorn TV &mdash; his latest and biggest primetime credit yet.</p>
+    <a href="/screen/the-chelsea-detective" class="accent">Read more &rarr;</a>
   </section>
 
   <section class="container" style="padding-bottom: 5rem;">
     <p class="eyebrow">Selected credits</p>
     <ul class="role-list">
-      {roles.map((role) => (
+      {careerTimeline.map((entry) => (
         <li>
           <div>
-            <strong>{role.character}</strong> — <a href={`/screen/${role.slug}`}>{role.show}</a>
+            <strong>{entry.character}</strong> —{' '}
+            {entry.slug ? <a href={`/screen/${entry.slug}`}>{entry.show}</a> : entry.show}
           </div>
-          <span class="years">{role.years}</span>
+          <span class="years">{entry.years}</span>
         </li>
       ))}
     </ul>

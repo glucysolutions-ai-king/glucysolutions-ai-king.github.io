@@ -93,14 +93,14 @@ export const roles: Role[] = [
     character: 'Mike Curtis',
     show: 'The Chelsea Detective',
     years: '2026',
-    network: 'Channel 4',
+    network: 'Acorn TV',
     type: 'Crime Drama',
     summary:
-      'Lucy joined the fourth series of Channel 4’s The Chelsea Detective as Mike Curtis, his latest screen role.',
+      'Lucy joined the fourth series of Acorn TV’s The Chelsea Detective as Mike Curtis — his most recent screen role, and a significant step up in the scale of production he is working on. The series streams on Acorn TV, including via the Acorn TV Amazon Prime Video Channel, and is distributed across multiple territories internationally. It is created and executive produced by Peter Fincham — Controller of BBC One from 2005 to 2007, then Director of Television at ITV from 2008 to 2016 — through his production company Expectation.',
     verified: true,
     seoTitle: 'Gary Lucy in The Chelsea Detective — Mike Curtis',
     seoDescription:
-      'Gary Lucy plays Mike Curtis in Channel 4’s The Chelsea Detective, series 4 (2026).',
+      'Gary Lucy plays Mike Curtis in The Chelsea Detective, series 4 (2026), streaming on Acorn TV and the Acorn TV Amazon Prime Video Channel.',
   },
 ];
 
@@ -192,6 +192,40 @@ export const otherCredits: OtherCredit[] = [
   },
 ];
 
+// A single chronological, gap-free view of the whole career — merging `roles` and
+// `otherCredits` (including both Hollyoaks stints as separate entries) so that
+// every credit, not just the six with their own detail pages, appears in the same
+// photo-card layout, in the order it actually happened. `slug` is only set where
+// a full detail page exists (src/pages/screen/[slug].astro); both Hollyoaks
+// entries point at the same page, since it's one role told in two runs.
+export interface TimelineEntry {
+  slug?: string;
+  character: string;
+  show: string;
+  years: string;
+  network: string;
+  image: string;
+  verified: boolean;
+}
+
+export const careerTimeline: TimelineEntry[] = [
+  { character: 'Various', show: 'Grange Hill', years: '1997', network: 'BBC', image: '/gallery/gary-lucy-sitting-1600.jpg', verified: true },
+  { character: 'Series regular', show: 'Dream Team', years: '1997–1998', network: 'Sky One', image: '/hero/gl-standing-bw-web.jpg', verified: true },
+  { slug: 'hollyoaks', character: 'Luke Morgan', show: 'Hollyoaks', years: '1999–2002', network: 'Channel 4', image: '/portraits/gl-standing2-web.jpg', verified: true },
+  { slug: 'footballers-wives', character: 'Kyle Pascoe', show: "Footballers' Wives", years: '2002–2004', network: 'ITV', image: '/gallery/gary-lucy-jacket-1600.jpg', verified: true },
+  { character: 'Michael Sands', show: "She's Gone", years: '2004', network: 'Film', image: '/gallery/gary-lucy-fuselage-1600.jpg', verified: true },
+  { slug: 'the-bill', character: 'DC Will Fletcher', show: 'The Bill', years: '2005–2010', network: 'ITV', image: '/gallery/gary-lucy-wing-1600.jpg', verified: true },
+  { character: 'Matthew Cassady', show: 'Whatever It Takes', years: '2009', network: 'ITV', image: '/hero/gl-wing-color.jpg', verified: true },
+  { character: 'Ben Lloyd', show: 'Missing', years: '2010', network: 'ITV', image: '/gallery/gl-walking2-web.jpg', verified: true },
+  { character: 'Contestant (runner-up, with professional partner Maria Fillipov)', show: 'Dancing on Ice', years: '2010, 2014', network: 'ITV', image: '/hero/gl-closeup-bw-web.jpg', verified: true },
+  { slug: 'eastenders', character: 'Danny Pennant', show: 'EastEnders', years: '2012–2014', network: 'BBC One', image: '/portraits/gl-seated2-web.jpg', verified: true },
+  { character: 'Valentine Kildare', show: 'Casualty', years: '2014', network: 'BBC One', image: '/gallery/gl-studio2-web.jpg', verified: true },
+  { slug: 'hollyoaks', character: 'Luke Morgan (returns)', show: 'Hollyoaks', years: '2017–2023', network: 'Channel 4', image: '/portraits/gl-standing2-web.jpg', verified: true },
+  { character: 'Billy McLaine', show: 'The Dumping Ground', years: '2018', network: 'CBBC', image: '/hero/gl-fuselage-color.jpg', verified: true },
+  { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2026', network: 'Channel 5', image: '/portraits/gl-walking2-web.jpg', verified: true },
+  { slug: 'the-chelsea-detective', character: 'Mike Curtis', show: 'The Chelsea Detective', years: '2026', network: 'Acorn TV', image: '/hero/gl-sitting-bw-web.jpg', verified: true },
+];
+
 export interface Award {
   name: string;
   category: string;
@@ -238,7 +272,7 @@ export const profile = {
   yearsActive: '1996–present',
   headline: 'British screen and stage actor',
   bioShort:
-    'Gary Lucy is a British actor with nearly three decades of screen and stage credits, known for major returning roles in Hollyoaks, Footballers’ Wives, The Bill and EastEnders, and now appearing in Channel 5’s The Good Ship Murder and Channel 4’s The Chelsea Detective.',
+    'Gary Lucy is a British actor with nearly three decades of screen and stage credits, known for major returning roles in Hollyoaks, Footballers’ Wives, The Bill and EastEnders. His most recent screen work is Acorn TV’s The Chelsea Detective, alongside Channel 5’s The Good Ship Murder.',
   sameAs: [
     'https://en.wikipedia.org/wiki/Gary_Lucy',
     'https://www.imdb.com/name/nm0524804/',
