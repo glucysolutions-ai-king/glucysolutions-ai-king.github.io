@@ -16,6 +16,18 @@ const jsonLd = [
     publisher: { '@id': 'https://www.garylucy.co.uk/#person' },
     mainEntityOfPage: 'https://www.garylucy.co.uk/news/sos-global-ai',
     image: 'https://www.garylucy.co.uk/hero/gl-sitting-bw-web.jpg',
+    about: { '@id': 'https://sosglobalai.com/#organization' },
+    mentions: { '@id': 'https://sosglobalai.com/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://sosglobalai.com/#organization',
+    name: 'SOS Global AI',
+    url: 'https://sosglobalai.com',
+    sameAs: ['https://www.garylucy.co.uk/'],
+    founder: { '@id': 'https://www.garylucy.co.uk/#person' },
+    foundingLocation: 'United Kingdom',
   },
 ];
 ---
@@ -181,7 +193,7 @@ const jsonLd = [
         encourage, evaluate and push the standard up, never to control the work
         underneath them. We chase real innovation hard, but integrity is what
         earns trust.&rdquo;
-        <footer>&mdash; Gary Lucy, from sosglobalai.com/about</footer>
+        <footer>&mdash; Gary Lucy, from <a href="https://sosglobalai.com/about" target="_blank" rel="noopener">sosglobalai.com/about</a></footer>
       </blockquote>
 
       <hr class="rs-divider" />

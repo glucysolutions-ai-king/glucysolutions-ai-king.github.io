@@ -277,8 +277,9 @@ export const profile = {
     'https://en.wikipedia.org/wiki/Gary_Lucy',
     'https://www.imdb.com/name/nm0524804/',
     'https://tv.apple.com/us/person/gary-lucy/umc.cpc.131woa7w1p6qwwphkf2oowrul',
-    // [VERIFY] confirm current Instagram / Facebook handles before publishing —
-    // existing public results reportedly show outdated representation details.
+    'https://www.instagram.com/gary.lucy/',
+    'https://sosglobalai.com',
+    // Facebook handle still [VERIFY] — confirm current handle before publishing.
   ],
   verifiedNote:
     'Award status: "award-winning" is used site-wide on the strength of the confirmed 2000 British Soap Award for Best Newcomer.',
