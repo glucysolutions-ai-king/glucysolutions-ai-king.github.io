@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { galleryImages, imageUrl, imagePagePath } from '../../data/gallery';
+import { SITE_URL, absoluteUrl } from '../../data/site';
+
+export function getStaticPaths() {
+  return galleryImages.map((img, i) => ({
+    params: { slug: img.slug },
+    props: {
+      img,
+      prev: galleryImages[(i - 1 + galleryImages.length) % galleryImages.length],
+      next: galleryImages[(i + 1) % galleryImages.length],
+    },
+  }));
+}
+
+const { img, prev, next } = Astro.props;
+const pagePath = imagePagePath(img);
+const description = `${img.alt}. Official image from the website of British actor Gary Lucy.`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    '@id': `${absoluteUrl(pagePath)}#image`,
+    name: `Gary Lucy — ${img.title}`,
+    caption: img.caption ?? img.alt,
+    description,
+    contentUrl: absoluteUrl(imageUrl(img)),
+    url: absoluteUrl(imageUrl(img)),
+    width: img.width,
+    height: img.height,
+    encodingFormat: 'image/jpeg',
+    representativeOfPage: true,
+    mainEntityOfPage: absoluteUrl(pagePath),
+    about: { '@id': `${SITE_URL}/#person` },
+    isPartOf: { '@id': `${absoluteUrl('/gallery')}#webpage` },
+    acquireLicensePage: absoluteUrl('/contact'),
+    creditText: img.credit ?? 'Gary Lucy — official website',
+    ...(img.credit ? { creator: { '@type': 'Person', name: img.credit } } : {}),
+  },
+];
+---
+<Layout
+  title={`Gary Lucy — ${img.title}`}
+  description={description}
+  path={pagePath}
+  jsonLd={jsonLd}
+  ogImage={imageUrl(img)}
+>
+  <article class="rs-page">
+    <div class="rs-body rs-body-wide" style="padding-top:6rem;">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <a href="/gallery">Gallery</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">{img.title}</span>
+      </nav>
+
+      <h1 class="rs-row-name" style="font-size:clamp(1.6rem,4vw,2.6rem); line-height:1.1; margin:0.4em 0;">
+        Gary Lucy &mdash; {img.title}
+      </h1>
+
+      <figure class="rs-gallery-figure" style="margin:0 auto; max-width:min(100%, 900px);">
+        <img
+          src={imageUrl(img)}
+          srcset={img.srcset}
+          sizes="(max-width: 900px) 100vw, 900px"
+          alt={img.alt}
+          width={img.width}
+          height={img.height}
+          loading="eager"
+          fetchpriority="high"
+          style="width:100%; height:auto;"
+        />
+        <figcaption class="rs-gallery-caption">{img.caption ?? img.alt}</figcaption>
+      </figure>
+
+      <p class="rs-lede" style="max-width:60ch;">
+        {img.alt}. Gary Lucy is a British actor known for Hollyoaks,
+        Footballers&rsquo; Wives, The Bill, EastEnders and The Chelsea Detective.
+        Read his <a href="/about">biography</a>, browse his
+        <a href="/filmography">full filmography</a>, or return to the
+        <a href="/gallery">gallery</a>.
+      </p>
+
+      {img.credit && <p class="rs-note">Photo credit: {img.credit}</p>}
+      <p class="rs-note">
+        Licensing and press enquiries: <a href="/contact">contact Gary Lucy&rsquo;s representation</a>.
+      </p>
+
+      <p class="rs-note" style="display:flex; justify-content:space-between; gap:1rem;">
+        <a href={imagePagePath(prev)} rel="prev">&larr; {prev.title}</a>
+        <a href={imagePagePath(next)} rel="next">{next.title} &rarr;</a>
+      </p>
+    </div>
+  </article>
+</Layout>

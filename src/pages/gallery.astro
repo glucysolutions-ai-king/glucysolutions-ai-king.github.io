@@ -1,19 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FlipHero from '../components/FlipHero.astro';
-import { galleryImages } from '../data/gallery';
-import { absoluteUrl } from '../data/site';
+import { galleryImages, imageUrl, imagePagePath } from '../data/gallery';
+import { SITE_URL, absoluteUrl } from '../data/site';
 
-const jsonLd = galleryImages.map((img) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ImageObject',
-  contentUrl: absoluteUrl(`/gallery/${img.file}`),
-  url: absoluteUrl(`/gallery/${img.file}`),
-  width: img.width,
-  height: img.height,
-  name: img.alt,
-  caption: img.caption ?? img.alt,
-}));
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${absoluteUrl('/gallery')}#gallery`,
+    name: 'Gary Lucy — Official Photo Gallery',
+    url: absoluteUrl('/gallery'),
+    about: { '@id': `${SITE_URL}/#person` },
+    hasPart: galleryImages.map((img) => ({ '@id': `${absoluteUrl(imagePagePath(img))}#image` })),
+  },
+  ...galleryImages.map((img) => ({
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    '@id': `${absoluteUrl(imagePagePath(img))}#image`,
+    contentUrl: absoluteUrl(imageUrl(img)),
+    url: absoluteUrl(imageUrl(img)),
+    width: img.width,
+    height: img.height,
+    name: `Gary Lucy — ${img.title}`,
+    caption: img.caption ?? img.alt,
+    mainEntityOfPage: absoluteUrl(imagePagePath(img)),
+    about: { '@id': `${SITE_URL}/#person` },
+    acquireLicensePage: absoluteUrl('/contact'),
+    creditText: img.credit ?? 'Gary Lucy — official website',
+  })),
+];
 ---
 <Layout
   title="Gary Lucy — Gallery"
@@ -47,18 +63,20 @@ const jsonLd = galleryImages.map((img) => ({
         </p>
       ) : (
         <div class="rs-cards" style="aspect-ratio:auto;">
-          {galleryImages.map((img) => (
+          {galleryImages.map((img, i) => (
             <figure class="rs-gallery-figure">
-              <img
-                src={`/gallery/${img.file}`}
-                srcset={img.srcset}
-                sizes="(max-width: 800px) 100vw, 33vw"
-                alt={img.alt}
-                width={img.width}
-                height={img.height}
-                loading="lazy"
-              />
-              {img.caption && <figcaption class="rs-gallery-caption">{img.caption}</figcaption>}
+              <a href={imagePagePath(img)} aria-label={`Gary Lucy — ${img.title}`}>
+                <img
+                  src={imageUrl(img)}
+                  srcset={img.srcset}
+                  sizes="(max-width: 800px) 100vw, 33vw"
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                />
+              </a>
+              <figcaption class="rs-gallery-caption">{img.caption ?? img.title}</figcaption>
             </figure>
           ))}
         </div>
