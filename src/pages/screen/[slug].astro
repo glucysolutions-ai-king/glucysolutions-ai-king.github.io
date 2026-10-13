@@ -14,11 +14,11 @@ export function getStaticPaths() {
 const { role } = Astro.props;
 
 const heroFor: Record<string, string> = {
-  hollyoaks: '/portraits/gary-lucy-actor-standing-portrait.jpg',
+  hollyoaks: '/gallery/gary-lucy-actor-standing-editorial.jpg',
   'footballers-wives': '/gallery/gary-lucy-jacket-1600.jpg',
   'the-bill': '/gallery/gary-lucy-wing-1600.jpg',
-  eastenders: '/portraits/gary-lucy-actor-seated-portrait.jpg',
-  'the-good-ship-murder': '/portraits/gary-lucy-actor-walking-portrait.jpg',
+  eastenders: '/gallery/gary-lucy-actor-seated-editorial.jpg',
+  'the-good-ship-murder': '/gallery/gary-lucy-actor-walking-editorial.jpg',
   'the-chelsea-detective': '/hero/gl-sitting-bw-web.jpg',
 };
 const hero = heroFor[role.slug] ?? '/hero/gary-lucy-actor-full-length-black-white.jpg';
