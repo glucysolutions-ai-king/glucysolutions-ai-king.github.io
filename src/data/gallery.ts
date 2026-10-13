@@ -15,6 +15,42 @@ export interface GalleryImage {
 
 export const galleryImages: GalleryImage[] = [
   {
+    file: 'gary-lucy-actor-headshot-dark-1200.jpg',
+    slug: 'headshot',
+    title: 'Actor headshot',
+    srcset: '/gallery/gary-lucy-actor-headshot-dark-480.jpg 480w, /gallery/gary-lucy-actor-headshot-dark-960.jpg 960w, /gallery/gary-lucy-actor-headshot-dark-1200.jpg 1200w',
+    alt: 'Gary Lucy, British actor, headshot against a dark background',
+    width: 1170,
+    height: 1322,
+  },
+  {
+    file: 'gary-lucy-actor-headshot-checked-shirt-1200.jpg',
+    slug: 'headshot-checked-shirt',
+    title: 'Headshot in a checked shirt',
+    srcset: '/gallery/gary-lucy-actor-headshot-checked-shirt-480.jpg 480w, /gallery/gary-lucy-actor-headshot-checked-shirt-960.jpg 960w, /gallery/gary-lucy-actor-headshot-checked-shirt-1200.jpg 1200w',
+    alt: 'Gary Lucy, British actor, headshot in a blue checked shirt',
+    width: 1170,
+    height: 1328,
+  },
+  {
+    file: 'gary-lucy-actor-portrait-white-shirt-1200.jpg',
+    slug: 'portrait-white-shirt',
+    title: 'Portrait in a white shirt',
+    srcset: '/gallery/gary-lucy-actor-portrait-white-shirt-480.jpg 480w, /gallery/gary-lucy-actor-portrait-white-shirt-960.jpg 960w, /gallery/gary-lucy-actor-portrait-white-shirt-1200.jpg 1200w',
+    alt: 'Gary Lucy, British actor, studio portrait in a white shirt and blue tie',
+    width: 1170,
+    height: 1222,
+  },
+  {
+    file: 'gary-lucy-actor-red-carpet-suit-1200.jpg',
+    slug: 'red-carpet',
+    title: 'On the red carpet',
+    srcset: '/gallery/gary-lucy-actor-red-carpet-suit-480.jpg 480w, /gallery/gary-lucy-actor-red-carpet-suit-960.jpg 960w, /gallery/gary-lucy-actor-red-carpet-suit-1200.jpg 1200w',
+    alt: 'Gary Lucy, British actor, smiling in a three-piece suit at a red carpet event',
+    width: 1170,
+    height: 1422,
+  },
+  {
     file: 'gary-lucy-sitting-1600.jpg',
     slug: 'seated-aircraft-wreckage-portrait',
     title: 'Seated on aircraft wreckage',
