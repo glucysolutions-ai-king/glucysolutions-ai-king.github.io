@@ -1,4 +1,4 @@
-import { galleryImages } from '../data/gallery';
+import { galleryImages, imagePagePath } from '../data/gallery';
 import { SITE_URL, absoluteUrl } from '../data/site';
 
 const escapeXml = (value: string) =>
@@ -33,6 +33,7 @@ export function GET() {
     page('/stage', [image(studio, 'Gary Lucy, studio portrait for his stage work')]),
     page('/contact', [image(studio, 'Gary Lucy, British actor, studio portrait')]),
     page('/news/current-screen-work-2026', [image(walking, 'Gary Lucy, British actor, walking editorial portrait')]),
+    ...galleryImages.map((item) => page(imagePagePath(item), [image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt)])),
     page('/gallery', galleryImages.map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
   ].join('');
 

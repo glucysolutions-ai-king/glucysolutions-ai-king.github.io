@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
+import { careerTimeline, stageCredits, awards } from '../data/credits';
+import { SITE_URL, absoluteUrl } from '../data/site';
+
+// Newest first, only credits already marked verified in credits.ts.
+const screen = careerTimeline.filter((c) => c.verified).slice().reverse();
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${absoluteUrl('/filmography')}#list`,
+    name: 'Gary Lucy — Film and Television Credits',
+    itemListOrder: 'https://schema.org/ItemListOrderDescending',
+    numberOfItems: screen.length,
+    about: { '@id': `${SITE_URL}/#person` },
+    itemListElement: screen.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${c.show} (${c.years})`,
+      description: `Gary Lucy as ${c.character}, ${c.network}`,
+      ...(c.slug ? { url: absoluteUrl(`/screen/${c.slug}`) } : {}),
+    })),
+  },
+];
+---
+<Layout
+  title="Gary Lucy — Movies and TV Shows (Filmography)"
+  description="Gary Lucy's complete film and television credits, newest first: The Chelsea Detective, The Good Ship Murder, Hollyoaks, EastEnders, The Bill, Footballers' Wives and more."
+  path="/filmography"
+  jsonLd={jsonLd}
+>
+  <article class="rs-page">
+    <FlipHero
+      id="filmography"
+      imageFront="/hero/gary-lucy-actor-full-length-black-white.jpg"
+      imageBack="/gallery/gary-lucy-actor-walking-editorial.jpg"
+      altFront="Gary Lucy, British actor, full-length black and white portrait"
+      altBack="Gary Lucy, British actor, walking editorial portrait"
+      kicker="Filmography"
+      headline="Movies &amp;<br />TV Shows"
+      dek="Every credit, newest first."
+      backKicker="Career"
+      backHeadline="1997<br />to Now"
+    />
+
+    <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Filmography</span>
+      </nav>
+
+      <p class="rs-lede">
+        Gary Lucy is a British actor with film, television and stage credits
+        since 1997, including <em>Hollyoaks</em>, <em>Footballers&rsquo; Wives</em>,
+        <em>The Bill</em>, <em>EastEnders</em>, <em>The Good Ship Murder</em> and
+        <em>The Chelsea Detective</em>. For his biography see
+        <a href="/about">About</a>.
+      </p>
+
+      <h2>Film and television</h2>
+      <ul class="rs-rows">
+        {screen.map((c) => (
+          <li>
+            <div>
+              <span class="rs-row-name">
+                {c.slug ? <a href={`/screen/${c.slug}`}>{c.show}</a> : c.show}
+                &mdash; {c.character}
+              </span>
+              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">{c.network}</p>
+            </div>
+            <span class="rs-row-meta">{c.years}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Stage</h2>
+      <ul class="rs-rows">
+        {stageCredits.map((c) => (
+          <li>
+            <div>
+              <span class="rs-row-name"><a href="/stage">{c.title}</a> &mdash; {c.role}</span>
+              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">{c.venue}</p>
+            </div>
+            <span class="rs-row-meta">{c.years}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Awards</h2>
+      <ul class="rs-rows">
+        {awards.filter((a) => a.verified).map((a) => (
+          <li>
+            <div>
+              <span class="rs-row-name">{a.name} &mdash; {a.category} ({a.result})</span>
+              <p style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.85rem; color:var(--rs-meta); margin:0.3em 0 0;">{a.detail}</p>
+            </div>
+            <span class="rs-row-meta">{a.year}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="rs-note">
+        Photography: <a href="/gallery">official gallery</a>. Professional enquiries:
+        <a href="/contact">contact</a>.
+      </p>
+    </div>
+  </article>
+</Layout>
