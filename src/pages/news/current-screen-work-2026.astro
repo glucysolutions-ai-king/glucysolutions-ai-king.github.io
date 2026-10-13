@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FlipHero from '../../components/FlipHero.astro';
+import { SITE_URL, absoluteUrl } from '../../data/site';
+
+const title = 'Gary Lucy — Current Screen Work in 2026';
+const description = 'Official update on Gary Lucy’s current television work in The Good Ship Murder and The Chelsea Detective.';
+const path = '/news/current-screen-work-2026';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    '@id': `${absoluteUrl(path)}#article`,
+    headline: 'Gary Lucy: Current Screen Work in 2026',
+    description,
+    datePublished: '2026-10-07',
+    dateModified: '2026-10-07',
+    mainEntityOfPage: absoluteUrl(path),
+    image: absoluteUrl('/gallery/gary-lucy-actor-walking-editorial.jpg'),
+    author: { '@id': `${SITE_URL}/#person` },
+    publisher: { '@id': `${SITE_URL}/#person` },
+    about: { '@id': `${SITE_URL}/#person` },
+  },
+];
+---
+<Layout title={title} description={description} path={path} jsonLd={jsonLd} ogImage="/gallery/gary-lucy-actor-walking-editorial.jpg">
+  <article class="rs-page">
+    <FlipHero
+      id="current-screen-work-2026"
+      imageFront="/gallery/gary-lucy-actor-walking-editorial.jpg"
+      imageBack="/hero/gl-sitting-bw-web.jpg"
+      altFront="Gary Lucy, British actor, walking editorial portrait"
+      altBack="Gary Lucy, black and white portrait"
+      kicker="Official Update · 7 October 2026"
+      headline="Current Screen Work"
+      dek="Gary Lucy's latest television roles in British crime drama."
+      backKicker="On Screen"
+      backHeadline="2026"
+    />
+
+    <div class="rs-body">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <a href="/news">News</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Current screen work</span>
+      </nav>
+
+      <div class="rs-byline"><span>Official update</span><time datetime="2026-10-07">7 October 2026</time></div>
+
+      <p class="rs-lede">
+        Gary Lucy's current screen work continues a television career spanning nearly three decades, with recent roles in two British crime dramas.
+      </p>
+
+      <h2>The Good Ship Murder</h2>
+      <p>
+        Gary appears as Jason Agnew in the third series of Channel 5's Mediterranean-set crime drama <em>The Good Ship Murder</em>. The role follows his long-running work in British continuing drama and police procedural television.
+      </p>
+      <p><a class="accent" href="/screen/the-good-ship-murder">View the official role profile &rarr;</a></p>
+
+      <h2>The Chelsea Detective</h2>
+      <p>
+        Gary also plays Mike Curtis in the fourth series of <em>The Chelsea Detective</em>, adding another contemporary crime-drama credit to a career that includes <em>The Bill</em>, <em>EastEnders</em>, <em>Footballers' Wives</em> and <em>Hollyoaks</em>.
+      </p>
+      <p><a class="accent" href="/screen/the-chelsea-detective">View the official role profile &rarr;</a></p>
+
+      <hr class="rs-divider" />
+      <p>This page is the official source for Gary Lucy's current professional screen credits. Further confirmed work will be added to the <a class="accent" href="/news">newsroom</a>.</p>
+    </div>
+  </article>
+</Layout>

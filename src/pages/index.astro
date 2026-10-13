@@ -2,19 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import MagazineHero from '../components/MagazineHero.astro';
 import { careerTimeline } from '../data/credits';
+import { SITE_URL, absoluteUrl } from '../data/site';
 
 const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
-    '@id': 'https://www.garylucy.co.uk/#webpage',
-    url: 'https://www.garylucy.co.uk/',
+    '@id': `${SITE_URL}/#webpage`,
+    url: `${SITE_URL}/`,
     name: 'Gary Lucy — Official Site | British Screen & Stage Actor',
     dateCreated: '2026-09-20',
-    isPartOf: { '@id': 'https://www.garylucy.co.uk/#website' },
-    about: { '@id': 'https://www.garylucy.co.uk/#person' },
-    mainEntity: { '@id': 'https://www.garylucy.co.uk/#person' },
-    primaryImageOfPage: 'https://www.garylucy.co.uk/hero/gl-standing-bw-web.jpg',
+    dateModified: '2026-10-07',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#person` },
+    mainEntity: { '@id': `${SITE_URL}/#person` },
+    primaryImageOfPage: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'),
   },
 ];
 ---
@@ -25,8 +27,8 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <MagazineHero
-    imageFull="/hero/gl-standing-bw-web.jpg"
-    imageClose="/hero/gl-closeup-bw-web.jpg"
+    imageFull="/hero/gary-lucy-actor-full-length-black-white.jpg"
+    imageClose="/hero/gary-lucy-actor-close-up-black-white.jpg"
     altFull="Gary Lucy, full-length black and white editorial portrait"
     altClose="Gary Lucy, close-up black and white editorial portrait"
   />

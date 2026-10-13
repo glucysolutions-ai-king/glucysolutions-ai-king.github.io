@@ -2,7 +2,9 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.garylucy.co.uk',
+  // GitHub Pages serves the apex domain and redirects www to it. Search
+  // engines must see the same host in redirects, canonicals and sitemaps.
+  site: 'https://garylucy.co.uk',
   trailingSlash: 'never',
   integrations: [
     sitemap({
@@ -11,6 +13,7 @@ export default defineConfig({
       // to /about instead of 404ing, and must never appear as its own
       // sitemap/indexable entry alongside the page it redirects to.
       filter: (page) => !page.endsWith('/about-rs-preview'),
+      lastmod: new Date('2026-10-07'),
     }),
   ],
   build: {

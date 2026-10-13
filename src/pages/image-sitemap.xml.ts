@@ -1,51 +1,46 @@
-import type { APIRoute } from 'astro';
 import { galleryImages } from '../data/gallery';
+import { SITE_URL, absoluteUrl } from '../data/site';
 
-// A dedicated Google Image Sitemap extension, separate from the page
-// sitemap @astrojs/sitemap generates. This gives Google Images explicit,
-// well-formed signal for every gallery photo (name + caption), which the
-// default page sitemap doesn't carry. Low-risk, additive, no effect on
-// existing routes.
-const SITE = 'https://www.garylucy.co.uk';
+const escapeXml = (value: string) =>
+  value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-export const GET: APIRoute = () => {
-  const urlEntries = [
-    {
-      loc: `${SITE}/gallery`,
-      images: galleryImages.map((img) => ({
-        loc: `${SITE}/gallery/${img.file}`,
-        title: img.alt,
-        caption: img.caption ?? img.alt,
-      })),
-    },
-  ];
+const image = (path: string, title: string, caption = title) => `
+    <image:image>
+      <image:loc>${escapeXml(absoluteUrl(path))}</image:loc>
+      <image:title>${escapeXml(title)}</image:title>
+      <image:caption>${escapeXml(caption)}</image:caption>
+    </image:image>`;
 
-  const esc = (s: string) =>
-    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export function GET() {
+  const galleryEntries = galleryImages
+    .map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))
+    .join('');
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urlEntries
-  .map(
-    (entry) => `  <url>
-    <loc>${esc(entry.loc)}</loc>
-${entry.images
-  .map(
-    (img) => `    <image:image>
-      <image:loc>${esc(img.loc)}</image:loc>
-      <image:title>${esc(img.title)}</image:title>
-      <image:caption>${esc(img.caption)}</image:caption>
-    </image:image>`
-  )
-  .join('\n')}
-  </url>`
-  )
-  .join('\n')}
-</urlset>
-`;
+  const page = (path: string, images: string[]) => `
+  <url>
+    <loc>${path === '/' ? `${SITE_URL}/` : absoluteUrl(path)}</loc>${images.join('')}
+  </url>`;
 
-  return new Response(body, {
+  const full = '/hero/gary-lucy-actor-full-length-black-white.jpg';
+  const close = '/hero/gary-lucy-actor-close-up-black-white.jpg';
+  const walking = '/gallery/gary-lucy-actor-walking-editorial.jpg';
+  const studio = '/gallery/gary-lucy-actor-studio-portrait.jpg';
+
+  const pages = [
+    page('/', [image(full, 'Gary Lucy, British screen and stage actor'), image(close, 'Gary Lucy, black and white close-up portrait')]),
+    page('/about', [image(full, 'Gary Lucy, British actor, standing portrait'), image(close, 'Gary Lucy, close portrait')]),
+    page('/screen', [image(walking, 'Gary Lucy, British actor, on location')]),
+    page('/stage', [image(studio, 'Gary Lucy, studio portrait for his stage work')]),
+    page('/contact', [image(studio, 'Gary Lucy, British actor, studio portrait')]),
+    page('/news/current-screen-work-2026', [image(walking, 'Gary Lucy, British actor, walking editorial portrait')]),
+    page('/gallery', galleryImages.map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
+  ].join('');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${pages}
+</urlset>`;
+
+  return new Response(xml, {
     headers: { 'Content-Type': 'application/xml; charset=utf-8' },
   });
-};
+}

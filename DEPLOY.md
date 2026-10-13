@@ -35,11 +35,11 @@ In Cloudflare Pages → your project → **Custom domains** → **Set up a custo
 
 Remove any existing conflicting A/CNAME records for `@` and `www` first — GoDaddy won't let two records own the same name.
 
-Cloudflare Pages issues a free SSL certificate automatically once DNS resolves (usually within minutes, sometimes up to 24h for propagation). Set **www → root redirect** (or root → www, your call) in Cloudflare Pages' custom domain settings so there's one canonical URL — the site's `astro.config.mjs` and SEO tags assume `https://www.garylucy.co.uk/` is canonical, so redirect the bare domain to `www`, or tell me to flip it the other way.
+Cloudflare Pages issues a free SSL certificate automatically once DNS resolves (usually within minutes, sometimes up to 24h for propagation). Set **www → root redirect** (or root → www, your call) in Cloudflare Pages' custom domain settings so there's one canonical URL — the site's `astro.config.mjs` and SEO tags assume `https://garylucy.co.uk/` (apex) is canonical, matching the `CNAME` file; GitHub Pages redirects `www` to the apex.
 
 ## 4. Verify with Search Console and Bing
 
-- Google Search Console (search.google.com/search-console): add property `https://www.garylucy.co.uk`, verify via the DNS TXT record method (add one more GoDaddy record), submit `https://www.garylucy.co.uk/sitemap-index.xml`.
+- Google Search Console (search.google.com/search-console): add the domain property `garylucy.co.uk` (covers apex and www), verify via the DNS TXT record method (add one more GoDaddy record), submit `https://garylucy.co.uk/sitemap-index.xml` and `https://garylucy.co.uk/image-sitemap.xml`.
 - Bing Webmaster Tools: same process, or import directly from Search Console once that's verified.
 
 ## 5. Contact form
