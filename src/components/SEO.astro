@@ -10,7 +10,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, path, jsonLd = [], ogImage = '/hero/gary-lucy-actor-full-length-black-white.jpg' } = Astro.props;
+const { title, description, path, jsonLd = [], ogImage = '/gallery/gary-lucy-actor-headshot-dark-1200.jpg' } = Astro.props;
 const canonical = new URL(path, Astro.site).toString();
 const ogUrl = new URL(ogImage, Astro.site).toString();
 const imageAlt = title.startsWith('Gary Lucy') ? title : `Gary Lucy — ${title}`;
@@ -28,10 +28,10 @@ const personLd = {
   url: `${SITE_URL}/`,
   image: {
     '@type': 'ImageObject',
-    url: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'),
-    contentUrl: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'),
-    width: 1400,
-    height: 2100,
+    url: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
+    contentUrl: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
+    width: 1170,
+    height: 1322,
     caption: 'Gary Lucy, British screen and stage actor',
     representativeOfPage: true,
   },
