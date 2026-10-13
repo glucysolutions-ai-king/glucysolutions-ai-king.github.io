@@ -37,7 +37,7 @@ const jsonLd = [
     isPartOf: { '@id': `${absoluteUrl('/gallery')}#webpage` },
     acquireLicensePage: absoluteUrl('/contact'),
     creditText: img.credit ?? 'Gary Lucy — official website',
-    ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
+    ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   },
 ];
 ---
