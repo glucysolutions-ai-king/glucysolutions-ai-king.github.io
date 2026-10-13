@@ -211,18 +211,18 @@ export interface TimelineEntry {
 export const careerTimeline: TimelineEntry[] = [
   { character: 'Various', show: 'Grange Hill', years: '1997', network: 'BBC', image: '/gallery/gary-lucy-sitting-1600.jpg', verified: true },
   { character: 'Series regular', show: 'Dream Team', years: '1997–1998', network: 'Sky One', image: '/hero/gary-lucy-actor-full-length-black-white.jpg', verified: true },
-  { slug: 'hollyoaks', character: 'Luke Morgan', show: 'Hollyoaks', years: '1999–2002', network: 'Channel 4', image: '/portraits/gary-lucy-actor-standing-portrait.jpg', verified: true },
+  { slug: 'hollyoaks', character: 'Luke Morgan', show: 'Hollyoaks', years: '1999–2002', network: 'Channel 4', image: '/gallery/gary-lucy-actor-standing-editorial.jpg', verified: true },
   { slug: 'footballers-wives', character: 'Kyle Pascoe', show: "Footballers' Wives", years: '2002–2004', network: 'ITV', image: '/gallery/gary-lucy-jacket-1600.jpg', verified: true },
   { character: 'Michael Sands', show: "She's Gone", years: '2004', network: 'Film', image: '/gallery/gary-lucy-fuselage-1600.jpg', verified: true },
   { slug: 'the-bill', character: 'DC Will Fletcher', show: 'The Bill', years: '2005–2010', network: 'ITV', image: '/gallery/gary-lucy-wing-1600.jpg', verified: true },
   { character: 'Matthew Cassady', show: 'Whatever It Takes', years: '2009', network: 'ITV', image: '/hero/gl-wing-color.jpg', verified: true },
   { character: 'Ben Lloyd', show: 'Missing', years: '2010', network: 'ITV', image: '/gallery/gary-lucy-actor-walking-editorial.jpg', verified: true },
   { character: 'Contestant (runner-up, with professional partner Maria Fillipov)', show: 'Dancing on Ice', years: '2010, 2014', network: 'ITV', image: '/hero/gary-lucy-actor-close-up-black-white.jpg', verified: true },
-  { slug: 'eastenders', character: 'Danny Pennant', show: 'EastEnders', years: '2012–2014', network: 'BBC One', image: '/portraits/gary-lucy-actor-seated-portrait.jpg', verified: true },
+  { slug: 'eastenders', character: 'Danny Pennant', show: 'EastEnders', years: '2012–2014', network: 'BBC One', image: '/gallery/gary-lucy-actor-seated-editorial.jpg', verified: true },
   { character: 'Valentine Kildare', show: 'Casualty', years: '2014', network: 'BBC One', image: '/gallery/gary-lucy-actor-studio-portrait.jpg', verified: true },
-  { slug: 'hollyoaks', character: 'Luke Morgan (returns)', show: 'Hollyoaks', years: '2017–2023', network: 'Channel 4', image: '/portraits/gary-lucy-actor-standing-portrait.jpg', verified: true },
+  { slug: 'hollyoaks', character: 'Luke Morgan (returns)', show: 'Hollyoaks', years: '2017–2023', network: 'Channel 4', image: '/gallery/gary-lucy-actor-standing-editorial.jpg', verified: true },
   { character: 'Billy McLaine', show: 'The Dumping Ground', years: '2018', network: 'CBBC', image: '/hero/gl-fuselage-color.jpg', verified: true },
-  { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2025', network: 'Channel 5', image: '/portraits/gary-lucy-actor-walking-portrait.jpg', verified: true },
+  { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2025', network: 'Channel 5', image: '/gallery/gary-lucy-actor-walking-editorial.jpg', verified: true },
   { slug: 'the-chelsea-detective', character: 'Mike Curtis', show: 'The Chelsea Detective', years: '2026', network: 'Acorn TV', image: '/hero/gl-sitting-bw-web.jpg', verified: true },
 ];
 
