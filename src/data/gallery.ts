@@ -49,6 +49,7 @@ export const galleryImages: GalleryImage[] = [
     alt: 'Gary Lucy, British actor, smiling in a three-piece suit at a red carpet event',
     width: 1170,
     height: 1422,
+    credit: 'Hollyoaks',
   },
   {
     file: 'gary-lucy-sitting-1600.jpg',
