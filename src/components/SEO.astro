@@ -1,5 +1,6 @@
 ---
 import { profile } from '../data/credits';
+import { SITE_URL, absoluteUrl } from '../data/site';
 
 interface Props {
   title: string;
@@ -9,33 +10,44 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, path, jsonLd = [], ogImage = '/hero/gl-standing-bw-web.jpg' } = Astro.props;
+const { title, description, path, jsonLd = [], ogImage = '/hero/gary-lucy-actor-full-length-black-white.jpg' } = Astro.props;
 const canonical = new URL(path, Astro.site).toString();
 const ogUrl = new URL(ogImage, Astro.site).toString();
+const imageAlt = title.startsWith('Gary Lucy') ? title : `Gary Lucy — ${title}`;
 
 const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  '@id': 'https://www.garylucy.co.uk/#person',
+  '@id': `${SITE_URL}/#person`,
   name: profile.name,
   alternateName: profile.fullName,
   birthDate: profile.born,
   birthPlace: profile.birthPlace,
   jobTitle: 'Actor',
   description: profile.bioShort,
-  url: 'https://www.garylucy.co.uk/',
-  image: 'https://www.garylucy.co.uk/hero/gl-standing-bw-web.jpg',
+  url: `${SITE_URL}/`,
+  image: {
+    '@type': 'ImageObject',
+    url: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'),
+    contentUrl: absoluteUrl('/hero/gary-lucy-actor-full-length-black-white.jpg'),
+    width: 1400,
+    height: 2100,
+    caption: 'Gary Lucy, British screen and stage actor',
+    representativeOfPage: true,
+  },
   sameAs: profile.sameAs,
+  award: 'British Soap Award for Best Newcomer (2000)',
+  knowsAbout: ['Acting', 'British television drama', 'British theatre'],
 };
 
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'https://www.garylucy.co.uk/#website',
+  '@id': `${SITE_URL}/#website`,
   name: 'Gary Lucy — Official Site',
-  url: 'https://www.garylucy.co.uk/',
-  about: { '@id': 'https://www.garylucy.co.uk/#person' },
-  publisher: { '@id': 'https://www.garylucy.co.uk/#person' },
+  url: `${SITE_URL}/`,
+  about: { '@id': `${SITE_URL}/#person` },
+  publisher: { '@id': `${SITE_URL}/#person` },
 };
 
 // Auto-generate a simple Home > Page breadcrumb for any top-level page that
@@ -52,6 +64,7 @@ const pageLabels: Record<string, string> = {
   '/press': 'Press',
   '/contact': 'Contact',
   '/news': 'News',
+  '/news/current-screen-work-2026': 'Current screen work',
 };
 const autoBreadcrumbLd =
   !hasOwnBreadcrumb && pageLabels[path]
@@ -59,7 +72,7 @@ const autoBreadcrumbLd =
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.garylucy.co.uk/' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
           { '@type': 'ListItem', position: 2, name: pageLabels[path], item: canonical },
         ],
       }
@@ -80,8 +93,8 @@ const webPageLd = !hasOwnPageEntity
       url: canonical,
       name: title,
       description,
-      isPartOf: { '@id': 'https://www.garylucy.co.uk/#website' },
-      about: { '@id': 'https://www.garylucy.co.uk/#person' },
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#person` },
       primaryImageOfPage: ogUrl,
     }
   : null;
@@ -96,11 +109,13 @@ const webPageLd = !hasOwnPageEntity
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={ogUrl} />
+<meta property="og:image:alt" content={imageAlt} />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
 
 <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
