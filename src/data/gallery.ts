@@ -22,6 +22,7 @@ export const galleryImages: GalleryImage[] = [
     alt: 'Gary Lucy, British actor, headshot against a dark background',
     width: 1170,
     height: 1322,
+    credit: 'Jenny Scott Photography',
   },
   {
     file: 'gary-lucy-actor-headshot-checked-shirt-1200.jpg',
@@ -31,6 +32,7 @@ export const galleryImages: GalleryImage[] = [
     alt: 'Gary Lucy, British actor, headshot in a blue checked shirt',
     width: 1170,
     height: 1328,
+    credit: 'Jenny Scott Photography',
   },
   {
     file: 'gary-lucy-actor-portrait-white-shirt-1200.jpg',
