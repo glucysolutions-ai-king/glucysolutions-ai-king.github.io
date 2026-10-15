@@ -11,7 +11,8 @@ interface Props {
 }
 
 const { title, description, path, jsonLd = [], ogImage = '/gallery/gary-lucy-actor-headshot-dark-1200.jpg' } = Astro.props;
-const canonical = new URL(path, Astro.site).toString();
+const canonicalPath = path === '/' ? '/' : `${path.replace(/\/$/, '')}/`;
+const canonical = new URL(canonicalPath, Astro.site).toString();
 const ogUrl = new URL(ogImage, Astro.site).toString();
 const imageAlt = title.startsWith('Gary Lucy') ? title : `Gary Lucy — ${title}`;
 
@@ -26,15 +27,38 @@ const personLd = {
   jobTitle: 'Actor',
   description: profile.bioShort,
   url: `${SITE_URL}/`,
-  image: {
-    '@type': 'ImageObject',
-    url: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
-    contentUrl: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
-    width: 1170,
-    height: 1322,
-    caption: 'Gary Lucy, British screen and stage actor',
-    representativeOfPage: true,
-  },
+  image: [
+    {
+      '@type': 'ImageObject',
+      '@id': `${absoluteUrl('/gallery/headshot/')}#image`,
+      url: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
+      contentUrl: absoluteUrl('/gallery/gary-lucy-actor-headshot-dark-1200.jpg'),
+      width: 1170,
+      height: 1322,
+      caption: 'Gary Lucy, British screen and stage actor — official headshot',
+      creditText: 'Jenny Scott Photography',
+      representativeOfPage: true,
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${absoluteUrl('/gallery/headshot-checked-shirt/')}#image`,
+      url: absoluteUrl('/gallery/gary-lucy-actor-headshot-checked-shirt-1200.jpg'),
+      contentUrl: absoluteUrl('/gallery/gary-lucy-actor-headshot-checked-shirt-1200.jpg'),
+      width: 1170,
+      height: 1328,
+      caption: 'Gary Lucy, British actor — official headshot in checked shirt',
+      creditText: 'Jenny Scott Photography',
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${absoluteUrl('/gallery/portrait-white-shirt/')}#image`,
+      url: absoluteUrl('/gallery/gary-lucy-actor-portrait-white-shirt-1200.jpg'),
+      contentUrl: absoluteUrl('/gallery/gary-lucy-actor-portrait-white-shirt-1200.jpg'),
+      width: 1170,
+      height: 1222,
+      caption: 'Gary Lucy, British actor — official studio portrait',
+    },
+  ],
   sameAs: profile.sameAs,
   worksFor: {
     '@type': 'Organization',
@@ -66,6 +90,7 @@ const pageLabels: Record<string, string> = {
   '/screen': 'Screen',
   '/stage': 'Stage',
   '/showreel': 'Showreel',
+  '/filmography': 'Filmography',
   '/gallery': 'Gallery',
   '/press': 'Press',
   '/contact': 'Contact',
@@ -107,6 +132,7 @@ const webPageLd = !hasOwnPageEntity
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 <link rel="canonical" href={canonical} />
 
 <meta property="og:type" content="website" />

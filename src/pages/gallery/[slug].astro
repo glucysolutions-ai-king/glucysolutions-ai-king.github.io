@@ -21,8 +21,17 @@ const description = `${img.alt}. Official image from the website of British acto
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Gallery', item: absoluteUrl('/gallery/') },
+      { '@type': 'ListItem', position: 3, name: img.title, item: absoluteUrl(`${pagePath}/`) },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'ImageObject',
-    '@id': `${absoluteUrl(pagePath)}#image`,
+    '@id': `${absoluteUrl(`${pagePath}/`)}#image`,
     name: `Gary Lucy — ${img.title}`,
     caption: img.caption ?? img.alt,
     description,
@@ -32,10 +41,10 @@ const jsonLd = [
     height: img.height,
     encodingFormat: 'image/jpeg',
     representativeOfPage: true,
-    mainEntityOfPage: absoluteUrl(pagePath),
+    mainEntityOfPage: absoluteUrl(`${pagePath}/`),
     about: { '@id': `${SITE_URL}/#person` },
-    isPartOf: { '@id': `${absoluteUrl('/gallery')}#webpage` },
-    acquireLicensePage: absoluteUrl('/contact'),
+    isPartOf: { '@id': `${absoluteUrl('/gallery/')}#webpage` },
+    acquireLicensePage: absoluteUrl('/contact/'),
     creditText: img.credit ?? 'Gary Lucy — official website',
     ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   },

@@ -32,11 +32,10 @@ source before merging — Codex's own citations were not taken on trust.
 2. **The Chelsea Detective — episode title added.** Series 4 opens with
    "Death on the Aether" (confirmed via tellyvisions.org's episode recap
    and pogdesign.co.uk's episode guide), now referenced in the summary
-   copy. **Character name is "Mike Curtis," not "Michael Curtis."** Codex
-   proposed the "Michael" spelling citing IMDb; the only source found this
-   session that actually names the character — tellyvisions.org's
-   dedicated recap of this episode — spells it "Mike" twice, matching the
-   name already on the site. Kept "Mike Curtis."
+   copy. **Character name corrected to "Michael Curtis" on 15 October
+   2026.** IMDb's current Gary Lucy filmography and the episode cast listing
+   both use "Michael Curtis." An earlier recap used the shortened "Mike";
+   the official site now follows the credited form shown on IMDb.
 
 3. **Unsupported promotional copy removed.** The homepage, about page and
    screen pages no longer describe recent work as Gary's "biggest" or a
@@ -75,17 +74,14 @@ source before merging — Codex's own citations were not taken on trust.
    It isn't — garylucy.co.uk is served from GitHub Pages. Stale doc text
    fixed; no effect on the live site.
 
+8. **Canonical URL format re-audited on 15 October 2026.** A live HTTP
+   check showed that GitHub Pages redirects bare directory paths to
+   slash-ending URLs. The site now generates matching slash-ending
+   canonicals, breadcrumbs and sitemap entries instead of pointing crawlers
+   at a URL that immediately redirects.
+
 ### Codex changes NOT merged
 
-- **Site-wide trailing-slash / canonical URL change** (`trailingSlash:
-  'never'` → `'always'`, plus matching edits to `SEO.astro`, breadcrumbs,
-  and the `/about-rs-preview` redirect). Not adopted: the site's current
-  canonical/sitemap format was just audited this session and confirmed
-  clean, GitHub Pages doesn't redirect bare paths to slash-ending ones (so
-  this would create two live URL variants per page rather than fixing
-  anything), and there was no reported problem this was solving. If Gary
-  wants this revisited, it needs its own test pass, not a silent bundle
-  with content fixes.
 - **Coverline homepage priority.** Codex replaced the homepage's lead
   "SOS Global AI" coverline with a Chelsea Detective one, reasoning the
   actor site shouldn't lead with business news. That's a legitimate

@@ -90,17 +90,17 @@ export const roles: Role[] = [
   },
   {
     slug: 'the-chelsea-detective',
-    character: 'Mike Curtis',
+    character: 'Michael Curtis',
     show: 'The Chelsea Detective',
     years: '2026',
     network: 'Acorn TV',
     type: 'Crime Drama',
     summary:
-      'Lucy joined the fourth series of Acorn TV’s The Chelsea Detective as Mike Curtis, appearing in the series opener, "Death on the Aether." The series streams on Acorn TV, including via the Acorn TV Amazon Prime Video Channel, and is distributed across multiple territories internationally. It is created and executive produced by Peter Fincham — Controller of BBC One from 2005 to 2007, then Director of Television at ITV from 2008 to 2016 — through his production company Expectation.',
+      'Lucy joined the fourth series of Acorn TV’s The Chelsea Detective as Michael Curtis, appearing in the series opener, "Death on the Aether." The series streams on Acorn TV, including via the Acorn TV Amazon Prime Video Channel, and is distributed across multiple territories internationally. It is created and executive produced by Peter Fincham — Controller of BBC One from 2005 to 2007, then Director of Television at ITV from 2008 to 2016 — through his production company Expectation.',
     verified: true,
-    seoTitle: 'Gary Lucy in The Chelsea Detective — Mike Curtis',
+    seoTitle: 'Gary Lucy in The Chelsea Detective — Michael Curtis',
     seoDescription:
-      'Gary Lucy plays Mike Curtis in The Chelsea Detective, series 4 (2026), streaming on Acorn TV and the Acorn TV Amazon Prime Video Channel.',
+      'Gary Lucy plays Michael Curtis in The Chelsea Detective, series 4 (2026), streaming on Acorn TV and the Acorn TV Amazon Prime Video Channel.',
   },
 ];
 
@@ -223,7 +223,7 @@ export const careerTimeline: TimelineEntry[] = [
   { slug: 'hollyoaks', character: 'Luke Morgan (returns)', show: 'Hollyoaks', years: '2017–2023', network: 'Channel 4', image: '/gallery/gary-lucy-actor-standing-editorial.jpg', verified: true },
   { character: 'Billy McLaine', show: 'The Dumping Ground', years: '2018', network: 'CBBC', image: '/hero/gl-fuselage-color.jpg', verified: true },
   { slug: 'the-good-ship-murder', character: 'Jason Agnew', show: 'The Good Ship Murder', years: '2025', network: 'Channel 5', image: '/gallery/gary-lucy-actor-walking-editorial.jpg', verified: true },
-  { slug: 'the-chelsea-detective', character: 'Mike Curtis', show: 'The Chelsea Detective', years: '2026', network: 'Acorn TV', image: '/hero/gl-sitting-bw-web.jpg', verified: true },
+  { slug: 'the-chelsea-detective', character: 'Michael Curtis', show: 'The Chelsea Detective', years: '2026', network: 'Acorn TV', image: '/hero/gl-sitting-bw-web.jpg', verified: true },
 ];
 
 export interface Award {
@@ -269,7 +269,7 @@ export const profile = {
   fullName: 'Gary Edward Lucy',
   born: '1981-11-27',
   birthPlace: 'Chigwell, Essex, England',
-  yearsActive: '1996–present',
+  yearsActive: '1997–present',
   headline: 'British screen and stage actor',
   bioShort:
     'Gary Lucy is a British actor with nearly three decades of screen and stage credits, known for major returning roles in Hollyoaks, Footballers’ Wives, The Bill and EastEnders. His most recent screen work is Acorn TV’s The Chelsea Detective, alongside Channel 5’s The Good Ship Murder.',

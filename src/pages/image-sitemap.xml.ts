@@ -11,6 +11,9 @@ const image = (path: string, title: string, caption = title) => `
       <image:caption>${escapeXml(caption)}</image:caption>
     </image:image>`;
 
+const pageUrl = (path: string) =>
+  path === '/' ? `${SITE_URL}/` : absoluteUrl(`${path.replace(/\/$/, '')}/`);
+
 export function GET() {
   const galleryEntries = galleryImages
     .map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))
@@ -18,7 +21,7 @@ export function GET() {
 
   const page = (path: string, images: string[]) => `
   <url>
-    <loc>${path === '/' ? `${SITE_URL}/` : absoluteUrl(path)}</loc>${images.join('')}
+    <loc>${pageUrl(path)}</loc>${images.join('')}
   </url>`;
 
   const full = '/hero/gary-lucy-actor-full-length-black-white.jpg';
