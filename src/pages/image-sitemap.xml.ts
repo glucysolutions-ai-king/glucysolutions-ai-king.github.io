@@ -38,6 +38,9 @@ export function GET() {
     page('/news/current-screen-work-2026', [image(walking, 'Gary Lucy, British actor, walking editorial portrait')]),
     ...galleryImages.map((item) => page(imagePagePath(item), [image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt)])),
     page('/gallery', galleryImages.map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
+    page('/press/official-portraits', galleryImages
+      .filter((item) => ['headshot', 'headshot-checked-shirt', 'portrait-white-shirt', 'red-carpet', 'seated-aircraft-wreckage-portrait', 'leather-jacket-portrait'].includes(item.slug))
+      .map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
   ].join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

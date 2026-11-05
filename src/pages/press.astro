@@ -29,6 +29,10 @@ import { pressItems } from '../data/press';
       </nav>
 
       <ul class="rs-rows">
+        <li>
+          <span class="rs-row-name"><a href="/press/official-portraits">Official portraits and press images</a></span>
+          <span class="rs-row-meta">Gary Lucy official website &middot; Media resources</span>
+        </li>
         {pressItems.map((item) => (
           <li>
             <span class="rs-row-name"><a href={item.url} target="_blank" rel="noopener">{item.title}</a></span>
