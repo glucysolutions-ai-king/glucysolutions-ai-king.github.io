@@ -40,7 +40,7 @@ export function GET() {
     page('/gallery', galleryImages.map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
     page('/press/official-portraits', galleryImages
       .filter((item) => ['headshot', 'headshot-checked-shirt', 'portrait-white-shirt', 'red-carpet', 'seated-aircraft-wreckage-portrait', 'leather-jacket-portrait'].includes(item.slug))
-      .map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
+      .map((item) => image(`/gallery/${item.file}`, `Gary Lucy — ${item.title} — 2026 official portrait selection`, item.caption ?? item.alt))),
   ].join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -45,7 +45,9 @@ const jsonLd = [
     about: { '@id': `${SITE_URL}/#person` },
     isPartOf: { '@id': `${absoluteUrl('/gallery/')}#webpage` },
     acquireLicensePage: absoluteUrl('/contact/'),
-    creditText: img.credit ?? 'Gary Lucy — official website',
+    license: absoluteUrl('/press/official-portraits/'),
+    creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
+    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
     ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   },
 ];
@@ -95,6 +97,9 @@ const jsonLd = [
       {img.credit && <p class="rs-note">Photo credit: {img.credit}</p>}
       <p class="rs-note">
         Licensing and press enquiries: <a href="/contact">contact Gary Lucy&rsquo;s representation</a>.
+      </p>
+      <p class="rs-note">
+        Copyright © Gary Lucy and/or the credited photographer or rightsholder. All rights reserved. Display on this official site does not grant reproduction or publication rights.
       </p>
 
       <p class="rs-note" style="display:flex; justify-content:space-between; gap:1rem;">

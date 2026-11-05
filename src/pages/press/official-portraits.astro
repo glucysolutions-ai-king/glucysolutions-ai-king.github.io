@@ -24,6 +24,8 @@ const jsonLd = [
     name: 'Gary Lucy — Official Portraits and Press Images',
     url: absoluteUrl(`${pagePath}/`),
     description: 'Selected current portraits and press images of British actor Gary Lucy, with verified credits and links to the official image pages.',
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
     about: { '@id': `${SITE_URL}/#person` },
     mainEntity: {
       '@type': 'ImageGallery',
@@ -35,21 +37,23 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
     '@id': `${absoluteUrl(`${imagePagePath(img)}/`)}#image`,
-    name: `Gary Lucy — ${img.title}`,
+    name: `Gary Lucy — ${img.title} — 2026 official portrait selection`,
     contentUrl: absoluteUrl(imageUrl(img)),
     url: absoluteUrl(`${imagePagePath(img)}/`),
     width: img.width,
     height: img.height,
     caption: img.caption ?? img.alt,
     about: { '@id': `${SITE_URL}/#person` },
-    creditText: img.credit ?? 'Gary Lucy — official website',
+    creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
+    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    license: absoluteUrl('/press/official-portraits/'),
     acquireLicensePage: absoluteUrl('/contact/'),
   })),
 ];
 ---
 <Layout
-  title="Gary Lucy — Official Portraits &amp; Press Images"
-  description="Selected current portraits and press images of British actor Gary Lucy, with verified credits and links to the official high-resolution image pages."
+  title="Gary Lucy — Official Portraits 2026 &amp; Press Images"
+  description="The official 2026 selection of current portraits and press images of British actor Gary Lucy, with verified credits and canonical image pages."
   path={pagePath}
   jsonLd={jsonLd}
   ogImage={imageUrl(portraits[0])}
@@ -59,15 +63,15 @@ const jsonLd = [
       <nav class="rs-breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
         <a href="/press">Press</a> <span aria-hidden="true">&rsaquo;</span>
-        <span aria-current="page">Official portraits</span>
+        <span aria-current="page">Official portraits 2026</span>
       </nav>
 
       <p class="rs-kicker">Media resources</p>
       <h1 class="rs-row-name" style="font-size:clamp(2rem,5vw,3.8rem); line-height:1.05; margin:.35em 0;">
-        Gary Lucy official portraits &amp; press images
+        Gary Lucy official portraits 2026 &amp; press images
       </h1>
       <p class="rs-lede" style="max-width:65ch;">
-        A selected set of current, professionally presented images of British actor Gary Lucy for editorial reference, casting and legitimate press enquiries. Each portrait links to its canonical image page with dimensions, context and confirmed credit where available.
+        Gary Lucy&rsquo;s official 2026 selection of current, professionally presented images for editorial reference, casting and legitimate press enquiries. Each portrait links to its canonical image page with dimensions, context and confirmed credit where available.
       </p>
 
       <div class="rs-cards" style="aspect-ratio:auto; margin-top:2.5rem;">
@@ -94,7 +98,7 @@ const jsonLd = [
       </div>
 
       <p class="rs-note" style="max-width:70ch; margin-top:2rem;">
-        Images remain subject to their respective copyright and usage terms. For publication, licensing or a specific high-resolution file, <a href="/contact">contact Gary Lucy&rsquo;s official representation</a>. More verified photography is available in the <a href="/gallery">official gallery</a>.
+        Images are published by Gary Lucy&rsquo;s official website and remain © Gary Lucy and/or the credited photographer or rightsholder; all rights are reserved. Display here does not grant reproduction or publication rights. For permission, licensing or a specific high-resolution file, <a href="/contact">contact Gary Lucy&rsquo;s official representation</a>. More verified photography is available in the <a href="/gallery">official gallery</a>.
       </p>
     </div>
   </article>

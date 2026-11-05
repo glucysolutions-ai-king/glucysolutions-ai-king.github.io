@@ -27,7 +27,9 @@ const jsonLd = [
     mainEntityOfPage: absoluteUrl(`${imagePagePath(img)}/`),
     about: { '@id': `${SITE_URL}/#person` },
     acquireLicensePage: absoluteUrl('/contact/'),
-    creditText: img.credit ?? 'Gary Lucy — official website',
+    license: absoluteUrl('/press/official-portraits/'),
+    creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
+    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
   })),
 ];
 ---
