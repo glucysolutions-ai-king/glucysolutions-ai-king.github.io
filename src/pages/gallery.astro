@@ -30,6 +30,7 @@ const jsonLd = [
     license: absoluteUrl('/press/official-portraits/'),
     creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
     copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   })),
 ];
 ---
