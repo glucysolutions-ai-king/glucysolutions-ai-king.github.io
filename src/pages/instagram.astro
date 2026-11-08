@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FlipHero from '../components/FlipHero.astro';
+import { galleryImages, imagePagePath, imageUrl } from '../data/gallery';
+import { SITE_URL, absoluteUrl } from '../data/site';
+
+const instagramUrl = 'https://www.instagram.com/gary.lucy/';
+const selectedSlugs = [
+  'instagram-headshot-dan-collins-2026',
+  'instagram-leather-jacket-headshot-2024',
+];
+const portraits = selectedSlugs
+  .map((slug) => galleryImages.find((image) => image.slug === slug))
+  .filter((image): image is NonNullable<typeof image> => Boolean(image));
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${absoluteUrl('/instagram/')}#profilepage`,
+    name: 'Gary Lucy on Instagram — @gary.lucy',
+    url: absoluteUrl('/instagram/'),
+    dateModified: '2026-11-08',
+    mainEntity: {
+      '@id': `${SITE_URL}/#person`,
+      '@type': 'Person',
+      name: 'Gary Lucy',
+      sameAs: instagramUrl,
+    },
+    hasPart: portraits.map((image) => ({ '@id': `${absoluteUrl(`${imagePagePath(image)}/`)}#image` })),
+  },
+  ...portraits.map((image) => ({
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    '@id': `${absoluteUrl(`${imagePagePath(image)}/`)}#image`,
+    name: `Gary Lucy — ${image.title}`,
+    caption: image.caption ?? image.alt,
+    contentUrl: absoluteUrl(imageUrl(image)),
+    url: absoluteUrl(imageUrl(image)),
+    width: image.width,
+    height: image.height,
+    about: { '@id': `${SITE_URL}/#person` },
+    mainEntityOfPage: absoluteUrl(`${imagePagePath(image)}/`),
+    ...(image.datePublished ? { datePublished: image.datePublished } : {}),
+    ...(image.sourceUrl ? { isBasedOn: image.sourceUrl } : {}),
+    creditText: image.credit
+      ? `Gary Lucy official website; photograph/image credit: ${image.credit}`
+      : 'Gary Lucy official website; supplied via the verified @gary.lucy Instagram account',
+    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    license: absoluteUrl('/press/official-portraits/'),
+    acquireLicensePage: absoluteUrl('/contact/'),
+  })),
+];
+---
+<Layout
+  title="Gary Lucy on Instagram — Official @gary.lucy Profile & Headshots"
+  description="The verified Instagram profile of British actor Gary Lucy, @gary.lucy, with selected official actor headshots and links to canonical image pages."
+  path="/instagram"
+  jsonLd={jsonLd}
+  ogImage={portraits.length ? imageUrl(portraits[0]) : undefined}
+>
+  <article class="rs-page">
+    <FlipHero
+      id="instagram"
+      imageFront="/gallery/gary-lucy-instagram-headshot-dan-collins-2026-480.jpg"
+      imageBack="/gallery/gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg"
+      altFront="Gary Lucy, British actor, black and white headshot by Dan Collins"
+      altBack="Gary Lucy, British actor, leather-jacket headshot"
+      kicker="Verified social profile"
+      headline="@gary.lucy"
+      dek="Gary Lucy’s official Instagram and selected actor headshots."
+      backKicker="Official photography"
+      backHeadline="Current Headshots"
+    />
+
+    <div class="rs-body rs-body-wide">
+      <nav class="rs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
+        <span aria-current="page">Instagram</span>
+      </nav>
+
+      <section class="instagram-intro" aria-labelledby="instagram-heading">
+        <div>
+          <p class="rs-kicker">Official profile</p>
+          <h1 id="instagram-heading">Gary Lucy on Instagram</h1>
+          <p class="rs-lede">
+            Follow British actor Gary Lucy&rsquo;s verified account
+            <a href={instagramUrl} target="_blank" rel="me noopener">@gary.lucy</a>
+            for current acting, behind-the-scenes and personal updates. This page
+            preserves selected actor headshots on Gary&rsquo;s official website with
+            stable filenames, descriptive text and canonical image pages.
+          </p>
+        </div>
+        <a class="instagram-cta" href={instagramUrl} target="_blank" rel="me noopener">
+          View verified @gary.lucy profile <span aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
+
+      <section aria-labelledby="instagram-headshots">
+        <h2 id="instagram-headshots">Selected official Instagram headshots</h2>
+        <div class="instagram-grid">
+          {portraits.map((image) => (
+            <figure class="rs-gallery-figure instagram-card">
+              <a href={imagePagePath(image)}>
+                <img
+                  src={imageUrl(image)}
+                  srcset={image.srcset}
+                  sizes="(max-width: 760px) 100vw, 44vw"
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  loading="eager"
+                />
+              </a>
+              <figcaption class="rs-gallery-caption">
+                <strong>{image.title}</strong><br />
+                {image.caption}
+                {image.credit && <><br />Photo credit: {image.credit}</>}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <p class="rs-note instagram-rights">
+        These images are presented by Gary Lucy&rsquo;s official website and sourced
+        from his verified Instagram account. Copyright remains with Gary Lucy
+        and/or the credited photographer or rightsholder. For press use or a
+        high-resolution file, <a href="/contact">contact official representation</a>.
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .instagram-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    margin: 1.5rem 0 3rem;
+  }
+  .instagram-intro h1 { margin: 0.2em 0; }
+  .instagram-cta {
+    display: inline-flex;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--accent);
+    color: var(--fg);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .instagram-cta:hover { background: var(--accent); color: var(--bg); }
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 3vw, 2.5rem);
+    margin: 1.5rem 0 2.5rem;
+  }
+  .instagram-card img {
+    width: 100%;
+    height: min(72vw, 720px);
+    object-fit: contain;
+    background: #050505;
+  }
+  .instagram-rights { max-width: 76ch; }
+  @media (max-width: 760px) {
+    .instagram-intro { grid-template-columns: 1fr; align-items: start; }
+    .instagram-cta { white-space: normal; justify-content: space-between; }
+    .instagram-grid { grid-template-columns: 1fr; }
+    .instagram-card img { height: auto; }
+  }
+</style>

@@ -30,6 +30,8 @@ const jsonLd = [
     license: absoluteUrl('/press/official-portraits/'),
     creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
     copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    ...(img.datePublished ? { datePublished: img.datePublished } : {}),
+    ...(img.sourceUrl ? { isBasedOn: img.sourceUrl } : {}),
     ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   })),
 ];
@@ -59,6 +61,11 @@ const jsonLd = [
         <a href="/">Home</a> <span aria-hidden="true">&rsaquo;</span>
         <span aria-current="page">Gallery</span>
       </nav>
+
+      <p class="rs-lede" style="max-width:62ch;">
+        Current official portraits, casting photography and selected headshots from
+        <a href="/instagram">Gary Lucy&rsquo;s verified Instagram @gary.lucy</a>.
+      </p>
 
       {galleryImages.length === 0 ? (
         <p class="rs-note" style="margin:0;">

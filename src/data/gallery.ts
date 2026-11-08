@@ -7,6 +7,9 @@ export interface GalleryImage {
   title: string; // short human title used in the page H1 and <title>
   credit?: string; // photographer / copyright credit — only rendered when confirmed
   srcset?: string; // e.g. "/gallery/name-480.jpg 480w, /gallery/name-960.jpg 960w"
+  sourceUrl?: string; // original official-social post when the image was supplied there
+  sourceLabel?: string;
+  datePublished?: string;
   alt: string;
   caption?: string;
   width: number;
@@ -42,6 +45,33 @@ export const galleryImages: GalleryImage[] = [
     alt: 'Gary Lucy, British actor, studio portrait in a white shirt and blue tie',
     width: 1170,
     height: 1222,
+  },
+  {
+    file: 'gary-lucy-instagram-headshot-dan-collins-2026-480.jpg',
+    slug: 'instagram-headshot-dan-collins-2026',
+    title: 'Official Instagram headshot — Dan Collins',
+    srcset: '/gallery/gary-lucy-instagram-headshot-dan-collins-2026-320.jpg 240w, /gallery/gary-lucy-instagram-headshot-dan-collins-2026-480.jpg 480w',
+    alt: 'Gary Lucy, British actor, black and white official headshot photographed by Dan Collins',
+    caption: 'Gary Lucy — official actor headshot, published by @gary.lucy in November 2026',
+    width: 480,
+    height: 640,
+    credit: 'Dan Collins',
+    sourceUrl: 'https://www.instagram.com/p/DfaqpmnRGr5/',
+    sourceLabel: 'Original post on Gary Lucy’s verified Instagram',
+    datePublished: '2026-11-06',
+  },
+  {
+    file: 'gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg',
+    slug: 'instagram-leather-jacket-headshot-2024',
+    title: 'Official Instagram leather-jacket headshot',
+    srcset: '/gallery/gary-lucy-instagram-leather-jacket-headshot-2024-240.jpg 135w, /gallery/gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg 360w',
+    alt: 'Gary Lucy, British actor, official headshot wearing a brown leather jacket',
+    caption: 'Gary Lucy — leather-jacket actor headshot shared by @gary.lucy',
+    width: 360,
+    height: 640,
+    sourceUrl: 'https://www.instagram.com/reel/C38ur8uIc1P/',
+    sourceLabel: 'Original post on Gary Lucy’s verified Instagram',
+    datePublished: '2024-02-29',
   },
   {
     file: 'gary-lucy-actor-red-carpet-suit-1200.jpg',
