@@ -40,11 +40,13 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/screen', label: 'Screen' },
+  { href: '/filmography', label: 'Filmography' },
   { href: '/stage', label: 'Stage' },
   { href: '/showreel', label: 'Showreel' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/instagram', label: 'Instagram' },
   { href: '/press', label: 'Press' },
+  { href: '/news', label: 'News' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -87,8 +89,6 @@ const navItems = [
             {navItems.map((item) => (
               <li><a href={item.href}>{item.label}</a></li>
             ))}
-            <li><a href="/filmography">Filmography</a></li>
-            <li><a href="/news">News</a></li>
             <li><a href="https://www.instagram.com/gary.lucy/" target="_blank" rel="me noopener">@gary.lucy</a></li>
           </ul>
         </nav>

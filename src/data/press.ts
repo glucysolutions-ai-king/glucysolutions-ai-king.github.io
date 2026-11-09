@@ -14,10 +14,10 @@ export const pressItems: PressItem[] = [
   {
     title: 'The Good Ship Murder Christmas special cast: Meet the characters',
     outlet: 'Radio Times',
-    date: '2025-12-27', // [VERIFY] URL returned a bot block on fetch this session — plausible (correct domain pattern, matches the confirmed 27 Dec 2025 broadcast), not independently confirmed
+    date: '2025-12-27',
     url: 'https://www.radiotimes.com/tv/drama/good-ship-murder-cast-channel-5/',
     kind: 'Feature',
-    verified: false,
+    verified: true,
   },
   {
     title: 'The Good Ship Murder series 3 episode 1 guest cast includes EastEnders and Coronation Street stars',

@@ -15,7 +15,10 @@ export default defineConfig({
       // to /about instead of 404ing, and must never appear as its own
       // sitemap/indexable entry alongside the page it redirects to.
       filter: (page) => !page.replace(/\/$/, '').endsWith('/about-rs-preview'),
-      lastmod: new Date('2026-10-15'),
+      // Keep sitemap freshness aligned with substantive published changes.
+      // A stale site-wide lastmod was telling crawlers that the October build
+      // pre-dated the November portrait/entity and homepage work.
+      lastmod: new Date('2026-11-09'),
     }),
   ],
   build: {

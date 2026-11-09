@@ -27,6 +27,12 @@ const personLd = {
   jobTitle: 'Actor',
   description: profile.bioShort,
   url: `${SITE_URL}/`,
+  mainEntityOfPage: { '@id': `${SITE_URL}/#webpage` },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Actor',
+    occupationLocation: { '@type': 'Country', name: 'United Kingdom' },
+  },
   image: [
     {
       '@type': 'ImageObject',
@@ -127,6 +133,26 @@ const personLd = {
   },
   award: 'British Soap Award for Best Newcomer (2000)',
   knowsAbout: ['Acting', 'British television drama', 'British theatre'],
+  subjectOf: [
+    {
+      '@type': 'Article',
+      name: 'The Good Ship Murder Christmas special cast: Meet the characters',
+      url: 'https://www.radiotimes.com/tv/drama/good-ship-murder-cast-channel-5/',
+      publisher: { '@type': 'Organization', name: 'Radio Times' },
+    },
+    {
+      '@type': 'Article',
+      name: 'The Good Ship Murder series 3 episode 1 cast adds soap favourite',
+      url: 'https://www.tvguide.co.uk/articles/the-good-ship-murder-series-3-episode-1-guest-cast/',
+      publisher: { '@type': 'Organization', name: 'TV Guide UK' },
+    },
+    {
+      '@type': 'Article',
+      name: 'Gary Lucy goes Full Monty',
+      url: 'https://www.itv.com/thismorning/articles/gary-lucy-the-full-monty',
+      publisher: { '@type': 'Organization', name: 'ITV' },
+    },
+  ],
 };
 
 const websiteLd = {
@@ -192,8 +218,11 @@ const webPageLd = !hasOwnPageEntity
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="author" content="Gary Lucy" />
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang="en-GB" href={canonical} />
+<link rel="alternate" hreflang="x-default" href={canonical} />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Gary Lucy — Official" />
