@@ -278,6 +278,7 @@ export const profile = {
     'https://www.imdb.com/name/nm0524804/',
     'https://tv.apple.com/us/person/gary-lucy/umc.cpc.131woa7w1p6qwwphkf2oowrul',
     'https://www.instagram.com/gary.lucy/',
+    'https://app.spotlight.com/2933-0161-4591',
     // Facebook handle still [VERIFY] — confirm current handle before publishing.
     // sosglobalai.com deliberately NOT listed here: sameAs is for identity
     // profiles of this same person, not a company they founded. The

@@ -102,6 +102,9 @@ export const galleryImages: GalleryImage[] = [
     width: 1170,
     height: 1422,
     credit: 'Hollyoaks',
+    caption: 'Gary Lucy — official red-carpet portrait selected for the 2026 website portfolio',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
   },
   {
     file: 'gary-lucy-sitting-1600.jpg',
@@ -112,6 +115,9 @@ export const galleryImages: GalleryImage[] = [
     width: 1200,
     height: 1377,
     credit: 'Dan Collins',
+    caption: 'Gary Lucy — official black-and-white editorial portrait by Dan Collins, 2026 website selection',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy and/or Dan Collins. All rights reserved.',
   },
   {
     file: 'gary-lucy-jacket-1600.jpg',
@@ -122,6 +128,9 @@ export const galleryImages: GalleryImage[] = [
     width: 1200,
     height: 1802,
     credit: 'Dan Collins',
+    caption: 'Gary Lucy — official black-and-white leather-jacket portrait by Dan Collins, 2026 website selection',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy and/or Dan Collins. All rights reserved.',
   },
   {
     file: 'gary-lucy-wing-1600.jpg',
@@ -151,6 +160,9 @@ export const galleryImages: GalleryImage[] = [
     width: 1400,
     height: 2100,
     credit: 'Dan Collins',
+    caption: 'Gary Lucy — official full-length editorial portrait by Dan Collins, 2026 website selection',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy and/or Dan Collins. All rights reserved.',
   },
   {
     file: 'gary-lucy-actor-walking-editorial.jpg',
