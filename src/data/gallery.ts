@@ -10,6 +10,8 @@ export interface GalleryImage {
   sourceUrl?: string; // original official-social post when the image was supplied there
   sourceLabel?: string;
   datePublished?: string;
+  copyrightNotice?: string;
+  licenseUrl?: string;
   alt: string;
   caption?: string;
   width: number;
@@ -36,6 +38,9 @@ export const galleryImages: GalleryImage[] = [
     width: 1170,
     height: 1328,
     credit: 'Jenny Scott Photography',
+    caption: 'Gary Lucy — official 2026 actor headshot in a blue checked shirt',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy. All rights reserved.',
   },
   {
     file: 'gary-lucy-actor-portrait-white-shirt-1200.jpg',
@@ -59,19 +64,34 @@ export const galleryImages: GalleryImage[] = [
     sourceUrl: 'https://www.instagram.com/p/DfaqpmnRGr5/',
     sourceLabel: 'Original post on Gary Lucy’s verified Instagram',
     datePublished: '2026-11-06',
+    copyrightNotice: '© Gary Lucy; released under CC BY-SA 4.0.',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
   },
   {
-    file: 'gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg',
-    slug: 'instagram-leather-jacket-headshot-2024',
-    title: 'Official Instagram leather-jacket headshot',
-    srcset: '/gallery/gary-lucy-instagram-leather-jacket-headshot-2024-240.jpg 135w, /gallery/gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg 360w',
+    file: 'gary-lucy-brown-leather-jacket-headshot-2026-360.jpg',
+    slug: 'brown-leather-jacket-headshot-2026',
+    title: 'Brown leather-jacket headshot',
+    srcset: '/gallery/gary-lucy-brown-leather-jacket-headshot-2026-240.jpg 135w, /gallery/gary-lucy-brown-leather-jacket-headshot-2026-360.jpg 360w',
     alt: 'Gary Lucy, British actor, official headshot wearing a brown leather jacket',
-    caption: 'Gary Lucy — leather-jacket actor headshot shared by @gary.lucy',
+    caption: 'Gary Lucy — official brown leather-jacket actor headshot, selected for the 2026 portrait portfolio',
     width: 360,
     height: 640,
     sourceUrl: 'https://www.instagram.com/reel/C38ur8uIc1P/',
     sourceLabel: 'Original post on Gary Lucy’s verified Instagram',
-    datePublished: '2024-02-29',
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy. All rights reserved.',
+  },
+  {
+    file: 'gary-lucy-british-actor-close-up-dark-coat-2026-512.jpg',
+    slug: 'official-close-up-dark-coat-2026',
+    title: 'Official close-up portrait in a dark coat',
+    srcset: '/gallery/gary-lucy-british-actor-close-up-dark-coat-2026-256.jpg 128w, /gallery/gary-lucy-british-actor-close-up-dark-coat-2026-512.jpg 512w',
+    alt: 'Gary Lucy, British actor, official close-up portrait wearing a dark coat',
+    caption: 'Gary Lucy — official close-up actor portrait, 2026 selection',
+    width: 512,
+    height: 1024,
+    datePublished: '2026-11-09',
+    copyrightNotice: '© Gary Lucy. All rights reserved.',
   },
   {
     file: 'gary-lucy-actor-red-carpet-suit-1200.jpg',

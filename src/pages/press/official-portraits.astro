@@ -5,11 +5,10 @@ import { SITE_URL, absoluteUrl } from '../../data/site';
 
 const preferredSlugs = [
   'headshot',
+  'official-close-up-dark-coat-2026',
+  'instagram-headshot-dan-collins-2026',
   'headshot-checked-shirt',
-  'portrait-white-shirt',
-  'red-carpet',
-  'seated-aircraft-wreckage-portrait',
-  'leather-jacket-portrait',
+  'brown-leather-jacket-headshot-2026',
 ];
 const portraits = preferredSlugs
   .map((slug) => galleryImages.find((image) => image.slug === slug))
@@ -25,7 +24,7 @@ const jsonLd = [
     url: absoluteUrl(`${pagePath}/`),
     description: 'Selected current portraits and press images of British actor Gary Lucy, with verified credits and links to the official image pages.',
     datePublished: '2026-11-05',
-    dateModified: '2026-11-05',
+    dateModified: '2026-11-09',
     about: { '@id': `${SITE_URL}/#person` },
     mainEntity: {
       '@type': 'ImageGallery',
@@ -45,9 +44,11 @@ const jsonLd = [
     caption: img.caption ?? img.alt,
     about: { '@id': `${SITE_URL}/#person` },
     creditText: img.credit ? `Gary Lucy official website; photograph/image credit: ${img.credit}` : 'Gary Lucy official website',
-    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
-    license: absoluteUrl('/press/official-portraits/'),
+    copyrightNotice: img.copyrightNotice ?? '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    license: img.licenseUrl ?? absoluteUrl('/press/official-portraits/'),
     acquireLicensePage: absoluteUrl('/contact/'),
+    ...(img.datePublished ? { datePublished: img.datePublished } : {}),
+    ...(img.sourceUrl ? { isBasedOn: img.sourceUrl } : {}),
     ...(img.credit ? { creator: { '@type': /hollyoaks|channel 4|getty|alamy|photography|studios?$/i.test(img.credit) ? 'Organization' : 'Person', name: img.credit } } : {}),
   })),
 ];
@@ -99,7 +100,7 @@ const jsonLd = [
       </div>
 
       <p class="rs-note" style="max-width:70ch; margin-top:2rem;">
-        Images are published by Gary Lucy&rsquo;s official website and remain © Gary Lucy and/or the credited photographer or rightsholder; all rights are reserved. Display here does not grant reproduction or publication rights. For permission, licensing or a specific high-resolution file, <a href="/contact">contact Gary Lucy&rsquo;s official representation</a>. More verified photography is available in the <a href="/gallery">official gallery</a>.
+        Images are published by Gary Lucy&rsquo;s official website. Copyright and licence terms are stated on each canonical image page; the white T-shirt portrait is available under CC BY-SA 4.0 and the remaining portfolio images are rights-managed. For permission or a high-resolution file, <a href="/contact">contact Gary Lucy&rsquo;s official representation</a>. More verified photography is available in the <a href="/gallery">official gallery</a>.
       </p>
     </div>
   </article>

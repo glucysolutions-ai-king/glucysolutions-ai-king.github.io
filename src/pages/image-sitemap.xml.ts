@@ -42,7 +42,7 @@ export function GET() {
       .filter((item) => item.sourceUrl?.includes('instagram.com/'))
       .map((item) => image(`/gallery/${item.file}`, item.alt, item.caption ?? item.alt))),
     page('/press/official-portraits', galleryImages
-      .filter((item) => ['headshot', 'headshot-checked-shirt', 'portrait-white-shirt', 'red-carpet', 'seated-aircraft-wreckage-portrait', 'leather-jacket-portrait'].includes(item.slug))
+      .filter((item) => ['headshot', 'official-close-up-dark-coat-2026', 'instagram-headshot-dan-collins-2026', 'headshot-checked-shirt', 'brown-leather-jacket-headshot-2026'].includes(item.slug))
       .map((item) => image(`/gallery/${item.file}`, `Gary Lucy — ${item.title} — 2026 official portrait selection`, item.caption ?? item.alt))),
   ].join('');
 

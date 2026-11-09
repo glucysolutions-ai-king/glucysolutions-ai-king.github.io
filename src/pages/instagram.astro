@@ -7,7 +7,7 @@ import { SITE_URL, absoluteUrl } from '../data/site';
 const instagramUrl = 'https://www.instagram.com/gary.lucy/';
 const selectedSlugs = [
   'instagram-headshot-dan-collins-2026',
-  'instagram-leather-jacket-headshot-2024',
+  'brown-leather-jacket-headshot-2026',
 ];
 const portraits = selectedSlugs
   .map((slug) => galleryImages.find((image) => image.slug === slug))
@@ -20,7 +20,7 @@ const jsonLd = [
     '@id': `${absoluteUrl('/instagram/')}#profilepage`,
     name: 'Gary Lucy on Instagram — @gary.lucy',
     url: absoluteUrl('/instagram/'),
-    dateModified: '2026-11-08',
+    dateModified: '2026-11-09',
     mainEntity: {
       '@id': `${SITE_URL}/#person`,
       '@type': 'Person',
@@ -46,8 +46,8 @@ const jsonLd = [
     creditText: image.credit
       ? `Gary Lucy official website; photograph/image credit: ${image.credit}`
       : 'Gary Lucy official website; supplied via the verified @gary.lucy Instagram account',
-    copyrightNotice: '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
-    license: absoluteUrl('/press/official-portraits/'),
+    copyrightNotice: image.copyrightNotice ?? '© Gary Lucy and/or the credited rightsholder. All rights reserved.',
+    license: image.licenseUrl ?? absoluteUrl('/press/official-portraits/'),
     acquireLicensePage: absoluteUrl('/contact/'),
   })),
 ];
@@ -63,7 +63,7 @@ const jsonLd = [
     <FlipHero
       id="instagram"
       imageFront="/gallery/gary-lucy-instagram-headshot-dan-collins-2026-480.jpg"
-      imageBack="/gallery/gary-lucy-instagram-leather-jacket-headshot-2024-360.jpg"
+      imageBack="/gallery/gary-lucy-brown-leather-jacket-headshot-2026-360.jpg"
       altFront="Gary Lucy, British actor, black and white headshot by Dan Collins"
       altBack="Gary Lucy, British actor, leather-jacket headshot"
       kicker="Verified social profile"
